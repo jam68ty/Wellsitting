@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "592790184519",
+    "firebase_url": "https://wellsitting-ef0e5.firebaseio.com",
+    "project_id": "wellsitting-ef0e5",
+    "storage_bucket": "wellsitting-ef0e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592790184519:android:e500fa0e0a22aa04",
+        "android_client_info": {
+          "package_name": "com.example.wellsitting"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "592790184519-5vtr4d03u849sdcu7mhlrutqvla38il9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "3239f7e623476aad102629f9f49d7a1ed2c1e3f0"
+          }
+        },
+        {
+          "client_id": "592790184519-ba4q4037cfau6n09d9c16745hnvpvgbc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdV9vc0rmljRun6r4Jhw--kJTqZcWWvS0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "592790184519-ba4q4037cfau6n09d9c16745hnvpvgbc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

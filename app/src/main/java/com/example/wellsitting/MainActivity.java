@@ -48,9 +48,9 @@ public class MainActivity extends AppCompatActivity {
                 .Builder()
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
-                .build();
+                .build();  //創建登入對像
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions);
+        mGoogleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions);  //獲得登入者的資料
         btn_login.setOnClickListener(v -> SignInGoogle());  //Lambda: input -> body
         if(mAuth.getCurrentUser()!=null){
             FirebaseUser user = mAuth.getCurrentUser();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     void SignInGoogle(){
         Intent signIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signIntent,GOOGLE_SIGN);
+        startActivityForResult(signIntent,GOOGLE_SIGN);  //登入作為result
     }
 
     @Override

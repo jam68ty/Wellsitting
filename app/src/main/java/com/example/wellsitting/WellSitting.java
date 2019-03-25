@@ -2,6 +2,7 @@ package com.example.wellsitting;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
@@ -52,20 +53,39 @@ public class WellSitting extends AppCompatActivity {
             public void onMenuClosed() {}
 
         });
+        if(findViewById(R.id.fragment_main)!=null){
+            if (savedInstanceState!=null){
+                return;
+            }
+            //一開始設定塞入一個fragment
+            MainFragment mainFragment = new MainFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().add(R.id.fragment_main,mainFragment,null);
+            fragmentTransaction.commit();
+        }
+
     }
     private void indexCircle(int i) {
         switch (i){
             case 0:
-                Toast.makeText(getApplicationContext(),"角色",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"角色",Toast.LENGTH_SHORT).show();
+                Character character = new Character();
+                FragmentTransaction fragmentTransaction_character = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_main,character,null);
+                fragmentTransaction_character.commit();
                 break;
             case 1:
-                Toast.makeText(getApplicationContext(),"故事",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"故事",Toast.LENGTH_SHORT).show();
+                Story story = new Story();
+                FragmentTransaction fragmentTransaction_story = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_main,story,null);
+                fragmentTransaction_story.commit();
                 break;
             case 2:
-                Toast.makeText(getApplicationContext(),"設定",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"設定",Toast.LENGTH_SHORT).show();
+                Setting setting = new Setting();
+                FragmentTransaction fragmentTransaction_setting = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_main,setting,null);
+                fragmentTransaction_setting.commit();
                 break;
             case 3:
-                Toast.makeText(getApplicationContext(),"登出中",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),"登出中",Toast.LENGTH_SHORT).show();
                 Logout();
                 break;
         }

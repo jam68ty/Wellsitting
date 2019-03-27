@@ -30,16 +30,12 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     Button btn_login;
     GoogleSignInClient mGoogleSignInClient;
-    TextView textView;
-    ImageView imageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        textView = findViewById(R.id.textView);
-        imageView = findViewById(R.id.imageView);
 
         btn_login=findViewById(R.id.login);
         mAuth = FirebaseAuth.getInstance();
@@ -81,42 +77,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-        Log.d("TAG","frebaseAuthWithGoogle: "+account.getId());
+        Log.d("TAG","firebaseAuthWithGoogle: "+account.getId());
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(),null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this,task->{
                     if (task.isSuccessful()){
                         Log.d("TAG","signin success");
                         FirebaseUser user = mAuth.getCurrentUser();
-                        //updateUI(user);
                         //這裡開啟一個新頁面
                         startActivity(new Intent(this,WellSitting.class));
                         finish();
                     }else {
                         Log.w("TAG","signin failure",task.getException());
                         Toast.makeText(this,"Sign in Failed!",Toast.LENGTH_LONG);
-                        //updateUI(null);
                     }
 
                 });
-    }
-//帳戶設定可用
-
-    private void updateUI(FirebaseUser user) {
-        if (user!=null){
-            String name = user.getDisplayName();
-            String email=user.getEmail();
-            String photo = String.valueOf(user.getPhotoUrl());
-
-            textView.append("Info: \n");
-            textView.append(name);
-            textView.append(email);
-
-            Picasso.get().load(photo).into(imageView);
-        }else {
-            textView.setText(getString(R.string.app_name));
-            Picasso.get().load(R.drawable.como).into(imageView);
-        }
     }
 }
 

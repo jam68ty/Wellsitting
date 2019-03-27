@@ -38,6 +38,7 @@ public class WellSitting extends AppCompatActivity {
                 .addSubMenu(Color.parseColor("#258CFF"), R.drawable.character)
                 .addSubMenu(Color.parseColor("#30A400"), R.drawable.story)
                 .addSubMenu(Color.parseColor("#FF4B32"), R.drawable.settings)
+                .addSubMenu(Color.parseColor("#FA4B82"), R.drawable.home)
                 .addSubMenu(Color.parseColor("#8A39FF"), R.drawable.logout)
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
@@ -45,7 +46,6 @@ public class WellSitting extends AppCompatActivity {
                         indexCircle(i);
                     }
                 }).setOnMenuStatusChangeListener(new OnMenuStatusChangeListener() {
-
             @Override
             public void onMenuOpened() {
             }
@@ -85,9 +85,16 @@ public class WellSitting extends AppCompatActivity {
                 fragmentTransaction_setting.commit();
                 break;
             case 3:
+                Toast.makeText(getApplicationContext(),"首頁",Toast.LENGTH_SHORT).show();
+                MainFragment main = new MainFragment();
+                FragmentTransaction fragmentTransaction_main = getSupportFragmentManager().beginTransaction().replace(R.id.fragment_main,main,null);
+                fragmentTransaction_main.commit();
+                break;
+            case 4:
                 Toast.makeText(getApplicationContext(),"登出中",Toast.LENGTH_SHORT).show();
                 Logout();
                 break;
+
         }
 
     }

@@ -18,11 +18,16 @@ import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     Button btn_login;
     GoogleSignInClient mGoogleSignInClient;
+    FirebaseDatabase firebaseDatabase;
+    Random random;
 
 
     @Override
@@ -45,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();  //創建登入對象
+
+        random=new Random();
+
 
         mGoogleSignInClient = GoogleSignIn.getClient(this,googleSignInOptions);  //獲得登入者的資料
         btn_login.setOnClickListener(v -> SignInGoogle());  //Lambda: input -> body
@@ -84,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         Log.d("TAG","signin success");
                         FirebaseUser user = mAuth.getCurrentUser();
+                        //把auth的資料寫到database的account裡
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        DatabaseReference myRef = database.getReference("account");
+                        myRef.child("GoodPlusAccount"+random.nextInt(1000)).child("id").setValue(user.getEmail());
                         //這裡開啟一個新頁面
                         startActivity(new Intent(this,WellSitting.class));
                         finish();

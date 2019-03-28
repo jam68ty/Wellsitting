@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
                         FirebaseUser user = mAuth.getCurrentUser();
                         //把auth的資料寫到database的account裡
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        DatabaseReference myRef = database.getReference("account");
-                        myRef.child("GoodPlusAccount"+random.nextInt(1000)).child("id").setValue(user.getEmail());
+                        DatabaseReference myRef = database.getReference("accountTest");
+                        myRef.child(mAuth.getUid()).setValue(user);
                         //這裡開啟一個新頁面
                         startActivity(new Intent(this,WellSitting.class));
                         finish();

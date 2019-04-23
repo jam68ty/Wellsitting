@@ -99,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         DatabaseReference myRef = database.getReference("account");
                         myRef.child(user.getUid()).child("email").setValue(user.getEmail());
-
                         //這裡開啟一個新頁面
                         startActivity(new Intent(this,WellSitting.class));
                         finish();

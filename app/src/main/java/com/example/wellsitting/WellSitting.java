@@ -2,10 +2,13 @@ package com.example.wellsitting;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.SystemClock;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -16,7 +19,14 @@ import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
 
+
+
 public class WellSitting extends AppCompatActivity {
+
+
+
+
+
     GoogleSignInClient mGoogleSignInClient;
     //Button btn_logout;
     CircleMenu circleMenu;
@@ -62,6 +72,40 @@ public class WellSitting extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().add(R.id.fragment_main,mainFragment,null);
             fragmentTransaction.commit();
         }
+
+
+        Button Start = (Button)findViewById(R.id.start);
+        Button Stop = (Button)findViewById(R.id.stop);
+        Button Reset = (Button)findViewById(R.id.reset);
+        final Chronometer timer = (Chronometer)findViewById(R.id.timer);
+
+        Start.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                timer.start();
+            }});
+
+        Stop.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                timer.stop();
+            }});
+
+        Reset.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                timer.setBase(SystemClock.elapsedRealtime());
+            }});
+
+
+
+
 
     }
     private void indexCircle(int i) {

@@ -12,10 +12,35 @@
         android:text="Welcome" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="start" />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="stop" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:text="reset" />
+
+
+    <Chronometer
+        android:id="@+id/timer"
+        android:layout_width="209dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="112dp"
+        tools:layout_editor_absoluteX="101dp" />
+
 
 
 

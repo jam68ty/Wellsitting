@@ -21,13 +21,36 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_main, container, false);
-        Button button = view.findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+
+        Button Start = view.findViewById(R.id.start);
+        Button Stop = view.findViewById(R.id.stop);
+        Button Reset = view.findViewById(R.id.reset);
+        final Chronometer timer = view.findViewById(R.id.timer);
+
+        Start.setOnClickListener(new Button.OnClickListener(){
+
             @Override
-            public void onClick(View v) {
-                Toast.makeText(getContext(),"Test for button in fragment",Toast.LENGTH_LONG).show();
-            }
-        });
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                timer.start();
+            }});
+
+        Stop.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                timer.stop();
+            }});
+
+        Reset.setOnClickListener(new Button.OnClickListener(){
+
+            @Override
+            public void onClick(View arg0) {
+                // TODO Auto-generated method stub
+                timer.setBase(SystemClock.elapsedRealtime());
+            }});
+
         return view;
 
 

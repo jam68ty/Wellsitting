@@ -23,10 +23,6 @@ import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
 
 public class WellSitting extends AppCompatActivity {
 
-
-
-
-
     GoogleSignInClient mGoogleSignInClient;
     //Button btn_logout;
     CircleMenu circleMenu;
@@ -72,40 +68,6 @@ public class WellSitting extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().add(R.id.fragment_main,mainFragment,null);
             fragmentTransaction.commit();
         }
-
-
-        Button Start = (Button)findViewById(R.id.start);
-        Button Stop = (Button)findViewById(R.id.stop);
-        Button Reset = (Button)findViewById(R.id.reset);
-        final Chronometer timer = (Chronometer)findViewById(R.id.timer);
-
-        Start.setOnClickListener(new Button.OnClickListener(){
-
-            @Override
-            public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                timer.start();
-            }});
-
-        Stop.setOnClickListener(new Button.OnClickListener(){
-
-            @Override
-            public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                timer.stop();
-            }});
-
-        Reset.setOnClickListener(new Button.OnClickListener(){
-
-            @Override
-            public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                timer.setBase(SystemClock.elapsedRealtime());
-            }});
-
-
-
-
 
     }
     private void indexCircle(int i) {

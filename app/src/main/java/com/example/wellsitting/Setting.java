@@ -1,6 +1,7 @@
 package com.example.wellsitting;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +22,7 @@ import com.squareup.picasso.Picasso;
 public class Setting extends Fragment {
     private View view;
     FirebaseAuth mAuth;
+    ImageButton btn_award;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,6 +44,18 @@ public class Setting extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         updateUI(user);
+
+        //進入獎勵設定
+        btn_award=view.findViewById(R.id.award);
+        btn_award.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Reward.class);
+                startActivity(intent);
+                //Toast.makeText(getContext(),"win",Toast.LENGTH_LONG).show();
+                //Log.d("ooo","yes");
+            }
+        });
 
         return view;
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroud_all"
+    android:background="@drawable/cancel"
     tools:context=".Story">
 
     <!-- TODO: Update blank fragment layout -->
@@ -18,7 +18,7 @@
         android:layout_marginTop="20dp"
         android:padding="0dp"
         android:scaleType="centerInside"
-        android:src="@drawable/title_postit"
+        android:src="@drawable/cancel"
 
         />
 
@@ -32,7 +32,7 @@
         android:layout_marginTop="170dp"
         android:padding="0dp"
         android:scaleType="centerInside"
-        android:src="@drawable/btn_redhat" />
+        android:src="@drawable/cancel" />
 
     <ImageButton
         android:id="@+id/imgbtn12"
@@ -43,7 +43,7 @@
         android:layout_marginLeft="230dp"
         android:layout_marginTop="170dp"
         android:padding="0dp"
-        android:src="@drawable/btn_cindy"
+        android:src="@drawable/cancel"
         android:scaleType="centerInside"
         />
 
@@ -56,7 +56,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="400dp"
         android:padding="0dp"
-        android:src="@drawable/btn_frog"
+        android:src="@drawable/cancel"
         android:scaleType="centerInside"
         />
 
@@ -69,7 +69,7 @@
         android:layout_marginLeft="230dp"
         android:layout_marginTop="400dp"
         android:padding="0dp"
-        android:src="@drawable/btn_mermaid"
+        android:src="@drawable/cancel"
         android:scaleType="centerInside"
         />
 
@@ -133,7 +133,7 @@
         android:layout_width="110dp"
         android:layout_height="43dp"
         android:layout_gravity="right"
-        android:src="@drawable/coin" />
+        android:src="@drawable/cancel" />
 
     <TextView
         android:id="@+id/textView12"

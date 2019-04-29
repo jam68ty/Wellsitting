@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/backgroud_all"
+    android:background="@drawable/cancel"
     tools:context=".Character">
 
     <!-- TODO: Update blank fragment layout -->
@@ -20,7 +20,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/character1"
+        android:src="@drawable/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 

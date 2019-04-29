@@ -5,7 +5,7 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/cancel"
+    android:background="@drawable/backgroud_all"
     tools:context=".Setting">
 
     <android.support.constraint.ConstraintLayout
@@ -22,12 +22,11 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.114"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.114"
             tools:src="@tools:sample/avatars" />
 
         <TextView
@@ -45,66 +44,70 @@
             app:layout_constraintTop_toBottomOf="@+id/imageAccount"
             android:gravity="center_horizontal"/>
 
-
         <ImageButton
-            android:id="@+id/imgbtn2"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:id="@+id/clock"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:src="@drawable/pagesetting_clock"
+            android:background="#00000000"
+            android:scaleType="fitCenter"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:contentDescription="@null"
-            android:gravity="center"
-            android:src="@drawable/cancel"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.483"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.373" />
+            app:layout_constraintVertical_bias="0.373"
+
+            />
 
         <ImageButton
-            android:id="@+id/imgbtn3"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:id="@+id/award"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:src="@drawable/pagesetting_award"
+            android:background="#00000000"
+            android:scaleType="fitCenter"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
-            android:contentDescription="@null"
-            android:gravity="center"
-            android:src="@drawable/cancel"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
-            android:id="@+id/imgbtn4"
-            android:layout_width="275dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            android:contentDescription="@null"
-            android:gravity="center"
-            android:src="@drawable/cancel"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.637" />
+            />
+
+        <ImageButton
+            android:id="@+id/aboutus"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:src="@drawable/pagesetting_aboutus"
+            android:background="#00000000"
+            android:scaleType="fitCenter"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="8dp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.637"
+            />
+
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

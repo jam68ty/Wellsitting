@@ -3,26 +3,27 @@ package com.example.wellsitting;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.Toast;
 
-public class Reward extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.List;
 
-    ImageButton btn_start;//未完成
-    ImageButton btn_cancel;
+public class Reward extends AppCompatActivity  {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reward);
+        Spinner spinner = (Spinner)findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> timelist = ArrayAdapter.createFromResource(Reward.this,
+                R.array.time,
+                android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(timelist);
 
-        findViewById(R.id.btn_cancel).setBackgroundResource(R.drawable.btn_cancel_d);
-        btn_cancel=findViewById(R.id.btn_cancel);
-        btn_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //button變色未實現
-                finish();
-            }
-        });
     }
+
 }

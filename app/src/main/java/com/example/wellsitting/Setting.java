@@ -23,6 +23,8 @@ public class Setting extends Fragment {
     private View view;
     FirebaseAuth mAuth;
     ImageButton btn_award;
+    ImageButton btn_clock;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,6 +59,17 @@ public class Setting extends Fragment {
             }
         });
 
+        //進入鬧鐘設定
+        btn_clock=view.findViewById(R.id.clock);
+        btn_clock.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),Alarm.class);
+                startActivity(intent);
+                //Toast.makeText(getContext(),"win",Toast.LENGTH_LONG).show();
+                //Log.d("ooo","yes");
+            }
+        });
         return view;
     }
 //顯示使用者資訊

@@ -15,6 +15,86 @@
       },
       "oauth_client": [
         {
+          "client_id": "592790184519-glg3logda3f166kq5obvtvs1nmc8jf6h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "d841a630740dfd8c0bdf971650cd6ebc8996152b"
+          }
+        },
+        {
+          "client_id": "592790184519-2l98n923r5bfiejiqt8tt7bief2lrqsu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "24a3ee32656ca9ba2c1b858b47229146478db750"
+          }
+        },
+        {
+          "client_id": "592790184519-52v1vs6d6tv0b0klrkjvj1huobtg41s9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "ad6eaa4ecc7b2dbb6726f51efb2f6af8e49d599a"
+          }
+        },
+        {
+          "client_id": "592790184519-a6mka9ovdv060g0se98avk7jo70hsc5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "e9e593f09091e9ea002a431f0fd613d50503c3ff"
+          }
+        },
+        {
+          "client_id": "592790184519-b29t3t9ob5gjncphjhsjll0q0p96ul6u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "e0cc4caa5e73235a06c6a69371915e1e004d751b"
+          }
+        },
+        {
+          "client_id": "592790184519-is0guubgv3ks6gfv5cjb7jq44o2pi4va.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "af7cbe0526113f8345116de8de1c6d422d3fbce9"
+          }
+        },
+        {
+          "client_id": "592790184519-m83ensupa3qumkh1pgeuqtmaa0a92rjj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "12e5c45a8198d07cc09025ef715fec7439ab636c"
+          }
+        },
+        {
+          "client_id": "592790184519-jo0o7k9ud702s62l8hm4uma00racu6oa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "46ba43ffba206150370f489e16e023274113f600"
+          }
+        },
+        {
+          "client_id": "592790184519-5jvm0pr3qs6v7qiic62iba8hm6g9e7hq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "cf9cf1d3035a7917f1476cea99a1f770cdd8ea8c"
+          }
+        },
+        {
+          "client_id": "592790184519-n0im5mi0caupi3ea2iuuh006p78butna.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.wellsitting",
+            "certificate_hash": "8190285d28cb5e4407747b05e2325324d5f5827d"
+          }
+        },
+        {
           "client_id": "592790184519-5vtr4d03u849sdcu7mhlrutqvla38il9.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -33,20 +113,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 2,
           "other_platform_oauth_client": [
             {
               "client_id": "592790184519-ba4q4037cfau6n09d9c16745hnvpvgbc.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
         }
       }
     }

@@ -75,9 +75,26 @@
         android:layout_marginBottom="112dp"
         tools:layout_editor_absoluteX="101dp" />
 
+    <Button
+        android:id="@+id/btn_alert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="220dp"
+        android:text="alert"/>
 
+    <TextView
+        android:id="@+id/user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:text="1" />
 
-
+    <TextView
+        android:id="@+id/childValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:text="2" />
 
 </FrameLayout>
 

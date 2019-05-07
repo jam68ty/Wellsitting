@@ -25,7 +25,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class MainFragment extends Fragment {
@@ -40,6 +46,7 @@ public class MainFragment extends Fragment {
     private TextView textView;
     private Context mContext;
     private Toast mToast;
+    FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,35 +54,64 @@ public class MainFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
         super.onCreate(savedInstanceState);
-
+        mAuth = FirebaseAuth.getInstance();
         mSignIn = view.findViewById(R.id.iv_sign);//签到
-        redDot = view. findViewById(R.id.iv_redpoint);//显示未签到的红圆点
+        redDot = view.findViewById(R.id.iv_redpoint);//显示未签到的红圆点
         textView = view.findViewById(R.id.tv_score);//积分
 
-        mSignIn.setOnClickListener(new View.OnClickListener() {
-            private int i=0;
-            private int count=0;
+        FirebaseUser user = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("account").child(user.getUid()).child("coin");
+
+        // Read from the database
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onClick(View v) {
-                Log.d("xxx","test");
-                count++;
-                if(count==1){
-                            i = i+25;
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                //抓下來的型態是常整數型態，如此可以避免字串過長
+                Long value = dataSnapshot.getValue(Long.class);
+                //因為textView裡面僅能放String，因此要進行轉換
+                String value_Temp = String.valueOf(value);
+                textView.setText("coin: " + value_Temp);
+            }
 
-                            mSignIn.setImageResource(R.drawable.btn_sign_done);//已签到
-                            redDot.setVisibility(View.GONE);//圆点隐藏
-                            // start平移和渐变动画
-                            signSuccess.startAnimation(set);
-                            signSuccess.setVisibility(View.GONE);
-                            textView.setText("coin:"+i);
-                            //   mSignIn.setClickable(false);
-
-                    }else{
-                    Toast.makeText(getActivity(),"當前已簽到",Toast.LENGTH_LONG).show();
-                }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
             }
         });
 
+        mSignIn.setOnClickListener(new View.OnClickListener() {
+            private int i = 0;
+            private int count = 0;
+
+            @Override
+            public void onClick(View v) {
+                Log.d("xxx", "test");
+                count++;
+                if (count == 1) {
+                    //在這裡進行資料的再次讀入(讀取TextView裡面的值，因為"coin: "共6個字元，故由index=6始於積分)
+                    String Temp = textView.getText().toString().substring(6);
+                    //將字串轉為數字
+                    i = Integer.parseInt(Temp);
+                    //每次簽到獲得25積分
+                    i = i + 25;
+                    mSignIn.setImageResource(R.drawable.btn_sign_done);//已签到
+                    redDot.setVisibility(View.GONE);//圆点隐藏
+                    // start平移和渐变动画
+                    signSuccess.startAnimation(set);
+                    signSuccess.setVisibility(View.GONE);
+                    textView.setText("coin:" + i);
+                    //   mSignIn.setClickable(false);
+
+                    // Write a message to the database
+                    myRef.setValue(i);
+                } else {
+                    Toast.makeText(getActivity(), "當前已簽到", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         //签到添加积分动画文本
         signSuccess = view.findViewById(R.id.iv_sign_success);
@@ -106,7 +142,7 @@ public class MainFragment extends Fragment {
         final Chronometer timer = view.findViewById(R.id.timer);
         final Chronometer count = view.findViewById(R.id.count);
 
-        Start.setOnClickListener(new Button.OnClickListener(){
+        Start.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -116,12 +152,12 @@ public class MainFragment extends Fragment {
                 timer.setBase(SystemClock.elapsedRealtime() + escapeTime);
                 timer.start();
 
-                count.setBase(SystemClock.elapsedRealtime() + 1800000 );
+                count.setBase(SystemClock.elapsedRealtime() + 1800000);
                 count.setCountDown(true);
                 count.start();
 
-
-            }});
+            }
+        });
 
 //        Stop.setOnClickListener(new Button.OnClickListener(){
 //
@@ -131,7 +167,7 @@ public class MainFragment extends Fragment {
 //                timer.stop();
 //            }});
 
-        Reset.setOnClickListener(new Button.OnClickListener(){
+        Reset.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
@@ -143,11 +179,9 @@ public class MainFragment extends Fragment {
                 count.setBase(SystemClock.elapsedRealtime());
                 count.stop();
 
-            }});
-
+            }
+        });
         return view;
-
-
     }
 }
 

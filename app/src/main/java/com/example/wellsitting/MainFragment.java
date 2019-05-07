@@ -71,6 +71,9 @@ public class MainFragment extends Fragment {
                 // whenever data at this location is updated.
                 //抓下來的型態是常整數型態，如此可以避免字串過長
                 Long value = dataSnapshot.getValue(Long.class);
+                if (value == null) {
+                    myRef.setValue(0);
+                }
                 //因為textView裡面僅能放String，因此要進行轉換
                 String value_Temp = String.valueOf(value);
                 textView.setText("coin: " + value_Temp);

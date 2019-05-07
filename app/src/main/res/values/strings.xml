@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">Wellsitting</string>
 
+
     <!-- TODO: Remove or change this placeholder text -->
+
+    <string-array name="time">
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+    </string-array>
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

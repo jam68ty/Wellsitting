@@ -1,15 +1,16 @@
 package com.example.wellsitting;
 
 import android.app.AlertDialog;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.app.Fragment;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,16 +22,16 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static android.support.constraint.Constraints.TAG;
+import static android.content.ContentValues.TAG;
 
-
-public class MainFragment extends Fragment {
+public class MainFragment extends android.support.v4.app.Fragment {
     private View view;
     long escapeTime = 0;
     FirebaseAuth mAuth;
@@ -39,9 +40,10 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
-        Button alert=view.findViewById(R.id.btn_alert);
+
         TextView user_info=view.findViewById(R.id.user);
         TextView childValue=view.findViewById(R.id.childValue);
+        TextView test=view.findViewById(R.id.test);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         user_info.append(user.getUid());
@@ -49,8 +51,23 @@ public class MainFragment extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("account").child(user.getUid()).child("status");
+        DatabaseReference myRef1 = database.getReference("account").child(user.getUid()).child("count");
+        myRef1.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = String.valueOf(dataSnapshot.getValue());
+                test.setText(value);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
@@ -58,7 +75,7 @@ public class MainFragment extends Fragment {
                 String value = String.valueOf(dataSnapshot.getValue());
                 Log.d(TAG, "Value is: " + value);
                 childValue.setText(value);
-                if(value.equals("n")||value.equals("N")){
+                if (value.equals("n")||value.equals("N")){
                     AlertDialog.Builder builder1 = new  AlertDialog.Builder(getContext());
                     builder1.setTitle("姿勢錯誤");
                     builder1.setMessage("請調整您的坐姿，計時將重新開始");

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroud_all"
+    tools:context=".Alarm">
+
+    <ImageView
+        android:id="@+id/imageAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:padding="0dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/pageall_title" />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="鬧 鐘 設 定"
+        android:textColor="#4169E1"
+        android:layout_marginTop="62dp"
+        android:textSize="30dp"
+        android:layout_marginLeft="120dp"
+        />
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="160dp"
+        android:text="我們將於\n    ______分鐘後\n              提醒您起來走動"
+        android:textColor="#4169E1"
+        android:lineSpacingExtra="20dp"
+        android:textSize="30dp" />
+
+    <ImageButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerInside"
+        android:layout_marginTop="370dp"
+        android:layout_marginLeft="50dp"
+        android:padding="0dp"
+        android:background="#00000000"
+        android:src="@drawable/btn_cancel_l"
+
+        />
+
+    <ImageButton
+        android:id="@+id/btn_start"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerInside"
+        android:layout_marginTop="370dp"
+        android:padding="0dp"
+        android:layout_marginLeft="250dp"
+        android:background="#00000000"
+        android:src="@drawable/btn_start_l"
+
+        />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="101dp"
+        android:layout_height="63dp"
+        android:textSize="30dp"
+        android:layout_marginTop="400dp"
+        android:padding="0dp"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="70dp"
+        android:text="取消" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="101dp"
+        android:layout_height="63dp"
+        android:textSize="30dp"
+        android:layout_marginTop="400dp"
+        android:padding="0dp"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="270dp"
+        android:text="開始"  />
+
+
+
+
+
+</RelativeLayout>
+

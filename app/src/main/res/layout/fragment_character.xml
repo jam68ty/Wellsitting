@@ -25,7 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:gravity="center"
-        android:text="Character" />
+        android:text="Character"
+        android:textColor="#4169E1"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/myrecycler"

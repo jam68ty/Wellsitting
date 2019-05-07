@@ -94,7 +94,10 @@
         android:layout_marginTop="210dp"
         android:layout_marginLeft="100dp"
         android:layout_width="50dp"
-        android:layout_height="50dp" />
+        android:layout_height="50dp"
+        android:textSize="30dp"
+        android:textColor="#4169E1"
+        />
 
 
 

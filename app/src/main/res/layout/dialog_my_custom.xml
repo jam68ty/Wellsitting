@@ -16,7 +16,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="33dp"
         android:textSize="20dp"
-        android:text="自定義獎勵" />
+        android:text="自定義獎勵"
+        android:textColor="#4169E1"/>
 
     <EditText
         android:id="@+id/input"
@@ -25,7 +26,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="80dp"
         android:hint="請輸入獎勵內容"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:textColor="#4169E1"/>
 
     <TextView
         android:id="@+id/action_cancel"

@@ -71,7 +71,9 @@ public class MainFragment extends Fragment {
                 // whenever data at this location is updated.
                 //抓下來的型態是常整數型態，如此可以避免字串過長
                 Long value = dataSnapshot.getValue(Long.class);
+                //如果抓下來的值為空值，表示沒有存在這個欄位，亦即為新帳號
                 if (value == null) {
+                    //開一個新的欄位，並帶入0(Integer)
                     myRef.setValue(0);
                 }
                 //因為textView裡面僅能放String，因此要進行轉換

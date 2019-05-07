@@ -81,6 +81,13 @@
 
     <!--悅琦的計時器-->
 
+    <TextView
+        android:id="@+id/timeremains"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="415dp"
+        android:layout_marginLeft="200dp"/>
+
     <Button
         android:id="@+id/start"
         android:layout_width="wrap_content"
@@ -105,23 +112,9 @@
         android:text="reset" />
 
 
-    <Chronometer
-        android:id="@+id/timer"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginTop="425dp"
-        android:layout_marginBottom="112dp"
-        tools:layout_editor_absoluteX="101dp" />
 
-    <Chronometer
-        android:id="@+id/count"
-        android:layout_width="50dp"
-        android:layout_height="25dp"
-        android:layout_marginLeft="225dp"
-        android:layout_marginTop="475dp"
-        android:layout_marginBottom="112dp"
-        tools:layout_editor_absoluteX="101dp" />
+
+
 
     <TextView
         android:id="@+id/user"

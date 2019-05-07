@@ -2,8 +2,10 @@ package com.example.wellsitting;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
@@ -34,6 +36,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -53,22 +57,31 @@ public class MainFragment extends Fragment {
     private Context mContext;
     private Toast mToast;
     FirebaseAuth mAuth;
+    Context mcontext;
+    private TextView timeremains;
+    int time_sum=0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
+
+        mcontext=inflater.getContext();
+
         super.onCreate(savedInstanceState);
         mAuth = FirebaseAuth.getInstance();
         mSignIn = view.findViewById(R.id.iv_sign);//签到
         redDot = view.findViewById(R.id.iv_redpoint);//显示未签到的红圆点
         textView = view.findViewById(R.id.tv_score);//积分
-//-----------------------------------------------------------------------------------------------
+        timeremains=view.findViewById(R.id.timeremains);
+//--------------------------------------------------------------------------------------------
+
         FirebaseUser user = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("account").child(user.getUid());
+        DatabaseReference myRef = database.getReference("account").child(user.getUid()).child("coin");
 //-----------------------------------------------------------------------------------------------
+
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -157,6 +170,7 @@ public class MainFragment extends Fragment {
 //-----------------------------------------------------------------------------------------------
         mSignIn.setOnClickListener(new View.OnClickListener() {
             private int i = 0;
+            private int count = 0;
 
             @Override
             public void onClick(View v) {
@@ -196,7 +210,7 @@ public class MainFragment extends Fragment {
                 } else {
                     mSignIn.setImageResource(R.drawable.btn_sign_done);//已签到
                     redDot.setVisibility(View.GONE);//圆点隐藏
-                    Toast.makeText(getActivity(), "當前已簽到", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mcontext, "當前已簽到", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -219,34 +233,27 @@ public class MainFragment extends Fragment {
         alpha.setFillAfter(true);
 //-----------------------------------------------------------------------------------------------
         // 创建动画集合，将平移动画和渐变动画添加到集合中，一起start
-        set = new
-
-                AnimationSet(false);
+        set = new AnimationSet(false);
         set.addAnimation(translate);
         set.addAnimation(alpha);
 
+
         Button Start = view.findViewById(R.id.start);
-        //Button Stop = view.findViewById(R.id.stop);
+//        Button Stop = view.findViewById(R.id.stop);
         Button Reset = view.findViewById(R.id.reset);
-        final Chronometer timer = view.findViewById(R.id.timer);
-        final Chronometer count = view.findViewById(R.id.count);
-//-----------------------------------------------------------------------------------------------
+
+
         Start.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                // SystemClock.elapsedRealtime()方法會回傳從開機到現在的時間
-                // 把這個時間做為一個Base,從這個Base開始計時
-                timer.setBase(SystemClock.elapsedRealtime() + escapeTime);
-                timer.start();
+                Intent intent = new Intent(mcontext,Service.class);
+                mcontext.startService(intent);
+                timeremain.start();
 
-                count.setBase(SystemClock.elapsedRealtime() + 1800000);
-                count.setCountDown(true);
-                count.start();
             }
         });
-//-----------------------------------------------------------------------------------------------
+
 //        Stop.setOnClickListener(new Button.OnClickListener(){
 //
 //            @Override
@@ -254,22 +261,46 @@ public class MainFragment extends Fragment {
 //                // TODO Auto-generated method stub
 //                timer.stop();
 //            }});
-//-----------------------------------------------------------------------------------------------
+
         Reset.setOnClickListener(new Button.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                timer.setBase(SystemClock.elapsedRealtime());
-                timer.stop();
-                escapeTime = 0;
+                Intent intent = new Intent(mcontext,Service.class);
+                mcontext.stopService(intent);
 
-                count.setBase(SystemClock.elapsedRealtime());
-                count.stop();
+                timeremain.cancel();
+
             }
         });
         return view;
     }
+
+    CountDownTimer timeremain = new CountDownTimer(30000, 1000){
+        @Override
+        public void onTick(long millisUntilFinished) {
+            SharedPreferences prefs = mcontext.getSharedPreferences("TIMER", MODE_PRIVATE);
+            Long restoredText = prefs.getLong("REMAINS", 0);
+
+            if (restoredText != null) {
+                time_sum++;
+                timeremains.setText(String.valueOf(time_sum));
+
+                //String name = prefs.getString("REMAINS", "No name defined");//"No name defined" is the default value.
+                //int idName = prefs.getInt("idName", 0); //0 is the default value.
+            }
+
+        }
+        @Override
+        public void onFinish() {
+
+        }
+    };
 }
 
 //  https://blog.csdn.net/fengyeNom1/article/details/79614844 簽到獲取積分
+
+
+
+
+

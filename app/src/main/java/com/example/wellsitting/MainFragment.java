@@ -1,15 +1,19 @@
 package com.example.wellsitting;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +36,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import static android.support.constraint.Constraints.TAG;
 
 
 public class MainFragment extends Fragment {
@@ -58,10 +64,46 @@ public class MainFragment extends Fragment {
         mSignIn = view.findViewById(R.id.iv_sign);//签到
         redDot = view.findViewById(R.id.iv_redpoint);//显示未签到的红圆点
         textView = view.findViewById(R.id.tv_score);//积分
+        TextView user_info=view.findViewById(R.id.user);
+        TextView childValue=view.findViewById(R.id.childValue);
+
 
         FirebaseUser user = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("account").child(user.getUid()).child("coin");
+        DatabaseReference myRef_status = database.getReference("account").child(user.getUid()).child("status");
+        // Read from the database
+        myRef_status.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = String.valueOf(dataSnapshot.getValue());
+                Log.d(TAG, "Value is: " + value);
+                childValue.setText(value);
+                if (value.equals("n")||value.equals("N")){
+                    AlertDialog.Builder builder1 = new  AlertDialog.Builder(getContext());
+                    builder1.setTitle("姿勢錯誤");
+                    builder1.setMessage("請調整您的坐姿，計時將重新開始");
+                    builder1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                            myRef_status.setValue("y");
+                        }
+                    });
+                    AlertDialog alertDialog = builder1.create();
+                    alertDialog.show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
 
         // Read from the database
         myRef.addValueEventListener(new ValueEventListener() {

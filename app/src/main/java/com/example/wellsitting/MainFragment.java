@@ -42,6 +42,7 @@ public class MainFragment extends Fragment {
     private View view;
     long escapeTime = 0;
     boolean IsCheckIn; //用於確認是否有簽到過
+    boolean IsCheckInForTime = true; //用於確認過去是否有簽到時間
 
     private ImageView mSignIn;
     private ImageView redDot;
@@ -101,31 +102,40 @@ public class MainFragment extends Fragment {
                 int todayDate = Integer.parseInt(todayString.substring(6));
 
                 //抓下來的型態是常整數型態，如此可以避免字串過長
-
                 Long DataBaseYear = dataSnapshot.child("coin_year").getValue(Long.class);
                 Long DataBaseMonth = dataSnapshot.child("coin_month").getValue(Long.class);
                 Long DataBaseDate = dataSnapshot.child("coin_date").getValue(Long.class);
+
                 if (DataBaseYear == null || DataBaseMonth == null || DataBaseDate == null) {
+                    //因為新用戶從未簽到過，因此將其預設帶為使用當下的前一天
+                    //如此一來新用戶當次可簽到，且可避免閃退
+                    todayDate -= 1;
                     myRef.child("coin_year").setValue(todayYear);
                     myRef.child("coin_month").setValue(todayMonth);
                     myRef.child("coin_date").setValue(todayDate);
-                }
-                //由Long轉換成String
-                String DateBaseYearString = String.valueOf(DataBaseYear);
-                String DateBaseMonthString = String.valueOf(DataBaseMonth);
-                String DateBaseDateString = String.valueOf(DataBaseDate);
-                //由String轉換成int
-                int DateBaseYearInt = Integer.parseInt(DateBaseYearString);
-                int DateBaseMonthInt = Integer.parseInt(DateBaseMonthString);
-                int DateBaseDateInt = Integer.parseInt(DateBaseDateString);
-                if (DateBaseYearInt < todayYear) { //簽到年份比今天小，表示還沒簽到過
-                    IsCheckIn = false;
-                } else if (DateBaseYearInt == todayYear) { //簽到年份與資料庫年份相同
-                    if (DateBaseMonthInt < todayMonth) { //簽到月份比今天小，表示還沒簽到過
+                } else {
+                    //由Long轉換成String
+                    String DateBaseYearString = String.valueOf(DataBaseYear);
+                    String DateBaseMonthString = String.valueOf(DataBaseMonth);
+                    String DateBaseDateString = String.valueOf(DataBaseDate);
+
+                    //由String轉換成int
+                    int DateBaseYearInt = Integer.parseInt(DateBaseYearString);
+                    int DateBaseMonthInt = Integer.parseInt(DateBaseMonthString);
+                    int DateBaseDateInt = Integer.parseInt(DateBaseDateString);
+                    if (DateBaseYearInt < todayYear) { //簽到年份比今天小，表示還沒簽到過
                         IsCheckIn = false;
-                    } else if (DateBaseMonthInt == todayMonth) { //簽到月份與今天為同月份，需要比較日期
-                        if (DateBaseDateInt < todayDate) {
+                    } else if (DateBaseYearInt == todayYear) { //簽到年份與資料庫年份相同
+                        if (DateBaseMonthInt < todayMonth) { //簽到月份比今天小，表示還沒簽到過
                             IsCheckIn = false;
+                        } else if (DateBaseMonthInt == todayMonth) { //簽到月份與今天為同月份，需要比較日期
+                            if (DateBaseDateInt < todayDate) {
+                                IsCheckIn = false;
+                            } else {//已經簽到過了
+                                IsCheckIn = true;
+                                mSignIn.setImageResource(R.drawable.btn_sign_done);//已签到
+                                redDot.setVisibility(View.GONE);//圆点隐藏
+                            }
                         } else {//已經簽到過了
                             IsCheckIn = true;
                             mSignIn.setImageResource(R.drawable.btn_sign_done);//已签到
@@ -136,10 +146,6 @@ public class MainFragment extends Fragment {
                         mSignIn.setImageResource(R.drawable.btn_sign_done);//已签到
                         redDot.setVisibility(View.GONE);//圆点隐藏
                     }
-                } else {//已經簽到過了
-                    IsCheckIn = true;
-                    mSignIn.setImageResource(R.drawable.btn_sign_done);//已签到
-                    redDot.setVisibility(View.GONE);//圆点隐藏
                 }
             }
 
@@ -181,6 +187,7 @@ public class MainFragment extends Fragment {
                     int todayYear = Integer.parseInt(todayString.substring(0, 4));
                     int todayMonth = Integer.parseInt(todayString.substring(4, 6));
                     int todayDate = Integer.parseInt(todayString.substring(6));
+
                     myRef.child("coin").setValue(i);
                     myRef.child("coin_year").setValue(todayYear);
                     myRef.child("coin_month").setValue(todayMonth);

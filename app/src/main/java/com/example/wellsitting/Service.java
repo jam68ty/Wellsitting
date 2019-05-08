@@ -13,7 +13,10 @@ import android.widget.Toast;
 public class Service extends android.app.Service {
 
     MediaPlayer mediaPlayer;
+    //int i=0;
+    int sum;
 
+    //Log.d("mmm","check");
     //int remains=30000;
 
     @Override
@@ -33,7 +36,8 @@ public class Service extends android.app.Service {
     @Override
     public void onStart(Intent intent, int startId) {
         Toast.makeText(this, "Service start", Toast.LENGTH_SHORT).show();
-        Log.d("fff","finish");
+        //Log.d("fff","finish");
+        Log.d("mmm","check");
         timer.start();
 /*
         // TODO Auto-generated method stub
@@ -51,6 +55,7 @@ public class Service extends android.app.Service {
     public void onDestroy(){
         super.onDestroy();
         Toast.makeText(this, "Service stop", Toast.LENGTH_SHORT).show();
+        timer.cancel();
         mediaPlayer.stop();
     }
 
@@ -61,6 +66,21 @@ public class Service extends android.app.Service {
             SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
             editor.putLong("REMAINS",millisUntilFinished);
             editor.apply();
+
+
+            SharedPreferences prefs = getSharedPreferences("TIMERSUM", MODE_PRIVATE);
+            Integer pre_sum = prefs.getInt("SUM", 0);
+            if(pre_sum!=null){
+                sum=pre_sum+1;
+            }else{
+                sum=0;
+            }
+            SharedPreferences.Editor time_sum = getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
+            time_sum.putInt("SUM",sum);
+            time_sum.apply();
+
+
+
             //mSampleTv.setText(millisUntilFinished / 1000 + "s");
         }
         @Override

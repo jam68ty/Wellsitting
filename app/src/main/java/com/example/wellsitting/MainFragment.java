@@ -72,6 +72,7 @@ public class MainFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
 
+        timeremain.start();
         mcontext=inflater.getContext();
 
         super.onCreate(savedInstanceState);
@@ -322,12 +323,12 @@ public class MainFragment extends Fragment {
     CountDownTimer timeremain = new CountDownTimer(30000, 1000){
         @Override
         public void onTick(long millisUntilFinished) {
-            SharedPreferences prefs = mcontext.getSharedPreferences("TIMER", MODE_PRIVATE);
-            Long restoredText = prefs.getLong("REMAINS", 0);
+            SharedPreferences prefs = mcontext.getSharedPreferences("TIMERSUM", MODE_PRIVATE);
+            Integer pre_sum = prefs.getInt("SUM", 0);
 
-            if (restoredText != null) {
-                time_sum++;
-                timeremains.setText(String.valueOf(time_sum));
+            if (pre_sum != null) {
+                //time_sum++;
+                timeremains.setText(String.valueOf(pre_sum));
 
                 //String name = prefs.getString("REMAINS", "No name defined");//"No name defined" is the default value.
                 //int idName = prefs.getInt("idName", 0); //0 is the default value.
@@ -339,6 +340,13 @@ public class MainFragment extends Fragment {
 
         }
     };
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        //Log.d("ddd","change");
+        timeremain.cancel();
+    }
 }
 
 //  https://blog.csdn.net/fengyeNom1/article/details/79614844 簽到獲取積分

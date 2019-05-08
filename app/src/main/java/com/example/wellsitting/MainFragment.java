@@ -1,17 +1,22 @@
 package com.example.wellsitting;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -36,6 +41,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import static android.content.Context.MODE_PRIVATE;
+import static android.support.constraint.Constraints.TAG;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -74,11 +80,15 @@ public class MainFragment extends Fragment {
         redDot = view.findViewById(R.id.iv_redpoint);//显示未签到的红圆点
         textView = view.findViewById(R.id.tv_score);//积分
         timeremains=view.findViewById(R.id.timeremains);
+        MediaPlayer mediaPlayer=MediaPlayer.create(getContext(),R.raw.select08);
+
 //--------------------------------------------------------------------------------------------
 
         FirebaseUser user = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("account").child(user.getUid()).child("coin");
+        DatabaseReference myRef_status = database.getReference("account").child(user.getUid()).child("status");
+
 //-----------------------------------------------------------------------------------------------
 
         // Read from the database
@@ -166,6 +176,41 @@ public class MainFragment extends Fragment {
                 // Failed to read value
             }
         });
+
+        myRef_status.addValueEventListener(new ValueEventListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                String value = String.valueOf(dataSnapshot.getValue());
+                Log.d(TAG, "Value is: " + value);
+                if (value.equals("n")||value.equals("N")){
+                    AlertDialog.Builder builder1 = new  AlertDialog.Builder(getContext());
+                    builder1.setTitle("姿勢錯誤");
+                    builder1.setMessage("請調整您的坐姿，計時將重新開始");
+                    mediaPlayer.setLooping(true);
+                    mediaPlayer.start();
+                    builder1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                            mediaPlayer.stop();
+                            myRef_status.setValue("y");
+                        }
+                    });
+                    AlertDialog alertDialog = builder1.create();
+                    alertDialog.show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                Log.w(TAG, "Failed to read value.", error.toException());
+            }
+        });
+
 //-----------------------------------------------------------------------------------------------
         mSignIn.setOnClickListener(new View.OnClickListener() {
             private int i = 0;

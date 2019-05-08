@@ -63,14 +63,14 @@ public class Character extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int count=0;
+                //int count=0;
                 for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
                     Characterheadshot chs=dataSnapshot1.getValue(Characterheadshot.class);
                     list.add(chs);
-                    count++;
+                    //count++;
                 }
                 //String ccc=String.valueOf(count);
-                Log.d("ooo",String.valueOf(count));
+                //Log.d("ooo",String.valueOf(count));
 
                 adapter =new MyAdapter(mycontext,list);
                 recyclerView.setAdapter(adapter);

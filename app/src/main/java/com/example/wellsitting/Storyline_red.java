@@ -1,13 +1,16 @@
 package com.example.wellsitting;
 
 import android.content.Context;
-import android.net.Uri;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import static android.content.Context.MODE_PRIVATE;
 
 
 public class Storyline_red extends Fragment {
@@ -15,11 +18,26 @@ public class Storyline_red extends Fragment {
 
     private View view;
 
+    private Button redch1;
+    Context context;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_storyline_red, container, false);
+        redch1=view.findViewById(R.id.redch1);
+        redch1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor editor = getActivity().getSharedPreferences("RED", MODE_PRIVATE).edit();
+                editor.putInt("CH1",1);
+                editor.apply();
+
+                Intent intent=new Intent(getActivity(), StorylineActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

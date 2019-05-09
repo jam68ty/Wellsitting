@@ -1,5 +1,7 @@
 package com.example.wellsitting;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -7,17 +9,25 @@ import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Chronometer;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Service extends android.app.Service {
 
+
+    DatabaseReference reference;
     MediaPlayer mediaPlayer;
     //int i=0;
     int sum;
 
     //Log.d("mmm","check");
     //int remains=30000;
+
+
 
     @Override
     public IBinder onBind(Intent arg0) {
@@ -30,11 +40,13 @@ public class Service extends android.app.Service {
 // TODO Auto-generated method stub
         super.onCreate();
         mediaPlayer = MediaPlayer.create(this, R.raw.twice);
+
+
     }
 
 
     @Override
-    public void onStart(Intent intent, int startId) {
+    public void onStart(Intent intent, int startId) {//官方準備遺棄它了
         Toast.makeText(this, "Service start", Toast.LENGTH_SHORT).show();
         //Log.d("fff","finish");
         Log.d("mmm","check");
@@ -86,9 +98,34 @@ public class Service extends android.app.Service {
         @Override
         public void onFinish() {
             mediaPlayer.start();
+            dialog();
             //Log.d("fff","finish");
         }
     };
+
+    public void dialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("坐滿30分鐘囉～")
+                .setTitle("提醒");
+        // Add the buttons
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
+        alert.show();
+        //Log.d("ddd","彈出對話匡");
+
+    }
 
 
 

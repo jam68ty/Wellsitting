@@ -323,8 +323,8 @@ public class MainFragment extends Fragment {
     CountDownTimer timeremain = new CountDownTimer(30000, 1000){
         @Override
         public void onTick(long millisUntilFinished) {
-            SharedPreferences prefs = mcontext.getSharedPreferences("TIMERSUM", MODE_PRIVATE);
-            Integer pre_sum = prefs.getInt("SUM", 0);
+            SharedPreferences prefs = mcontext.getSharedPreferences("TIMER", MODE_PRIVATE);
+            Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
 
             if (pre_sum != null) {
                 //time_sum++;

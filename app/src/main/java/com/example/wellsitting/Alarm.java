@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -15,14 +16,15 @@ public class Alarm extends AppCompatActivity {
     ImageButton btn_cancel;
     private TextView timeholder;
     EditText settime;
-    //int i;
+    int i;
+    CountDownTimer timehold;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
-        timehold.start();
+        //timehold.start();
 
         findViewById(R.id.btn_cancel).setBackgroundResource(R.drawable.btn_cancel_d);
         btn_cancel=findViewById(R.id.btn_cancel);
@@ -35,11 +37,24 @@ public class Alarm extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (settime!=null){
-                    int i=Integer.parseInt(settime.getText().toString().trim());
+                    i=Integer.parseInt(settime.getText().toString().trim());
                     //將直傳入Service
                     SharedPreferences.Editor editor = getSharedPreferences("SETTIME", MODE_PRIVATE).edit();
                     editor.putInt("TIME",i*1000);
                     editor.apply();
+                    //倒數計時
+                    timehold = new CountDownTimer(i*1000, 1000){
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            settime.setText(String.valueOf(millisUntilFinished/1000));
+                            Log.d("sss",String.valueOf(millisUntilFinished/1000));
+                        }
+                        @Override
+                        public void onFinish() {
+
+                        }
+                    };
+                    timehold.start();
                     //settime.setText(i);
                 }else{
 
@@ -51,6 +66,7 @@ public class Alarm extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                timehold.cancel();
                 //button變色未實現
                 finish();
             }
@@ -58,24 +74,5 @@ public class Alarm extends AppCompatActivity {
 
     }
 
-    //倒數計時
 
-    CountDownTimer timehold = new CountDownTimer(30000, 1000){
-        @Override
-        public void onTick(long millisUntilFinished) {
-            SharedPreferences prefs = getSharedPreferences("TIMER", MODE_PRIVATE);
-            Long restoredText = prefs.getLong("REMAINS", 0);
-
-            if (restoredText != null) {
-                timeholder.setText(String.valueOf(restoredText/1000));
-                //String name = prefs.getString("REMAINS", "No name defined");//"No name defined" is the default value.
-                //int idName = prefs.getInt("idName", 0); //0 is the default value.
-            }
-
-        }
-        @Override
-        public void onFinish() {
-
-        }
-    };
 }

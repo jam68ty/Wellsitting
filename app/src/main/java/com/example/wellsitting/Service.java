@@ -25,22 +25,19 @@ import java.util.Map;
 public class Service extends android.app.Service {
 
 
-    //DatabaseReference reference;
+
+    Long total;
     MediaPlayer mediaPlayer;
-    //int i=0;
     int sum;
     CountDownTimer timer;
-    //final Long settime;
-
-    //Log.d("mmm","check");
-    //int remains=30000;
+    CountDownTimer timer_homepage;
 
     //取得日期
     Calendar mCal = Calendar.getInstance();
     String dateformat = "yyyyMMdd";
     SimpleDateFormat df = new SimpleDateFormat(dateformat);
     String today = df.format(mCal.getTime());
-    Long total;
+
 
 
     @Override
@@ -54,6 +51,7 @@ public class Service extends android.app.Service {
 // TODO Auto-generated method stub
         super.onCreate();
         mediaPlayer = MediaPlayer.create(this, R.raw.twice);
+
 
 
     }
@@ -78,9 +76,9 @@ public class Service extends android.app.Service {
                 SharedPreferences prefs = getSharedPreferences("TIMERSUM", MODE_PRIVATE);
                 Integer pre_sum = prefs.getInt("SUM", 0);
                 if(pre_sum!=null){
-                    sum=pre_sum+1;
+                    //sum=pre_sum+1;
                 }else{
-                    sum=0;
+                    //sum=0;
                 }
                 SharedPreferences.Editor time_sum = getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
                 time_sum.putInt("SUM",sum);
@@ -96,17 +94,49 @@ public class Service extends android.app.Service {
             }
             @Override
             public void onFinish() {
-                mediaPlayer.start();
-                dialog();
+                //mediaPlayer.start();
+                //dialog();
                 update();
                 renew();
 
                 //Log.d("fff","finish");
             }
         };
+
+
+
+        //首頁的計時器（）
+        timer_homepage = new CountDownTimer(10000, 1000){//30分鐘：1800000
+            @Override
+            public void onTick(long millisUntilFinished) {
+                SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
+                editor.putInt("COUNTDOWN",sum);
+                editor.apply();
+
+
+                SharedPreferences prefs = getSharedPreferences("TIMER", MODE_PRIVATE);
+                Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
+                if(pre_sum!=null){
+                    sum=pre_sum+1;
+
+                }else{
+                    sum=0;
+                }
+            }
+            @Override
+            public void onFinish() {
+                mediaPlayer.start();
+                dialog();
+                //update();
+                //renew();
+
+                //Log.d("fff","finish");
+            }
+        };
+        timer_homepage.start();
         //Log.d("fff","finish");
         //Log.d("mmm","check");
-        timer.start();
+        //timer.start();
 /*
         // TODO Auto-generated method stub
         // SystemClock.elapsedRealtime()方法會回傳從開機到現在的時間
@@ -117,12 +147,19 @@ public class Service extends android.app.Service {
         count.setBase(SystemClock.elapsedRealtime() + 1800000);
         count.setCountDown(true);
         count.start();
+
+
+
+
  */
+
 
     }
     public void onDestroy(){
         super.onDestroy();
         Toast.makeText(this, "Service stop", Toast.LENGTH_SHORT).show();
+
+        timer_homepage.cancel();
         timer.cancel();
         mediaPlayer.stop();
     }
@@ -169,6 +206,8 @@ public class Service extends android.app.Service {
         childUpdates.put(today,String.valueOf(sum));//前面的字是child後面的字是要修改的value值
         myRef.updateChildren(childUpdates);
     }
+
+
 
 
 

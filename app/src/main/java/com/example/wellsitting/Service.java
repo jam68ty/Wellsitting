@@ -29,6 +29,8 @@ public class Service extends android.app.Service {
     MediaPlayer mediaPlayer;
     //int i=0;
     int sum;
+    CountDownTimer timer;
+    //final Long settime;
 
     //Log.d("mmm","check");
     //int remains=30000;
@@ -38,7 +40,7 @@ public class Service extends android.app.Service {
     String dateformat = "yyyyMMdd";
     SimpleDateFormat df = new SimpleDateFormat(dateformat);
     String today = df.format(mCal.getTime());
-
+    Long total;
 
 
     @Override
@@ -56,10 +58,52 @@ public class Service extends android.app.Service {
 
     }
 
-
     @Override
     public void onStart(Intent intent, int startId) {//官方準備遺棄它了
         Toast.makeText(this, "Service start", Toast.LENGTH_SHORT).show();
+        //接受Alarm傳來的值
+        SharedPreferences settime = getSharedPreferences("SETTIME", MODE_PRIVATE);
+        Integer set = settime.getInt("TIME", 0);
+        total=set.longValue();
+
+        //倒數計時設定
+        timer = new CountDownTimer(total, 1000){//30分鐘：1800000
+            @Override
+            public void onTick(long millisUntilFinished) {
+                SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
+                editor.putLong("REMAINS",millisUntilFinished);
+                editor.apply();
+
+
+                SharedPreferences prefs = getSharedPreferences("TIMERSUM", MODE_PRIVATE);
+                Integer pre_sum = prefs.getInt("SUM", 0);
+                if(pre_sum!=null){
+                    sum=pre_sum+1;
+                }else{
+                    sum=0;
+                }
+                SharedPreferences.Editor time_sum = getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
+                time_sum.putInt("SUM",sum);
+                time_sum.apply();
+
+
+
+
+                //Log.d("TIME",String.valueOf(set));
+
+
+                //mSampleTv.setText(millisUntilFinished / 1000 + "s");
+            }
+            @Override
+            public void onFinish() {
+                mediaPlayer.start();
+                dialog();
+                update();
+                renew();
+
+                //Log.d("fff","finish");
+            }
+        };
         //Log.d("fff","finish");
         //Log.d("mmm","check");
         timer.start();
@@ -82,41 +126,6 @@ public class Service extends android.app.Service {
         timer.cancel();
         mediaPlayer.stop();
     }
-
-    //倒數計時設定
-    CountDownTimer timer = new CountDownTimer(10000, 1000){//30分鐘：1800000
-        @Override
-        public void onTick(long millisUntilFinished) {
-            SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
-            editor.putLong("REMAINS",millisUntilFinished);
-            editor.apply();
-
-
-            SharedPreferences prefs = getSharedPreferences("TIMERSUM", MODE_PRIVATE);
-            Integer pre_sum = prefs.getInt("SUM", 0);
-            if(pre_sum!=null){
-                sum=pre_sum+1;
-            }else{
-                sum=0;
-            }
-            SharedPreferences.Editor time_sum = getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
-            time_sum.putInt("SUM",sum);
-            time_sum.apply();
-
-
-
-            //mSampleTv.setText(millisUntilFinished / 1000 + "s");
-        }
-        @Override
-        public void onFinish() {
-            mediaPlayer.start();
-            dialog();
-            update();
-            renew();
-
-            //Log.d("fff","finish");
-        }
-    };
 
     public void dialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);

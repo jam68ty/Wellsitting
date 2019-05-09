@@ -60,7 +60,7 @@ public class Service extends android.app.Service {
     }
 
     //倒數計時設定
-    CountDownTimer timer = new CountDownTimer(10000, 1000){
+    CountDownTimer timer = new CountDownTimer(10000, 1000){//30分鐘：1800000
         @Override
         public void onTick(long millisUntilFinished) {
             SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();

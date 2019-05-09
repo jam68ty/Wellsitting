@@ -5,11 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Characterdetail"
+    android:background="@drawable/backgroud_all"
     android:layout_weight="100"
     >
 
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/backgroud"
+        />
+
+    <ImageView
         android:id="@+id/detail_pic"
+        android:layout_marginTop="85dp"
+        android:layout_marginLeft="80dp"
         android:layout_width="300dp"
         android:layout_height="400dp"
 
@@ -19,11 +28,25 @@
         android:id="@+id/detail_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textColor="#880000"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="30dp"
         />
 
     <TextView
         android:id="@+id/detail_intro"
+        android:layout_marginTop="600dp"
+        android:layout_marginLeft="30dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#880000"
+        />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/backgroud_partof"
+        />
 
 </RelativeLayout>

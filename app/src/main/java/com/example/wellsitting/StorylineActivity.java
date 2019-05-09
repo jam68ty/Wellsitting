@@ -149,8 +149,8 @@ public class StorylineActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Log.d("ttt","yes");
-                if(i!=0 && i<=sortedList.size()){
-                    i++;
+                if(i!=0 && i<sortedList.size()){
+
                     ArrayList<StoryInformation> sortedStoryInformations = new ArrayList<StoryInformation>(sortedList);
                     if(sortedStoryInformations.get(i).getBackgroud().equals("same")){//背景
 
@@ -170,9 +170,12 @@ public class StorylineActivity extends AppCompatActivity {
                     content.setText(sortedStoryInformations.get(i).getSence());//對話筐內容
 
 
-                }else {
-                    Toast.makeText(mcontext,"sorty end",Toast.LENGTH_LONG).show();
+                    i++;
+                }else{
+
+                    //Toast.makeText(mcontext,"sorty end",Toast.LENGTH_LONG).show();
                     i=0;
+                    finish();
                     //Log.d("ttt","yes");
                 }
 

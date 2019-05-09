@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.os.SystemClock;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Chronometer;
@@ -16,16 +17,27 @@ import android.widget.Toast;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Service extends android.app.Service {
 
 
-    DatabaseReference reference;
+    //DatabaseReference reference;
     MediaPlayer mediaPlayer;
     //int i=0;
     int sum;
 
     //Log.d("mmm","check");
     //int remains=30000;
+
+    //取得日期
+    Calendar mCal = Calendar.getInstance();
+    String dateformat = "yyyyMMdd";
+    SimpleDateFormat df = new SimpleDateFormat(dateformat);
+    String today = df.format(mCal.getTime());
 
 
 
@@ -49,7 +61,7 @@ public class Service extends android.app.Service {
     public void onStart(Intent intent, int startId) {//官方準備遺棄它了
         Toast.makeText(this, "Service start", Toast.LENGTH_SHORT).show();
         //Log.d("fff","finish");
-        Log.d("mmm","check");
+        //Log.d("mmm","check");
         timer.start();
 /*
         // TODO Auto-generated method stub
@@ -99,6 +111,9 @@ public class Service extends android.app.Service {
         public void onFinish() {
             mediaPlayer.start();
             dialog();
+            update();
+            renew();
+
             //Log.d("fff","finish");
         }
     };
@@ -126,6 +141,28 @@ public class Service extends android.app.Service {
         //Log.d("ddd","彈出對話匡");
 
     }
+
+    public void delete(){//刪除
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("alert_test");
+        myRef.child(today).removeValue();
+    }
+    public void update(){//新增
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();//取得資料庫連結
+        DatabaseReference myRef= database.getReference("alert_test");
+        myRef.child(today).setValue("30");
+    }
+    public void renew(){//更新
+        FirebaseDatabase database = FirebaseDatabase.getInstance();//取得資料庫連結
+        DatabaseReference myRef = null;
+        myRef= database.getReference("alert_test");
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put(today,String.valueOf(sum));//前面的字是child後面的字是要修改的value值
+        myRef.updateChildren(childUpdates);
+    }
+
+
+
 
 
 

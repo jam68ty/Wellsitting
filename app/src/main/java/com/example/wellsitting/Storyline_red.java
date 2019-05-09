@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,8 +43,9 @@ public class Storyline_red extends Fragment {
         redch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ch1 = getActivity().getSharedPreferences("RED1", MODE_PRIVATE).edit();
-                ch1.putInt("CH1",1);
+
+                SharedPreferences.Editor ch1 = getActivity().getSharedPreferences("RED", MODE_PRIVATE).edit();
+                ch1.putInt("CH",1);
                 ch1.apply();
 
                 Intent intent=new Intent(getActivity(), StorylineActivity.class);
@@ -53,8 +55,8 @@ public class Storyline_red extends Fragment {
         redch2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor ch2 = getActivity().getSharedPreferences("RED2", MODE_PRIVATE).edit();
-                ch2.putInt("CH2",2);
+                SharedPreferences.Editor ch2 = getActivity().getSharedPreferences("RED", MODE_PRIVATE).edit();
+                ch2.putInt("CH",2);
                 ch2.apply();
 
                 Intent intent=new Intent(getActivity(), StorylineActivity.class);

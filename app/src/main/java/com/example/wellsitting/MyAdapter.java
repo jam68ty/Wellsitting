@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,6 +18,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
     ArrayList<Characterheadshot> characterheadshots;
+    private AdapterView.OnItemClickListener mOnItemClickListener;
 
     public MyAdapter(Context c,ArrayList<Characterheadshot> chs){
         context=c;
@@ -34,6 +36,17 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
         holder.name.setText(characterheadshots.get(position).getName());
         holder.intro.setText(characterheadshots.get(position).getBrief_intro());
         Picasso.get().load(characterheadshots.get(position).getPic_headshot()).into(holder.pic);
+
+        // item click
+        if (mOnItemClickListener != null) {
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+        }
+
 
     }
 

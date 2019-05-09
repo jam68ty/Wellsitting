@@ -59,13 +59,15 @@ public class StorylineActivity extends AppCompatActivity {
         head=findViewById(R.id.story_head);
         storyInformations=new ArrayList<StoryInformation>();
 
-        SharedPreferences ch1 = getSharedPreferences("RED1", MODE_PRIVATE);
-        Integer ch1_1 = ch1.getInt("CH1", 0);
+        SharedPreferences ch1 = getSharedPreferences("RED", MODE_PRIVATE);
+        Integer ch1_1 = ch1.getInt("CH", 0);
         if(ch1_1==1){
+            Log.d("test","redch1");
             reference= FirebaseDatabase.getInstance().getReference().child("story/red/ch1");
+
         }
-        SharedPreferences ch2 = getSharedPreferences("RED2", MODE_PRIVATE);
-        Integer ch2_2 = ch2.getInt("CH2", 0);
+        SharedPreferences ch2 = getSharedPreferences("RED", MODE_PRIVATE);
+        Integer ch2_2 = ch2.getInt("CH", 0);
         if(ch2_2==2){
             reference= FirebaseDatabase.getInstance().getReference().child("story/red/ch2");
         }

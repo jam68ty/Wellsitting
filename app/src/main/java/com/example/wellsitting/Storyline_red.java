@@ -19,6 +19,12 @@ public class Storyline_red extends Fragment {
     private View view;
 
     private Button redch1;
+    private Button redch2;
+    private Button redch3;
+    private Button redch4;
+    private Button redch5;
+    private Button redch6;
+    private Button redch7;
     Context context;
 
     @Override
@@ -27,17 +33,36 @@ public class Storyline_red extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_storyline_red, container, false);
         redch1=view.findViewById(R.id.redch1);
+        redch2=view.findViewById(R.id.redch2);
+        redch3=view.findViewById(R.id.redch3);//未做
+        redch4=view.findViewById(R.id.redch4);//未做
+        redch5=view.findViewById(R.id.redch5);//未做
+        redch6=view.findViewById(R.id.redch6);//未做
+        redch7=view.findViewById(R.id.redch7);//未做
         redch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor = getActivity().getSharedPreferences("RED", MODE_PRIVATE).edit();
-                editor.putInt("CH1",1);
-                editor.apply();
+                SharedPreferences.Editor ch1 = getActivity().getSharedPreferences("RED1", MODE_PRIVATE).edit();
+                ch1.putInt("CH1",1);
+                ch1.apply();
 
                 Intent intent=new Intent(getActivity(), StorylineActivity.class);
                 startActivity(intent);
             }
         });
+        redch2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences.Editor ch2 = getActivity().getSharedPreferences("RED2", MODE_PRIVATE).edit();
+                ch2.putInt("CH2",2);
+                ch2.apply();
+
+                Intent intent=new Intent(getActivity(), StorylineActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
 
         return view;
     }

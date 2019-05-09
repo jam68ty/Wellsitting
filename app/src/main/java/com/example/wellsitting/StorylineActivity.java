@@ -36,9 +36,11 @@ public class StorylineActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     DatabaseReference reference;
     private TextView content;
+    private TextView name;
     private Button btn_menu;
     private Button btn_next;
     private ImageView background;
+    private ImageView head;
     Context mcontext;
     int i;
 
@@ -50,15 +52,22 @@ public class StorylineActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.storyline_fragment);
         content=findViewById(R.id.story_content);
+        name=findViewById(R.id.story_name);
         btn_menu= findViewById(R.id.story_menu);
         btn_next=findViewById(R.id.story_next);
         background=findViewById(R.id.story_background);
+        head=findViewById(R.id.story_head);
         storyInformations=new ArrayList<StoryInformation>();
 
-        SharedPreferences prefs = getSharedPreferences("RED", MODE_PRIVATE);
-        Integer pre_sum = prefs.getInt("CH1", 0);
-        if(pre_sum==1){
+        SharedPreferences ch1 = getSharedPreferences("RED1", MODE_PRIVATE);
+        Integer ch1_1 = ch1.getInt("CH1", 0);
+        if(ch1_1==1){
             reference= FirebaseDatabase.getInstance().getReference().child("story/red/ch1");
+        }
+        SharedPreferences ch2 = getSharedPreferences("RED2", MODE_PRIVATE);
+        Integer ch2_2 = ch2.getInt("CH2", 0);
+        if(ch2_2==2){
+            reference= FirebaseDatabase.getInstance().getReference().child("story/red/ch2");
         }
 
         reference.addValueEventListener(new ValueEventListener() {
@@ -88,6 +97,7 @@ public class StorylineActivity extends AppCompatActivity {
                 sortedList.sort(c);
                 ArrayList<StoryInformation> sortedStoryInformations = new ArrayList<StoryInformation>(sortedList);
                 content.setText(sortedStoryInformations.get(0).getSence());
+                name.setText(sortedStoryInformations.get(0).character_name);
                 Picasso.get().load(sortedStoryInformations.get(0).getBackgroud()).into(background);
 
 
@@ -136,12 +146,27 @@ public class StorylineActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("ttt","yes");
+                //Log.d("ttt","yes");
                 if(i!=0 && i<=sortedList.size()){
                     i++;
                     ArrayList<StoryInformation> sortedStoryInformations = new ArrayList<StoryInformation>(sortedList);
-                    content.setText(sortedStoryInformations.get(i).getSence());
-                    Picasso.get().load(sortedStoryInformations.get(i).getBackgroud()).into(background);
+                    if(sortedStoryInformations.get(i).getBackgroud().equals("same")){//背景
+
+                    }else{
+                        Picasso.get().load(sortedStoryInformations.get(i).getBackgroud()).into(background);
+                    }
+
+                    Picasso.get().load(sortedStoryInformations.get(i).getHead()).into(head);
+
+                    if(sortedStoryInformations.get(i).getCharacter_name().equals("no")){
+                        name.setText("  ");
+                    }else if(sortedStoryInformations.get(i).getCharacter_name().equals("???")){
+                        name.setText("???");
+                    }else{
+                        name.setText(sortedStoryInformations.get(i).getCharacter_name());
+                    }
+                    content.setText(sortedStoryInformations.get(i).getSence());//對話筐內容
+
 
                 }else {
                     Toast.makeText(mcontext,"sorty end",Toast.LENGTH_LONG).show();

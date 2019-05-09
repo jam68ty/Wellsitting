@@ -1,35 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroud_all"
+    >
 
-    <ImageView
-        android:id="@+id/story_background"
-        android:layout_width="300dp"
-        android:layout_height="300dp" />
 
-    <TextView
-        android:id="@+id/story_content"
-        android:layout_width="500dp"
-        android:layout_height="200dp"
-        android:textColor="#FFFFFF"
-        android:hint="呵呵"
-        android:layout_marginTop="350dp"
-        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/story_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
-        />
+        <TextView
+            android:id="@+id/story_title"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:textColor="#FFFFFF"
+            android:hint="標題"
+            android:layout_gravity="center"
 
-    <Button
-        android:id="@+id/story_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="550dp"
-        android:layout_marginLeft="200dp"
-        />
+            />
+
+
+
+        <ImageView
+            android:id="@+id/story_background"
+            android:layout_width="400dp"
+            android:layout_height="400dp"
+            android:layout_gravity="center"
+            />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:background="@drawable/dialog"
+            >
+
+            <TextView
+                android:id="@+id/story_content"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:textColor="#8C0044"
+                android:hint="內文"
+                android:layout_marginTop="50dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_gravity="center"
+
+                />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/story_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="60dp"
+                android:text="主選單"
+                />
+
+            <Button
+                android:id="@+id/story_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="下一步"
+                android:layout_gravity="right"
+                android:layout_marginRight="60dp"
+                />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+
+
+
 
 </RelativeLayout>

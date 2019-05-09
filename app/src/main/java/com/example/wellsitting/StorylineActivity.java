@@ -1,5 +1,6 @@
 package com.example.wellsitting;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +39,8 @@ public class StorylineActivity extends AppCompatActivity {
     private Button btn_menu;
     private Button btn_next;
     private ImageView background;
+    Context mcontext;
+    int i;
 
     ArrayList<StoryInformation> storyInformations;
     List sortedList;
@@ -87,7 +91,7 @@ public class StorylineActivity extends AppCompatActivity {
                 Picasso.get().load(sortedStoryInformations.get(0).getBackgroud()).into(background);
 
 
-                 Log.d("jingjing", "aaa");
+                 //Log.d("jingjing", "aaa");
 
  /*                   Log.d("kkk-getBackgroud" , si.getBackgroud());
                     Log.d("kkk-getCharacter_name", si.getCharacter_name());
@@ -122,17 +126,36 @@ public class StorylineActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+
             }
+
+
         });
 
-
-
+        i=1;
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("ttt","yes");
+                if(i!=0 && i<=sortedList.size()){
+                    i++;
+                    ArrayList<StoryInformation> sortedStoryInformations = new ArrayList<StoryInformation>(sortedList);
+                    content.setText(sortedStoryInformations.get(i).getSence());
+                    Picasso.get().load(sortedStoryInformations.get(i).getBackgroud()).into(background);
+
+                }else {
+                    Toast.makeText(mcontext,"sorty end",Toast.LENGTH_LONG).show();
+                    i=0;
+                    //Log.d("ttt","yes");
+                }
+
 
             }
         });
+
+
+
+
 
     }
 

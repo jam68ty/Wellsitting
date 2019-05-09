@@ -3,17 +3,37 @@ package com.example.wellsitting;
 public class Characterheadshot {
     private String name;
     private String pic_headshot;
+    private String pic_halfbody;
     private String brief_intro;
+    private String all_intro;
     private boolean check_value;
 
     public Characterheadshot(){
 
     }
-    public Characterheadshot(String name,String pic_headshot,String brief_intro,boolean check_value){
+    public Characterheadshot(String name,String pic_headshot,String brief_intro,boolean check_value,String all_intro,String pic_halfbody){
         this.name=name;
         this.pic_headshot=pic_headshot;
         this.brief_intro=brief_intro;
         this.check_value=check_value;
+        this.all_intro=all_intro;
+        this.pic_halfbody=pic_halfbody;
+    }
+
+    public String getPic_halfbody() {
+        return pic_halfbody;
+    }
+
+    public void setPic_halfbody(String pic_halfbody) {
+        this.pic_halfbody = pic_halfbody;
+    }
+
+    public String getAll_intro() {
+        return all_intro;
+    }
+
+    public void setAll_intro(String all_intro) {
+        this.all_intro = all_intro;
     }
 
     public String getName() {

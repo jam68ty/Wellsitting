@@ -41,8 +41,8 @@ public class Alarm extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Alarm.this,AlarmService.class);
-                startService(intent);
+                //Intent intent = new Intent(Alarm.this,AlarmService.class);
+                //startService(intent);
                 if (settime!=null){
                     i=Integer.parseInt(settime.getText().toString().trim());
                     //將值傳入Service

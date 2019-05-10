@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,7 +21,12 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -30,7 +36,11 @@ public class Setting extends Fragment {
     ImageButton btn_award;
     ImageButton btn_clock;
     TextView today_sum;
+    EditText nickname;
+    String str;
+    Button edit;
     int sum;
+    String nick="nickname";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +62,8 @@ public class Setting extends Fragment {
             }
         });*/
         today_sum=view.findViewById(R.id.today_sum);
+        nickname=view.findViewById(R.id.setting_nickname);
+        edit=view.findViewById(R.id.setting_edit);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         updateUI(user);
@@ -73,6 +85,15 @@ public class Setting extends Fragment {
             }
         });
 
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                str=String.valueOf(nickname.getText());
+                nickname.setText(String.valueOf(nickname.getText()));
+                renew();
+            }
+        });
+
         //進入鬧鐘設定
         btn_clock=view.findViewById(R.id.clock);
         btn_clock.setOnClickListener(new View.OnClickListener() {
@@ -80,8 +101,6 @@ public class Setting extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),Alarm.class);
                 startActivity(intent);
-                //Toast.makeText(getContext(),"win",Toast.LENGTH_LONG).show();
-                //Log.d("ooo","yes");
             }
         });
         return view;
@@ -131,6 +150,27 @@ public class Setting extends Fragment {
         super.onDestroyView();
         timeremain.cancel();
     }
+
+    //<Database基本功能設定--Start>
+    public void delete(){//刪除
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("userset");
+        myRef.child(nick).removeValue();
+    }
+    public void update(){//新增
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();//取得資料庫連結
+        DatabaseReference myRef= database.getReference("userset");
+        myRef.child(nick).setValue("userset");
+    }
+    public void renew(){//更新
+        FirebaseDatabase database = FirebaseDatabase.getInstance();//取得資料庫連結
+        DatabaseReference myRef = null;
+        myRef= database.getReference("userset");
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put(nick,String.valueOf(str));//前面的字是child後面的字是要修改的value值
+        myRef.updateChildren(childUpdates);
+    }
+    //<Database基本功能設定--End>
 
 
 

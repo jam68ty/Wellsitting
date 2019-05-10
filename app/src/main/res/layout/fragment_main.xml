@@ -29,7 +29,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:gravity="center"
-        android:text="Hi，親愛的使用者\n您已經維持良好坐姿_______分鐘囉"
+        android:text="Hi，親愛的使用者\n再_______分鐘\n就可以領取代幣獎勵囉~"
         android:textSize="20dp"
         android:padding="0dp"
         android:textColor="#4169E1"

@@ -32,12 +32,12 @@ public class Service extends android.app.Service {
     CountDownTimer timer;
     CountDownTimer timer_homepage;
 
-    //取得日期
+    //<取得日期--Start>:以方便作為每日總時間的key值計入資料庫
     Calendar mCal = Calendar.getInstance();
     String dateformat = "yyyyMMdd";
     SimpleDateFormat df = new SimpleDateFormat(dateformat);
     String today = df.format(mCal.getTime());
-
+    //<取得日期--End>
 
 
     @Override
@@ -53,17 +53,18 @@ public class Service extends android.app.Service {
         mediaPlayer = MediaPlayer.create(this, R.raw.twice);
 
 
-
     }
 
+    //整個Service被啟動會執行的動作存在該方法中
     @Override
     public void onStart(Intent intent, int startId) {//官方準備遺棄它了
         Toast.makeText(this, "Service start", Toast.LENGTH_SHORT).show();
+
+        //<自定義時間的計時功能--Start>
         //接受Alarm傳來的值
         SharedPreferences settime = getSharedPreferences("SETTIME", MODE_PRIVATE);
         Integer set = settime.getInt("TIME", 0);
         total=set.longValue();
-
         //倒數計時設定
         timer = new CountDownTimer(total, 1000){//30分鐘：1800000
             @Override
@@ -71,48 +72,29 @@ public class Service extends android.app.Service {
                 SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
                 editor.putLong("REMAINS",millisUntilFinished);
                 editor.apply();
-
-
-                SharedPreferences prefs = getSharedPreferences("TIMERSUM", MODE_PRIVATE);
-                Integer pre_sum = prefs.getInt("SUM", 0);
-                if(pre_sum!=null){
-                    //sum=pre_sum+1;
-                }else{
-                    //sum=0;
-                }
-                SharedPreferences.Editor time_sum = getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
+                /*SharedPreferences.Editor time_sum = getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
                 time_sum.putInt("SUM",sum);
-                time_sum.apply();
-
-
-
-
-                //Log.d("TIME",String.valueOf(set));
-
-
-                //mSampleTv.setText(millisUntilFinished / 1000 + "s");
+                time_sum.apply();*/
             }
             @Override
             public void onFinish() {
-                //mediaPlayer.start();
-                //dialog();
-                update();
-                renew();
-
-                //Log.d("fff","finish");
+                mediaPlayer.start();
+                dialog_all();
+                //update();
+                //renew();
             }
         };
+        //<自定義時間的計時功能--End>
 
 
 
-        //首頁的計時器（）
+        //<系統時間的計時功能--Start>
         timer_homepage = new CountDownTimer(10000, 1000){//30分鐘：1800000
             @Override
             public void onTick(long millisUntilFinished) {
                 SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
                 editor.putInt("COUNTDOWN",sum);
                 editor.apply();
-
 
                 SharedPreferences prefs = getSharedPreferences("TIMER", MODE_PRIVATE);
                 Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
@@ -125,18 +107,15 @@ public class Service extends android.app.Service {
             }
             @Override
             public void onFinish() {
+                sum=0;
                 mediaPlayer.start();
                 dialog();
-                //update();
-                //renew();
-
-                //Log.d("fff","finish");
             }
         };
         timer_homepage.start();
-        //Log.d("fff","finish");
-        //Log.d("mmm","check");
-        //timer.start();
+        //<系統時間的計時功能--End>
+
+//待刪
 /*
         // TODO Auto-generated method stub
         // SystemClock.elapsedRealtime()方法會回傳從開機到現在的時間
@@ -147,23 +126,18 @@ public class Service extends android.app.Service {
         count.setBase(SystemClock.elapsedRealtime() + 1800000);
         count.setCountDown(true);
         count.start();
-
-
-
-
  */
-
 
     }
     public void onDestroy(){
         super.onDestroy();
         Toast.makeText(this, "Service stop", Toast.LENGTH_SHORT).show();
-
         timer_homepage.cancel();
         timer.cancel();
         mediaPlayer.stop();
     }
 
+    //<系統計時的通知功能--Start>
     public void dialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("坐滿30分鐘囉～")
@@ -184,10 +158,35 @@ public class Service extends android.app.Service {
         AlertDialog alert = builder.create();
         alert.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
         alert.show();
-        //Log.d("ddd","彈出對話匡");
-
     }
+    //<系統計時的通知功能--End>
 
+    //<自定義計時的通知功能--Start>
+    public void dialog_all(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("坐滿"+total+"分鐘囉～")
+                .setTitle("提醒");
+        // Add the buttons
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
+        alert.show();
+    }
+    //<自定義計時的通知功能--End>
+
+
+    //<Database基本功能設定--Start>
     public void delete(){//刪除
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("alert_test");
@@ -206,13 +205,6 @@ public class Service extends android.app.Service {
         childUpdates.put(today,String.valueOf(sum));//前面的字是child後面的字是要修改的value值
         myRef.updateChildren(childUpdates);
     }
-
-
-
-
-
-
-
-
+    //<Database基本功能設定--End>
 
 }

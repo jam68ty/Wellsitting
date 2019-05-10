@@ -72,7 +72,7 @@ public class MainFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_main, container, false);
 
 
-        timeremain.start();
+
         mcontext=inflater.getContext();
 
         super.onCreate(savedInstanceState);
@@ -288,17 +288,17 @@ public class MainFragment extends Fragment {
         Button Reset = view.findViewById(R.id.reset);
 
 
+        //啟動Service
         Start.setOnClickListener(new Button.OnClickListener() {
-
             @Override
             public void onClick(View arg0) {
+                timeremain.start();
                 Intent intent = new Intent(mcontext,Service.class);
                 mcontext.startService(intent);
-                timeremain.start();
-
             }
         });
 
+//待刪
 //        Stop.setOnClickListener(new Button.OnClickListener(){
 //
 //            @Override
@@ -320,31 +320,27 @@ public class MainFragment extends Fragment {
         return view;
     }
 
-    CountDownTimer timeremain = new CountDownTimer(30000, 1000){
+    CountDownTimer timeremain = new CountDownTimer(30000, 1000){//30分鐘：1800000
         @Override
         public void onTick(long millisUntilFinished) {
             SharedPreferences prefs = mcontext.getSharedPreferences("TIMER", MODE_PRIVATE);
             Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
 
             if (pre_sum != null) {
-                //time_sum++;
-                timeremains.setText(String.valueOf(pre_sum));
-
-                //String name = prefs.getString("REMAINS", "No name defined");//"No name defined" is the default value.
-                //int idName = prefs.getInt("idName", 0); //0 is the default value.
+                timeremains.setText(String.valueOf(10-pre_sum));//待解決：無法跳至零
             }
-
         }
         @Override
         public void onFinish() {
-
+            SharedPreferences.Editor editor = getActivity().getSharedPreferences("TIMER", MODE_PRIVATE).edit();
+            editor.putInt("COUNTDOWN",0);
+            editor.apply();
         }
     };
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        //Log.d("ddd","change");
         timeremain.cancel();
     }
 }

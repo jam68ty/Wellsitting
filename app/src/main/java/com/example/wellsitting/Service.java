@@ -28,7 +28,8 @@ public class Service extends android.app.Service {
 
     Long total;
     MediaPlayer mediaPlayer;
-    int sum;
+    int sum;//首頁倒計參數
+    int today_sum;//總正計參數
     CountDownTimer timer;
     CountDownTimer timer_homepage;
 
@@ -92,9 +93,11 @@ public class Service extends android.app.Service {
         timer_homepage = new CountDownTimer(10000, 1000){//30分鐘：1800000
             @Override
             public void onTick(long millisUntilFinished) {
+                //<首頁倒計時計算--Start>
                 SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
                 editor.putInt("COUNTDOWN",sum);
                 editor.apply();
+
 
                 SharedPreferences prefs = getSharedPreferences("TIMER", MODE_PRIVATE);
                 Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
@@ -104,12 +107,29 @@ public class Service extends android.app.Service {
                 }else{
                     sum=0;
                 }
+                //<首頁倒計時計算--End>
+
+
+
+                //<總計時計算--Start>
+                SharedPreferences time = getSharedPreferences("TIMERSUM", MODE_PRIVATE);
+                Integer test = time.getInt("SUM", 0);
+                if(test!=null){
+                    today_sum=test+1;
+                }else{
+                    today_sum=0;
+                }
+                SharedPreferences.Editor time_sum = getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
+                time_sum.putInt("SUM",today_sum);
+                time_sum.apply();
+                //<總計時計算--End>
             }
             @Override
             public void onFinish() {
                 sum=0;
                 mediaPlayer.start();
                 dialog();
+
             }
         };
         timer_homepage.start();
@@ -131,6 +151,8 @@ public class Service extends android.app.Service {
     }
     public void onDestroy(){
         super.onDestroy();
+        //update();
+        renew();
         Toast.makeText(this, "Service stop", Toast.LENGTH_SHORT).show();
         timer_homepage.cancel();
         timer.cancel();
@@ -189,20 +211,20 @@ public class Service extends android.app.Service {
     //<Database基本功能設定--Start>
     public void delete(){//刪除
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("alert_test");
+        DatabaseReference myRef = database.getReference("alert");
         myRef.child(today).removeValue();
     }
     public void update(){//新增
         final FirebaseDatabase database = FirebaseDatabase.getInstance();//取得資料庫連結
-        DatabaseReference myRef= database.getReference("alert_test");
+        DatabaseReference myRef= database.getReference("alert");
         myRef.child(today).setValue("30");
     }
     public void renew(){//更新
         FirebaseDatabase database = FirebaseDatabase.getInstance();//取得資料庫連結
         DatabaseReference myRef = null;
-        myRef= database.getReference("alert_test");
+        myRef= database.getReference("alert");
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put(today,String.valueOf(sum));//前面的字是child後面的字是要修改的value值
+        childUpdates.put(today,String.valueOf(today_sum));//前面的字是child後面的字是要修改的value值
         myRef.updateChildren(childUpdates);
     }
     //<Database基本功能設定--End>

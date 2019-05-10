@@ -320,6 +320,7 @@ public class MainFragment extends Fragment {
         return view;
     }
 
+    //<計時器--Start>
     CountDownTimer timeremain = new CountDownTimer(30000, 1000){//30分鐘：1800000
         @Override
         public void onTick(long millisUntilFinished) {
@@ -337,6 +338,7 @@ public class MainFragment extends Fragment {
             editor.apply();
         }
     };
+    //<計時器--End>
 
     @Override
     public void onDestroyView() {

@@ -2,10 +2,13 @@ package com.example.wellsitting;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +22,21 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class Setting extends Fragment {
     private View view;
     FirebaseAuth mAuth;
     ImageButton btn_award;
     ImageButton btn_clock;
+    TextView today_sum;
+    int sum;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_setting, container, false);
+        timeremain.start();
 
         //Button button = view.findViewById(R.id.button2);
         /*button.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +51,7 @@ public class Setting extends Fragment {
                 fragmentTransaction_character.commit();
             }
         });*/
+        today_sum=view.findViewById(R.id.today_sum);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         updateUI(user);
@@ -96,6 +105,33 @@ public class Setting extends Fragment {
             }
 
     }
+
+    //<計時器--Start>
+
+    CountDownTimer timeremain = new CountDownTimer(30000, 1000){//30分鐘：1800000
+        @Override
+        public void onTick(long millisUntilFinished) {
+            SharedPreferences prefs = getActivity().getSharedPreferences("TIMERSUM", MODE_PRIVATE);
+            Integer pre_sum = prefs.getInt("SUM", 0);
+
+            if (pre_sum != null) {
+                sum=sum+pre_sum;
+                today_sum.setText(String.valueOf(pre_sum));
+            }
+        }
+        @Override
+        public void onFinish() {
+
+        }
+    };
+    //<計時器--End>
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        timeremain.cancel();
+    }
+
 
 
 }

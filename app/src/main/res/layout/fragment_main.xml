@@ -79,16 +79,17 @@
        android:layout_marginLeft="300dp"
         android:gravity="center"
         android:text="coin：0"
-        android:textSize="26sp" />
+        android:textSize="26sp"
+        android:textColor="	#3c3c3c"/>
 
     <!--悅琦的計時器-->
 
     <TextView
         android:id="@+id/timeremains"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="420dp"
-        android:layout_marginLeft="240dp"
+        android:layout_width="34dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="120dp"
+        android:layout_marginTop="425dp"
         android:textColor="#4169E1"
         android:textSize="20dp"
 

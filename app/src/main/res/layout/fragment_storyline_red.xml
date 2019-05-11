@@ -37,8 +37,7 @@
             android:layout_gravity="center"
             android:background="#00000000"
             android:text="CH1"
-            android:textColor="#FF8888"
-            />
+            android:textColor="#FF8888" />
 
         <Button
             android:id="@+id/redch2"
@@ -48,8 +47,7 @@
             android:layout_marginTop="10dp"
             android:background="#00000000"
             android:text="CH2"
-            android:textColor="#FF8888"
-            />
+            android:textColor="#FF8888" />
 
         <Button
             android:id="@+id/redch3"
@@ -106,10 +104,6 @@
             android:textColor="#FF8888"
             />
 
-
     </LinearLayout>
-
-
-
 
 </FrameLayout>

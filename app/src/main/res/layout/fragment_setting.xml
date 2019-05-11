@@ -48,32 +48,38 @@
             android:id="@+id/clock"
             android:layout_width="300dp"
             android:layout_height="100dp"
-            android:src="@drawable/pagesetting_clock"
-            android:background="#00000000"
-            android:scaleType="fitCenter"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="200dp"
+            android:layout_marginEnd="49dp"
+            android:background="#00000000"
 
-            />
+            android:scaleType="fitCenter"
+            android:src="@drawable/pagesetting_clock" />
 
         <ImageButton
             android:id="@+id/award"
             android:layout_width="300dp"
             android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="62dp"
+            android:layout_marginTop="300dp"
+            android:layout_marginEnd="49dp"
             android:background="#00000000"
             android:scaleType="fitCenter"
-            android:src="@drawable/pagesetting_award"
-            android:layout_marginTop="300dp"
-             />
+            android:src="@drawable/pagesetting_award" />
 
         <ImageButton
             android:id="@+id/aboutus"
             android:layout_width="300dp"
             android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="400dp"
+            android:layout_marginEnd="49dp"
             android:background="#00000000"
+
             android:scaleType="fitCenter"
             android:src="@drawable/pagesetting_aboutus"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"

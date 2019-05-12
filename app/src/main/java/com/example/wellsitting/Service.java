@@ -38,7 +38,11 @@ public class Service extends android.app.Service {
     String dateformat = "yyyyMMdd";
     SimpleDateFormat df = new SimpleDateFormat(dateformat);
     String today = df.format(mCal.getTime());
+    String yesterday;
     //<取得日期--End>
+
+    //CHECK DATE
+
 
 
     @Override
@@ -86,6 +90,11 @@ public class Service extends android.app.Service {
             }
         };
         //<自定義時間的計時功能--End>
+
+        //計入今天時間
+        SharedPreferences.Editor editor = getSharedPreferences("DATE", MODE_PRIVATE).edit();
+        editor.putString("TODAY",today);
+        editor.apply();
 
 
 
@@ -228,5 +237,6 @@ public class Service extends android.app.Service {
         myRef.updateChildren(childUpdates);
     }
     //<Database基本功能設定--End>
+
 
 }

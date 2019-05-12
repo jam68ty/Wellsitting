@@ -1,11 +1,13 @@
 package com.example.wellsitting;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.SystemClock;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -19,9 +21,14 @@ import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
 import com.hitomi.cmlibrary.OnMenuStatusChangeListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 public class WellSitting extends AppCompatActivity {
+
+
+
 
     GoogleSignInClient mGoogleSignInClient;
     //Button btn_logout;
@@ -68,6 +75,7 @@ public class WellSitting extends AppCompatActivity {
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction().add(R.id.fragment_main,mainFragment,null);
             fragmentTransaction.commit();
         }
+
 
     }
     private void indexCircle(int i) {

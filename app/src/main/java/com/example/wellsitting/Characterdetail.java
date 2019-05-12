@@ -22,11 +22,10 @@ public class Characterdetail extends AppCompatActivity {
     private void getIncomingIntent(){
         Log.d("ccc","getIncomingIntent");
         if(getIntent().hasExtra("name")&&getIntent().hasExtra("pic")){
-            Log.d("ccc","getIncomingIntent inif");
+            //Log.d("ccc","getIncomingIntent inif");
             String name=getIntent().getStringExtra("name");
             String pic=getIntent().getStringExtra("pic");
             String intro=getIntent().getStringExtra("intro");
-
             setImage(name,pic,intro);
         }
     }
@@ -35,15 +34,12 @@ public class Characterdetail extends AppCompatActivity {
         //Log.d(TAG, "setImage: setting te image and name to widgets.");
 
         TextView Name = findViewById(R.id.detail_name);
-        TextView Intro = findViewById(R.id.detail_name);
+        TextView Intro = findViewById(R.id.detail_intro);
         ImageView Image = findViewById(R.id.detail_pic);
 
         Name.setText(name);
         Picasso.get().load(pic).into(Image);
         Intro.setText(intro);
-
-
-
 
     }
 }

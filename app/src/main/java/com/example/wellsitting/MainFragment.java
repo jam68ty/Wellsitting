@@ -44,6 +44,7 @@ import static android.content.Context.MODE_PRIVATE;
 import static android.support.constraint.Constraints.TAG;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -66,10 +67,46 @@ public class MainFragment extends Fragment {
     private TextView timeremains;
     int time_sum=0;
 
+    //checkdate
+    //<取得日期--Start>:以方便作為每日總時間的key值計入資料庫
+    Calendar mCal = Calendar.getInstance();
+    String dateformat = "yyyyMMdd";
+    SimpleDateFormat df = new SimpleDateFormat(dateformat);
+    String yesterday = df.format(mCal.getTime());
+    //<取得日期--End>
+
+
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_main, container, false);
+
+        /*SharedPreferences.Editor editor = getActivity().getSharedPreferences("DATE", MODE_PRIVATE).edit();
+        editor.putString("TODAY","20190506");
+        editor.apply();*/
+
+        SharedPreferences preferences = getActivity().getSharedPreferences("DATE", MODE_PRIVATE);
+        String today = preferences.getString("TODAY","20190506");
+
+        Log.d("ttttt","today = "+today+" |  yesterday = "+yesterday);
+        //Log.d("yyyyy","yesterday = "+yesterday);
+
+
+        //checkdate
+        if(yesterday.equals(today)){
+            Log.d("today","yes");
+
+
+        }else {
+            Log.d("today","no");
+            SharedPreferences.Editor date = getActivity().getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
+            date.putInt("SUM",0);
+            date.apply();
+
+        }
 
 
 
@@ -324,8 +361,8 @@ public class MainFragment extends Fragment {
     CountDownTimer timeremain = new CountDownTimer(30000, 1000){//30分鐘：1800000
         @Override
         public void onTick(long millisUntilFinished) {
-            SharedPreferences prefs = mcontext.getSharedPreferences("TIMER", MODE_PRIVATE);
-            Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
+            SharedPreferences prefs = mcontext.getSharedPreferences("TIMERSUM", MODE_PRIVATE);
+            Integer pre_sum = prefs.getInt("SUM", 0);
 
             if (pre_sum != null) {
                 timeremains.setText(String.valueOf(10-pre_sum));//待解決：無法跳至零

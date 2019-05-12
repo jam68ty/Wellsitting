@@ -14,16 +14,15 @@
 
 
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <ImageView
                 android:id="@+id/imageAccount"
-                android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="8dp"
@@ -32,69 +31,80 @@
                 android:layout_marginBottom="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintVertical_bias="0.114"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.114"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/textInformation"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/imageAccount"
-                android:gravity="center_horizontal"
-                android:layout_gravity="center"
-                android:textColor="#008080"
-                />
-
-            <TextView
-                android:id="@+id/today_sum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textSize="25dp"
-                android:text="0"
-                android:textColor="#008080"/>
+                android:layout_marginTop="5dp"
+                android:gravity="center_horizontal"
+                android:textColor="#008080"
+                android:textSize="15dp"
+                app:layout_constraintTop_toBottomOf="@+id/imageAccount" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:orientation="horizontal">
 
+                <TextView
+                    android:id="@+id/text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:fontFamily="@font/texttype1"
+                    android:text="總時數："
+                    android:textColor="#008080"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/today_sum"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/texttype1"
+                    android:text="0"
+                    android:textColor="#008080"
+                    android:textSize="25dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/setting_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="150dp"
-                    android:textColor="#008080"
-                    android:text="暱稱"
-                    android:textSize="25dp"
-                    android:fontFamily="@font/texttype1"
+                    android:layout_marginLeft="160dp"
                     android:background="@null"
-                    />
+                    android:fontFamily="@font/texttype1"
+                    android:text="暱稱"
+                    android:textColor="#008080"
+                    android:textSize="25dp" />
 
                 <Button
                     android:id="@+id/setting_edit"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/edit"
-                     />
+                    android:layout_width="17dp"
+                    android:layout_height="19dp"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/edit" />
 
             </LinearLayout>
 
-
         </LinearLayout>
-
-
-
-
 
         <ImageButton
             android:id="@+id/clock"
             android:layout_width="300dp"
-            android:layout_height="100dp"
-
+            android:layout_height="70dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="250dp"
             android:layout_marginEnd="49dp"
@@ -105,7 +115,7 @@
         <ImageButton
             android:id="@+id/award"
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="62dp"
@@ -118,7 +128,7 @@
         <ImageButton
             android:id="@+id/aboutus"
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="450dp"
             android:layout_marginEnd="49dp"
@@ -135,45 +145,38 @@
 
         <TextView
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="255dp"
             android:layout_marginEnd="80dp"
-            android:text="鬧鐘設定"
-            android:textColor="#FFFFFF"
             android:fontFamily="@font/texttype1"
             android:gravity="center"
-            android:textSize="24dp"
-            />
+            android:text="鬧鐘設定"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
 
         <TextView
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="355dp"
             android:layout_marginEnd="80dp"
-            android:text="獎勵設定"
-            android:textColor="#FFFFFF"
             android:fontFamily="@font/texttype1"
             android:gravity="center"
-            android:textSize="24dp"
-            />
+            android:text="獎勵設定"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
 
         <TextView
             android:layout_width="300dp"
-            android:layout_height="100dp"
+            android:layout_height="70dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="455dp"
             android:layout_marginEnd="80dp"
-            android:text="關於我們"
-            android:textColor="#FFFFFF"
             android:fontFamily="@font/texttype1"
             android:gravity="center"
-            android:textSize="24dp"
-            />
-
-
-
-
+            android:text="關於我們"
+            android:textColor="#FFFFFF"
+            android:textSize="24dp" />
     </RelativeLayout>
 </FrameLayout>

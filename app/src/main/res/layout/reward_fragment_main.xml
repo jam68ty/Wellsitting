@@ -14,6 +14,7 @@
         android:layout_marginLeft="15dp"
         android:fontFamily="@font/texttype1"
         android:textColor="#F0FFF0"
+        android:textSize="20dp"
         tools:layout_editor_absoluteX="25dp"
         tools:layout_editor_absoluteY="125dp"
         android:background="@drawable/btn_blue_d"/>

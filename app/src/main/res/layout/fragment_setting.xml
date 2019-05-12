@@ -12,47 +12,93 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/imageAccount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintVertical_bias="0.114"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/textInformation"
-            android:layout_width="wrap_content"
+        <LinearLayout
+
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="177dp"
-            android:layout_marginLeft="177dp"
-            android:layout_marginTop="19dp"
-            android:layout_marginEnd="176dp"
-            android:layout_marginRight="176dp"
-            android:layout_marginBottom="47dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageAccount"
-            android:gravity="center_horizontal"/>
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageAccount"
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintVertical_bias="0.114"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/textInformation"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/imageAccount"
+                android:gravity="center_horizontal"
+                android:layout_gravity="center"
+                android:textColor="#008080"
+                />
+
+            <TextView
+                android:id="@+id/today_sum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="25dp"
+                android:text="0"
+                android:textColor="#008080"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+
+                <EditText
+                    android:id="@+id/setting_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="150dp"
+                    android:textColor="#008080"
+                    android:text="暱稱"
+                    android:textSize="25dp"
+                    android:fontFamily="@font/texttype1"
+                    android:background="@null"
+                    />
+
+                <Button
+                    android:id="@+id/setting_edit"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/edit"
+                     />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+
 
         <ImageButton
             android:id="@+id/clock"
             android:layout_width="300dp"
             android:layout_height="100dp"
+
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="250dp"
             android:layout_marginEnd="49dp"
             android:background="#00000000"
-
             android:scaleType="fitCenter"
             android:src="@drawable/pagesetting_clock" />
 
@@ -63,7 +109,7 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentEnd="true"
             android:layout_marginStart="62dp"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="350dp"
             android:layout_marginEnd="49dp"
             android:background="#00000000"
             android:scaleType="fitCenter"
@@ -74,7 +120,7 @@
             android:layout_width="300dp"
             android:layout_height="100dp"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="400dp"
+            android:layout_marginTop="450dp"
             android:layout_marginEnd="49dp"
             android:background="#00000000"
 
@@ -88,29 +134,45 @@
             app:layout_constraintVertical_bias="0.697" />
 
         <TextView
-            android:id="@+id/today_sum"
-            android:layout_marginTop="150dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textColor="#0044BB"/>
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="255dp"
+            android:layout_marginEnd="80dp"
+            android:text="鬧鐘設定"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/texttype1"
+            android:gravity="center"
+            android:textSize="24dp"
+            />
 
-        <Button
-            android:id="@+id/setting_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:layout_marginLeft="150dp"
-            android:text="Button" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="355dp"
+            android:layout_marginEnd="80dp"
+            android:text="獎勵設定"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/texttype1"
+            android:gravity="center"
+            android:textSize="24dp"
+            />
 
-        <EditText
-            android:id="@+id/setting_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"
-            android:layout_marginLeft="150dp"
-            android:textColor="#000000"
-            android:text="暱稱" />
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="455dp"
+            android:layout_marginEnd="80dp"
+            android:text="關於我們"
+            android:textColor="#FFFFFF"
+            android:fontFamily="@font/texttype1"
+            android:gravity="center"
+            android:textSize="24dp"
+            />
+
+
 
 
     </RelativeLayout>

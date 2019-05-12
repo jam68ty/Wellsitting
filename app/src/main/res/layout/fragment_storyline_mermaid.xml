@@ -20,7 +20,8 @@
         android:layout_marginTop="30dp"
         android:gravity="center_horizontal"
         android:text="小 美  人  魚"
-        android:textColor="#FF7744"
+        android:textColor="#0A6E0A"
+        android:fontFamily="@font/texttype1"
         android:textSize="40dp" />
 
     <LinearLayout
@@ -36,7 +37,8 @@
             android:layout_gravity="center"
             android:background="#00000000"
             android:text="CH1"
-            android:textColor="#FF8888" />
+            android:textColor="#0A6E0A"
+            android:fontFamily="@font/texttype1" />
 
         <Button
             android:id="@+id/mermaidch2"
@@ -46,7 +48,8 @@
             android:layout_marginTop="10dp"
             android:background="#00000000"
             android:text="CH2"
-            android:textColor="#FF8888" />
+            android:textColor="#0A6E0A"
+            android:fontFamily="@font/texttype1" />
 
         <Button
             android:id="@+id/mermaidch3"
@@ -56,7 +59,8 @@
             android:layout_marginTop="10dp"
             android:background="#00000000"
             android:text="CH3"
-            android:textColor="#FF8888" />
+            android:textColor="#0A6E0A"
+            android:fontFamily="@font/texttype1" />
 
         <Button
             android:id="@+id/mermaidch4"
@@ -66,7 +70,8 @@
             android:layout_marginTop="10dp"
             android:background="#00000000"
             android:text="CH4"
-            android:textColor="#FF8888" />
+            android:textColor="#0A6E0A"
+            android:fontFamily="@font/texttype1" />
 
         <Button
             android:id="@+id/mermaidch5"
@@ -76,7 +81,8 @@
             android:layout_marginTop="10dp"
             android:background="#00000000"
             android:text="CH5"
-            android:textColor="#FF8888" />
+            android:textColor="#0A6E0A"
+            android:fontFamily="@font/texttype1" />
 
         <Button
             android:id="@+id/mermaidch6"
@@ -86,7 +92,8 @@
             android:layout_marginTop="10dp"
             android:background="#00000000"
             android:text="CH6"
-            android:textColor="#FF8888" />
+            android:textColor="#0A6E0A"
+            android:fontFamily="@font/texttype1" />
 
         <Button
             android:id="@+id/mermaidch7"
@@ -96,7 +103,8 @@
             android:layout_marginTop="10dp"
             android:background="#00000000"
             android:text="CH7"
-            android:textColor="#FF8888" />
+            android:textColor="#0A6E0A"
+            android:fontFamily="@font/texttype1" />
     </LinearLayout>
 
 </FrameLayout>

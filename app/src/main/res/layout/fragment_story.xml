@@ -19,7 +19,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="40dp"
         android:text="主        線"
-        android:textColor="#4169E1"
+        android:fontFamily="@font/texttype1"
+        android:textColor="#008C8C"
         android:textSize="30dp" />
 
     <ImageButton
@@ -41,9 +42,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="275dp"
+        android:layout_marginTop="280dp"
         android:text="小紅帽"
-        android:textColor="	#3c3c3c"
+        android:fontFamily="@font/texttype1"
+        android:textColor="#800000"
         android:textSize="25dp" />
 
 
@@ -66,9 +68,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="265dp"
-        android:layout_marginTop="275dp"
+        android:layout_marginTop="280dp"
         android:text="小美人魚"
-        android:textColor="	#3c3c3c"
+        android:fontFamily="@font/texttype1"
+        android:textColor="#0A6E0A	"
         android:textSize="25dp" />
 
 
@@ -91,9 +94,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="70dp"
-        android:layout_marginTop="475dp"
+        android:layout_marginTop="480dp"
         android:text="灰姑娘"
-        android:textColor="	#3c3c3c"
+        android:fontFamily="@font/texttype1"
+        android:textColor="#1E90FF"
         android:textSize="25dp" />
 
     <ImageButton
@@ -116,9 +120,10 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="255dp"
-        android:layout_marginTop="475dp"
+        android:layout_marginTop="480dp"
         android:text="青蛙王子"
-        android:textColor="	#3c3c3c"
+        android:fontFamily="@font/texttype1"
+        android:textColor="#80E12A"
         android:textSize="25dp" />
 
 

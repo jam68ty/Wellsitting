@@ -23,10 +23,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="角      色"
-        android:textSize="30dp"
+        android:textSize="40dp"
         android:textColor="#4169E1"
         android:fontFamily="@font/texttype1"
         />

@@ -47,12 +47,12 @@ public class WellSitting extends AppCompatActivity {
         //btn_logout.setOnClickListener(v -> Logout());
 
         circleMenu = findViewById(R.id.circle_menu);
-        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.drawable.menu, R.drawable.cancel)
-                .addSubMenu(Color.parseColor("#258CFF"), R.drawable.character)
-                .addSubMenu(Color.parseColor("#30A400"), R.drawable.story)
-                .addSubMenu(Color.parseColor("#FF4B32"), R.drawable.settings)
-                .addSubMenu(Color.parseColor("#FA4B82"), R.drawable.home)
-                .addSubMenu(Color.parseColor("#8A39FF"), R.drawable.logout)
+        circleMenu.setMainMenu(Color.parseColor("#869bbd"), R.drawable.menu, R.drawable.cancel)
+                .addSubMenu(Color.parseColor("#45578B"), R.drawable.character)
+                .addSubMenu(Color.parseColor("#79A4C8"), R.drawable.story)
+                .addSubMenu(Color.parseColor("#81C2CC"), R.drawable.settings)
+                .addSubMenu(Color.parseColor("#F1E1B5"), R.drawable.home)
+                .addSubMenu(Color.parseColor("#C0C0C0"), R.drawable.logout)
                 .setOnMenuSelectedListener(new OnMenuSelectedListener() {
                     @Override
                     public void onMenuSelected(int i) {

@@ -17,7 +17,9 @@
         android:layout_marginTop="33dp"
         android:textSize="20dp"
         android:text="自定義獎勵"
-        android:textColor="#4169E1"/>
+        android:textColor="#4169E1"
+        android:fontFamily="@font/texttype1"
+        />
 
     <EditText
         android:id="@+id/input"
@@ -26,6 +28,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="80dp"
         android:hint="請輸入獎勵內容"
+        android:fontFamily="@font/texttype1"
         android:textSize="20dp"
         android:textColor="#4169E1"/>
 
@@ -40,7 +43,9 @@
         android:layout_marginLeft="14dp"
         android:textSize="20dp"
         android:layout_marginTop="292dp"
-        android:text="取消" />
+        android:text="取消"
+        android:fontFamily="@font/texttype1"
+        />
 
     <TextView
         android:id="@+id/action_ok"
@@ -53,7 +58,9 @@
         android:layout_marginLeft="237dp"
         android:layout_marginTop="292dp"
         android:text="確認"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:fontFamily="@font/texttype1"
+        />
 
 
 </RelativeLayout>

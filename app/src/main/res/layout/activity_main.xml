@@ -5,7 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:background="@drawable/login">
+    android:background="@drawable/backgroud_signin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo_icon"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+
+            />
+
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo_text"
+            android:layout_gravity="center"
+
+            />
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,6 +47,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
+
+
 
     <TextView
         android:id="@+id/textView"

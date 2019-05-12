@@ -68,6 +68,8 @@
         android:padding="0dp"
         android:text="BACK"
         android:textColor="#ffffff"
-        android:textSize="20dp" />
+        android:textSize="20dp"
+        android:fontFamily="@font/texttype1"
+        />
 
 </RelativeLayout>

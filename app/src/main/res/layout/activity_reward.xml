@@ -30,7 +30,9 @@
         android:layout_marginRight="135dp"
         android:text="獎 勵 設 定"
         android:textColor="#4169E1"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:fontFamily="@font/texttype1"
+        />
 
     <TextView
         android:id="@+id/rewardtime"
@@ -42,7 +44,9 @@
         android:lineSpacingExtra="20dp"
         android:text="維持正確坐姿________分鐘\n即可"
         android:textColor="#4169E1"
-        android:textSize="25dp" />
+        android:textSize="25dp"
+        android:fontFamily="@font/texttype1"
+        />
 
 
 
@@ -60,7 +64,9 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="208dp"
         android:layout_marginTop="150dp"
-        android:layout_marginBottom="546dp" />
+        android:layout_marginBottom="546dp"
+        android:outlineAmbientShadowColor="#4169E1"
+        />
 
     <FrameLayout
         android:id="@+id/container_reward"

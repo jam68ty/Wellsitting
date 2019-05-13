@@ -18,21 +18,22 @@
         android:src="@drawable/pageall_title" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="207dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/imageAccount"
         android:layout_alignLeft="@+id/imageAccount"
+        android:layout_alignTop="@+id/imageAccount"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginStart="135dp"
-        android:layout_marginLeft="135dp"
-        android:layout_marginTop="62dp"
-        android:layout_marginRight="135dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginLeft="102dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="102dp"
+        android:layout_marginRight="102dp"
+        android:fontFamily="@font/texttype1"
         android:text="獎 勵 設 定"
         android:textColor="#4169E1"
-        android:textSize="30dp"
-        android:fontFamily="@font/texttype1"
-        />
+        android:textSize="40dp" />
 
     <TextView
         android:id="@+id/rewardtime"
@@ -47,8 +48,6 @@
         android:textSize="25dp"
         android:fontFamily="@font/texttype1"
         />
-
-
 
     <View
         android:id="@+id/divider"

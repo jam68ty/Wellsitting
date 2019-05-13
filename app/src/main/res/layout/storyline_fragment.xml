@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backgroud_all"
-    >
-
-
-
+    android:background="@drawable/backgroud_all">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,87 +13,79 @@
             android:id="@+id/story_title"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:textColor="#FFFFFF"
-            android:hint="標題"
             android:layout_gravity="center"
-
-            />
-
-
+            android:fontFamily="@font/texttype1"
+            android:hint="標題"
+            android:textColor="#FFFFFF" />
 
         <ImageView
             android:id="@+id/story_background"
             android:layout_width="400dp"
             android:layout_height="400dp"
-            android:layout_gravity="center"
-            />
-
-
-
+            android:layout_gravity="center" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:orientation="vertical"
             android:background="@drawable/dialog"
-            >
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/story_name"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="15dp"
-                />
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/texttype1"
+                android:textSize="20dp" />
 
             <TextView
                 android:id="@+id/story_content"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:textColor="#8C0044"
-                android:hint="內文"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
                 android:layout_gravity="center"
-
-                />
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:fontFamily="@font/texttype1"
+                android:hint="內文"
+                android:textColor="#8C0044"
+                android:textSize="18dp" />
 
         </LinearLayout>
-
-
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
-
             <Button
                 android:id="@+id/story_menu"
                 android:layout_width="125dp"
                 android:layout_height="45dp"
 
-                android:layout_marginRight="30dp"
                 android:layout_marginLeft="50dp"
+                android:layout_marginRight="30dp"
                 android:background="@drawable/story_back"
+                android:fontFamily="@font/texttype1"
                 android:text="主選單"
-                />
+                android:textSize="25dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text=""/>
+                android:text="" />
 
             <Button
                 android:id="@+id/story_next"
                 android:layout_width="125dp"
                 android:layout_height="45dp"
-                android:text="下一步"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="60dp"
                 android:background="@drawable/story_next"
-                />
+                android:fontFamily="@font/texttype1"
+                android:text="下一頁"
+                android:textSize="25dp" />
 
         </LinearLayout>
 
@@ -107,12 +95,13 @@
         android:id="@+id/story_head"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginTop="375dp"
         android:layout_marginLeft="280dp"
+        android:layout_marginTop="375dp" />
 
-        />
-
-
-
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/story_clip" />
 
 </RelativeLayout>

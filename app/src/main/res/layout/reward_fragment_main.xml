@@ -8,17 +8,16 @@
 
     <Button
         android:id="@+id/open_diaglog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="41dp"
-        android:layout_marginLeft="41dp"
-        android:layout_marginTop="9dp"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
         android:text="點擊輸入獎勵"
+        android:layout_marginLeft="15dp"
+        android:fontFamily="@font/texttype1"
+        android:textColor="#F0FFF0"
+        android:textSize="20dp"
         tools:layout_editor_absoluteX="25dp"
-        tools:layout_editor_absoluteY="125dp" />
+        tools:layout_editor_absoluteY="125dp"
+        android:background="@drawable/btn_blue_d"/>
 
     <TextView
         android:id="@+id/input_display"

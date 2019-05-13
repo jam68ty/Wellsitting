@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,6 +12,18 @@
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:src="@drawable/pagestory_cindy" />
+
+    <TextView
+        android:id="@+id/t_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="680dp"
+        android:gravity="center"
+        android:text="coin：150"
+        android:textColor="	#3c3c3c"
+        android:fontFamily="@font/texttype1"
+        android:textSize="26sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -28,81 +41,294 @@
         android:layout_marginTop="120dp"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/cindych1"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="#00000000"
-            android:text="CH1"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#1E90FF" />
 
-        <Button
-            android:id="@+id/cindych2"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH2"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#1E90FF" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/cindych3"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH3"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#1E90FF" />
+            <Button
+                android:id="@+id/cindych1"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH1"
+                android:layout_marginLeft="105dp"
+                android:textColor="#1E90FF" />
 
-        <Button
-            android:id="@+id/cindych4"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH4"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#1E90FF" />
+            <ImageButton
+                android:id="@+id/cbuy_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/story_mgot"
+                android:src="@drawable/story_cgot" />
 
-        <Button
-            android:id="@+id/cindych5"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH5"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#1E90FF" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/cindych6"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH6"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#1E90FF" />
 
-        <Button
-            android:id="@+id/cindych7"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH7"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#1E90FF" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cindych2"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH2"
+                android:layout_marginLeft="105dp"
+                android:textColor="#1E90FF" />
+
+            <ImageButton
+                android:id="@+id/cbuy_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/cPrice_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#1E90FF"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cindych3"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH3"
+                android:layout_marginLeft="105dp"
+                android:textColor="#1E90FF" />
+
+            <ImageButton
+                android:id="@+id/cbuy_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/cPrice_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#1E90FF"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cindych4"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH4"
+                android:layout_marginLeft="105dp"
+                android:textColor="#1E90FF" />
+
+            <ImageButton
+                android:id="@+id/cbuy_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/cPrice_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#1E90FF"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cindych5"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH5"
+                android:layout_marginLeft="105dp"
+                android:textColor="#1E90FF" />
+
+            <ImageButton
+                android:id="@+id/cbuy_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/cPrice_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#1E90FF"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cindych6"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH6"
+                android:layout_marginLeft="105dp"
+                android:textColor="#1E90FF" />
+
+            <ImageButton
+                android:id="@+id/cbuy_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/cPrice_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#1E90FF"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/cindych7"
+                android:layout_marginLeft="105dp"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH7"
+                android:textColor="#1E90FF" />
+
+            <ImageButton
+                android:id="@+id/cbuy_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/cPrice_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#1E90FF"
+                android:textSize="20dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/gift"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="特殊獎勵"
+                android:layout_marginLeft="105dp"
+                android:textColor="#6E8B3D" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/gift" />
+        </LinearLayout>
     </LinearLayout>
+
+
 
 </FrameLayout>

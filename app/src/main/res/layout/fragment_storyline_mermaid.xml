@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,6 +14,18 @@
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:src="@drawable/pagestory_mermaid" />
+
+    <TextView
+        android:id="@+id/t_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="680dp"
+        android:gravity="center"
+        android:text="coin：150"
+        android:textColor="	#3c3c3c"
+        android:fontFamily="@font/texttype1"
+        android:textSize="26sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -30,9 +43,15 @@
         android:layout_marginTop="120dp"
         android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/mermaidch1"
-            android:layout_width="200dp"
+            android:layout_width="100dp"
+            android:layout_marginLeft="105dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="#00000000"
@@ -40,9 +59,25 @@
             android:textColor="#0A6E0A"
             android:fontFamily="@font/texttype1" />
 
+        <ImageButton
+            android:id="@+id/mbuy_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/story_mgot"
+            android:src="@drawable/story_mgot" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/mermaidch2"
-            android:layout_width="200dp"
+            android:layout_marginLeft="105dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -51,9 +86,37 @@
             android:textColor="#0A6E0A"
             android:fontFamily="@font/texttype1" />
 
+        <ImageButton
+            android:id="@+id/mbuy_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/mPrice_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#0A6E0A"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/mermaidch3"
-            android:layout_width="200dp"
+            android:layout_marginLeft="105dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -62,9 +125,36 @@
             android:textColor="#0A6E0A"
             android:fontFamily="@font/texttype1" />
 
+        <ImageButton
+            android:id="@+id/mbuy_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/mPrice_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#0A6E0A"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/mermaidch4"
-            android:layout_width="200dp"
+            android:layout_marginLeft="105dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -73,9 +163,37 @@
             android:textColor="#0A6E0A"
             android:fontFamily="@font/texttype1" />
 
+        <ImageButton
+            android:id="@+id/mbuy_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/mPrice_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#0A6E0A"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/mermaidch5"
-            android:layout_width="200dp"
+            android:layout_marginLeft="105dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -84,9 +202,36 @@
             android:textColor="#0A6E0A"
             android:fontFamily="@font/texttype1" />
 
+        <ImageButton
+            android:id="@+id/mbuy_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/mPrice_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#0A6E0A"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/mermaidch6"
-            android:layout_width="200dp"
+            android:layout_marginLeft="105dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -95,9 +240,36 @@
             android:textColor="#0A6E0A"
             android:fontFamily="@font/texttype1" />
 
+        <ImageButton
+            android:id="@+id/mbuy_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/mPrice_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#0A6E0A"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/mermaidch7"
-            android:layout_width="200dp"
+            android:layout_marginLeft="105dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
@@ -105,6 +277,50 @@
             android:text="CH7"
             android:textColor="#0A6E0A"
             android:fontFamily="@font/texttype1" />
+
+        <ImageButton
+            android:id="@+id/mbuy_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/mPrice_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#0A6E0A"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/gift"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="特殊獎勵"
+                android:layout_marginLeft="105dp"
+                android:textColor="#6E8B3D" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/gift" />
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

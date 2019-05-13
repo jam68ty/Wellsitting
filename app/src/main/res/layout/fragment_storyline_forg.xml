@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -22,87 +23,302 @@
         android:textColor="#80E12A"
         android:textSize="40dp" />
 
+    <TextView
+        android:id="@+id/t_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="680dp"
+        android:gravity="center"
+        android:text="coin：150"
+        android:textColor="	#3c3c3c"
+        android:fontFamily="@font/texttype1"
+        android:textSize="26sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="509dp"
         android:layout_marginTop="120dp"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/frogch1"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="#00000000"
-            android:text="CH1"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#80E12A" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/frogch1"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="105dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH1"
+                android:textColor="#80E12A" />
+
+            <ImageButton
+                android:id="@+id/fbuy_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/story_mgot"
+                android:src="@drawable/story_fgot" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/frogch2"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH2"
+                android:textColor="#80E12A" />
+
+
+            <ImageButton
+                android:id="@+id/fbuy_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/fPrice_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#80E12A"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/frogch3"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH3"
+                android:textColor="#80E12A" />
+
+            <ImageButton
+                android:id="@+id/fbuy_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/fPrice_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#80E12A"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/frogch4"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH4"
+                android:textColor="#80E12A" />
+
+            <ImageButton
+                android:id="@+id/fbuy_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/fPrice_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#80E12A"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/frogch5"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH5"
+                android:textColor="#80E12A" />
+
+            <ImageButton
+                android:id="@+id/fbuy_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/fPrice_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#80E12A"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/frogch6"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH6"
+                android:textColor="#80E12A" />
+
+            <ImageButton
+                android:id="@+id/fbuy_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/fPrice_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#80E12A"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/frogch7"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="105dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="CH7"
+                android:textColor="#80E12A" />
+
+            <ImageButton
+                android:id="@+id/fbuy_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:background="@drawable/lock"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/fPrice_7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="25dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/texttype1"
+                android:text="100"
+                android:textColor="#80E12A"
+                android:textSize="20dp" />
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/frogch2"
-            android:layout_width="200dp"
+            android:id="@+id/gift"
+            android:layout_width="100dp"
             android:layout_height="50dp"
-            android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:background="#00000000"
-            android:text="CH2"
             android:fontFamily="@font/texttype1"
-            android:textColor="#80E12A" />
+            android:text="特殊獎勵"
+            android:layout_marginLeft="105dp"
+            android:textColor="#6E8B3D" />
 
-        <Button
-            android:id="@+id/frogch3"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH3"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#80E12A" />
-
-        <Button
-            android:id="@+id/frogch4"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH4"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#80E12A" />
-
-        <Button
-            android:id="@+id/frogch5"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH5"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#80E12A" />
-
-        <Button
-            android:id="@+id/frogch6"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH6"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#80E12A" />
-
-        <Button
-            android:id="@+id/frogch7"
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="#00000000"
-            android:text="CH7"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#80E12A" />
+        <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+        android:src="@drawable/gift" />
+    </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

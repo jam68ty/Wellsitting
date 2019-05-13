@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,15 +16,26 @@
         />
 
     <TextView
+        android:id="@+id/t_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="270dp"
+        android:layout_marginTop="680dp"
+        android:gravity="center"
+        android:text="coin：150"
+        android:textColor="	#3c3c3c"
+        android:fontFamily="@font/texttype1"
+        android:textSize="26sp" />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="30dp"
+        android:fontFamily="@font/texttype1"
         android:gravity="center_horizontal"
         android:text="小  紅  帽"
-        android:textSize="40dp"
-        android:fontFamily="@font/texttype1"
         android:textColor="#800000"
-        />
+        android:textSize="40dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,87 +43,289 @@
         android:layout_marginTop="120dp"
         android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/redch1"
-            android:layout_width="200dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:background="#00000000"
+            android:textColor="#800000"
             android:text="CH1"
-            android:fontFamily="@font/texttype1"
-            android:textColor="#800000" />
+            android:layout_marginLeft="105dp"
+            android:fontFamily="@font/texttype1"/>
+
+        <ImageButton
+            android:id="@+id/rbuy_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/story_rgot"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/story_rgot" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/redch2"
-            android:layout_width="200dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="105dp"
             android:background="#00000000"
             android:text="CH2"
             android:fontFamily="@font/texttype1"
             android:textColor="#800000" />
 
+        <ImageButton
+            android:id="@+id/rbuy_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/rPrice_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#800000"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
         <Button
             android:id="@+id/redch3"
-            android:layout_width="200dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="105dp"
             android:background="#00000000"
             android:text="CH3"
             android:fontFamily="@font/texttype1"
             android:textColor="#800000"
             />
 
+            <ImageButton
+                android:id="@+id/rbuy_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/lock"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/lock" />
+
+            <TextView
+                android:id="@+id/rPrice_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textSize="20dp"
+                android:fontFamily="@font/texttype1"
+                android:textColor="#800000"
+                android:layout_marginTop="25dp"
+                android:layout_marginLeft="10dp"
+                android:text="100" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
             android:id="@+id/redch4"
-            android:layout_width="200dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="105dp"
             android:background="#00000000"
             android:text="CH4"
             android:fontFamily="@font/texttype1"
-            android:textColor="#800000"
-            />
+            android:textColor="#800000"/>
 
+        <ImageButton
+            android:id="@+id/rbuy_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/rPrice_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#800000"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
             android:id="@+id/redch5"
-            android:layout_width="200dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="105dp"
             android:background="#00000000"
             android:text="CH5"
             android:fontFamily="@font/texttype1"
             android:textColor="#800000"
             />
+        <ImageButton
+            android:id="@+id/rbuy_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
 
+        <TextView
+            android:id="@+id/rPrice_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#800000"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
             android:id="@+id/redch6"
-            android:layout_width="200dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="105dp"
             android:background="#00000000"
             android:text="CH6"
             android:fontFamily="@font/texttype1"
             android:textColor="#800000"
             />
 
+        <ImageButton
+            android:id="@+id/rbuy_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/rPrice_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#800000"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <Button
             android:id="@+id/redch7"
-            android:layout_width="200dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
+            android:layout_marginLeft="105dp"
             android:background="#00000000"
             android:text="CH7"
             android:fontFamily="@font/texttype1"
             android:textColor="#800000"
             />
 
+        <ImageButton
+            android:id="@+id/rbuy_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/lock"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/lock" />
+
+        <TextView
+            android:id="@+id/rPrice_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="20dp"
+            android:fontFamily="@font/texttype1"
+            android:textColor="#800000"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="10dp"
+            android:text="100" />
+
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/gift"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="#00000000"
+                android:fontFamily="@font/texttype1"
+                android:text="特殊獎勵"
+                android:layout_marginLeft="105dp"
+                android:textColor="#6E8B3D" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/gift" />
+        </LinearLayout>
     </LinearLayout>
 
 </FrameLayout>

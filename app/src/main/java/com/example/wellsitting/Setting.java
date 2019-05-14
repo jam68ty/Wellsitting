@@ -33,8 +33,10 @@ import static android.content.Context.MODE_PRIVATE;
 public class Setting extends Fragment {
     private View view;
     FirebaseAuth mAuth;
-    ImageButton btn_award;
-    ImageButton btn_clock;
+    TextView btn_award;
+    TextView btn_clock;
+    //ImageButton btn_award;
+    //ImageButton btn_clock;
     TextView today_sum;
     EditText nickname;
     String str;
@@ -69,7 +71,8 @@ public class Setting extends Fragment {
         updateUI(user);
 
         //進入獎勵設定
-        ImageButton btn_award=view.findViewById(R.id.award);
+
+        btn_award=view.findViewById(R.id.award);
         btn_award.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,11 +113,11 @@ public class Setting extends Fragment {
         TextView info=view.findViewById(R.id.textInformation);
         ImageView imageAccount=view.findViewById(R.id.imageAccount);
             if (user!=null){
-                String name = user.getDisplayName();
+                //String name = user.getDisplayName();
                 String email=user.getEmail();
                 String photo = String.valueOf(user.getPhotoUrl());
 
-                info.append(name+"\n");
+                //info.append(name+"\n");
                 info.append(email);
 
                 Picasso.get().load(photo).resize(400,400).into(imageAccount);

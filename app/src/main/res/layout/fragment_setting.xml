@@ -162,7 +162,7 @@
                 />
 
             <TextView
-                android:id="@+id/aboutus"
+                android:id="@+id/about"
                 android:layout_width="300dp"
                 android:layout_height="70dp"
                 android:layout_alignParentEnd="true"
@@ -176,11 +176,8 @@
                 android:background="@drawable/pagesetting_all"
                 />
 
+
+
         </LinearLayout>
-
-
-
-
-
     </RelativeLayout>
 </FrameLayout>

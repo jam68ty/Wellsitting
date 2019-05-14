@@ -11,7 +11,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/backgroud" />
+        android:src="@drawable/background" />
 
     <ImageView
         android:id="@+id/detail_pic"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
-        android:textColor="#0064CD"
+        android:textColor="#834683"
         android:textSize="50dp"
         android:fontFamily="@font/texttype1"
         android:textStyle="bold"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="200dp"
-        android:textColor="#0064CD"
+        android:textColor="#834683"
         android:fontFamily="@font/texttype1"
         />
 
@@ -50,14 +50,21 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="540dp"
-        android:textColor="#0064CD"
+        android:textColor="#834683"
         android:fontFamily="@font/texttype1"
         />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/backgroud_partof" />
+        android:src="@drawable/background_partof" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/textbox"
+        android:layout_marginTop="480dp"
+        />
 
     <ImageButton
         android:id="@+id/detail_back"

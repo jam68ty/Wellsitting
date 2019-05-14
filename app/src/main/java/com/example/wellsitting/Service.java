@@ -28,7 +28,7 @@ public class Service extends android.app.Service {
 
     Long total;
     MediaPlayer mediaPlayer;
-    int sum;//首頁倒計參數
+    int sum=0;//首頁倒計參數
     int today_sum;//總正計參數
     CountDownTimer timer;
     CountDownTimer timer_homepage;
@@ -64,6 +64,11 @@ public class Service extends android.app.Service {
     @Override
     public void onStart(Intent intent, int startId) {//官方準備遺棄它了
         Toast.makeText(this, "Service start", Toast.LENGTH_SHORT).show();
+
+        //首頁到數計時
+        SharedPreferences.Editor c = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
+        c.putInt("COUNTDOWN",0);
+        c.apply();
 
         //<自定義時間的計時功能--Start>
         //接受Alarm傳來的值
@@ -103,15 +108,15 @@ public class Service extends android.app.Service {
             @Override
             public void onTick(long millisUntilFinished) {
                 //<首頁倒計時計算--Start>
-                SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
-                editor.putInt("COUNTDOWN",sum);
-                editor.apply();
-
 
                 SharedPreferences prefs = getSharedPreferences("TIMER", MODE_PRIVATE);
                 Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
                 if(pre_sum!=null){
                     sum=pre_sum+1;
+                    SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
+                    editor.putInt("COUNTDOWN",sum);
+                    editor.apply();
+
 
                 }else{
                     sum=0;
@@ -135,7 +140,8 @@ public class Service extends android.app.Service {
             }
             @Override
             public void onFinish() {
-                sum=0;
+
+
                 mediaPlayer.start();
                 dialog();
 

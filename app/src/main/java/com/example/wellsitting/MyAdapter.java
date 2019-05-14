@@ -40,6 +40,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.name.setText(characterheadshots.get(position).getName());
         holder.intro.setText(characterheadshots.get(position).getBrief_intro());
+
         Picasso.get().load(characterheadshots.get(position).getPic_headshot()).into(holder.pic);
 
         holder.parenlayout.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +50,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 intent.putExtra("pic",characterheadshots.get(position).getPic_halfbody());
                 intent.putExtra("name",characterheadshots.get(position).getName());
                 intent.putExtra("intro",characterheadshots.get(position).getAll_intro());
+                intent.putExtra("intro_brief",characterheadshots.get(position).getBrief_intro());
                 context.startActivity(intent);
             }
         });
@@ -74,7 +76,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     class MyViewHolder extends RecyclerView.ViewHolder
     {
 
-        TextView name,intro;
+        TextView name,intro,intro_brief;
         ImageView pic;
         LinearLayout parenlayout;
 
@@ -82,6 +84,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             super(itemView);
             name=(TextView)itemView.findViewById(R.id.headname);
             intro=(TextView)itemView.findViewById(R.id.intro);
+            intro_brief=(TextView)itemView.findViewById(R.id.detail_intro_brief);//???
             pic=(ImageView)itemView.findViewById(R.id.headshot);
             parenlayout=itemView.findViewById(R.id.character_headshot_display);
         }

@@ -91,7 +91,7 @@ public class MainFragment extends Fragment {
         SharedPreferences preferences = getActivity().getSharedPreferences("DATE", MODE_PRIVATE);
         String today = preferences.getString("TODAY","20190506");
 
-        Log.d("ttttt","today = "+today+" |  yesterday = "+yesterday);
+        //Log.d("ttttt","today = "+today+" |  yesterday = "+yesterday);
         //Log.d("yyyyy","yesterday = "+yesterday);
 
 
@@ -146,7 +146,7 @@ public class MainFragment extends Fragment {
                 }
                 //因為textView裡面僅能放String，因此要進行轉換
                 String value_Temp = String.valueOf(value);
-                textView.setText("coin: " + value_Temp);
+                textView.setText(value_Temp);
                 //------------------------------------------------------------------------
                 //以下為date
                 //取得當前時間，並記錄進資料庫
@@ -361,8 +361,8 @@ public class MainFragment extends Fragment {
     CountDownTimer timeremain = new CountDownTimer(30000, 1000){//30分鐘：1800000
         @Override
         public void onTick(long millisUntilFinished) {
-            SharedPreferences prefs = mcontext.getSharedPreferences("TIMERSUM", MODE_PRIVATE);
-            Integer pre_sum = prefs.getInt("SUM", 0);
+            SharedPreferences prefs = mcontext.getSharedPreferences("TIMER", MODE_PRIVATE);
+            Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
 
             if (pre_sum != null) {
                 timeremains.setText(String.valueOf(10-pre_sum));//待解決：無法跳至零

@@ -59,127 +59,22 @@ public class Character extends Fragment {
         //DatabaseReference myRef_1 = database.getReference("account").child(user.getUid()).child("1");
         //讀入account底下的actor項目，以確認使用者已擁有哪些角色
         DatabaseReference myRef = database.getReference("account").child(user.getUid()).child("coin");
-        DatabaseReference myRef_0 = database.getReference("account").child(user.getUid()).child("actor");
-        DatabaseReference myRef_1 = database.getReference("account").child(user.getUid()).child("actor");
-        DatabaseReference myRef_2 = database.getReference("account").child(user.getUid()).child("actor");
-        DatabaseReference myRef_3 = database.getReference("account").child(user.getUid()).child("actor");
-        DatabaseReference myRef_4 = database.getReference("account").child(user.getUid()).child("actor");
-        DatabaseReference myRef_5 = database.getReference("account").child(user.getUid()).child("actor");
-        DatabaseReference myRef_6 = database.getReference("account").child(user.getUid()).child("actor");
-        DatabaseReference myRef_7 = database.getReference("account").child(user.getUid()).child("actor");
-        //DatabaseReference myRef_8 = database.getReference("account").child(user.getUid()).child("actor");
+        DatabaseReference myRef_actor = database.getReference("account").child(user.getUid()).child("actor");
 
 
 
         check_actor=new ArrayList<Integer>();
         //check_actor.add(0);
 
-        myRef_0.addValueEventListener(new ValueEventListener() {
+        myRef_actor.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("1").getValue(String.class);
-                if(character!=null && character.equals("true")){
-                    check_actor.add(0);
+                for (int i=1;i<=8;i++){
+                    String character = dataSnapshot.child(String.valueOf(i)).getValue(String.class);
+                    if(character!=null && character.equals("true")){
+                        check_actor.add(i-1);
+                    }
                 }
-                //Log.d("get",String.valueOf(check_actor.get(0)));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        myRef_1.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("1").getValue(String.class);
-                if(character!=null && character.equals("true")){
-                    check_actor.add(1);
-                }
-                //Log.d("get",String.valueOf(check_actor.get(0)));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        myRef_2.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("2").getValue(String.class);
-                if(character!=null && character.equals("true")){
-                    check_actor.add(2);
-                }
-                //Log.d("get",String.valueOf(check_actor.get(1)));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        myRef_3.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("3").getValue(String.class);
-                if(character!=null && character.equals("true")){
-                    check_actor.add(3);
-                }
-                //Log.d("get",String.valueOf(check_actor.get(2)));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        myRef_4.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("4").getValue(String.class);
-                if(character!=null && character.equals("true")){
-                    check_actor.add(4);
-                }
-                //Log.d("get",String.valueOf(check_actor.get(3)));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        myRef_5.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("5").getValue(String.class);
-                if(character!=null && character.equals("true")){
-                    check_actor.add(5);
-                }
-                //Log.d("get",String.valueOf(check_actor.get(4)));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        myRef_6.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("6").getValue(String.class);
-                if(character!=null && character.equals("true")){
-                    check_actor.add(6);
-                }
-                //Log.d("get",String.valueOf(check_actor.get(5)));
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        myRef_7.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("7").getValue(String.class);
-                if(character!=null && character.equals("true")){
-                    check_actor.add(7);
-                }
-                //Log.d("get",String.valueOf(check_actor.get(6)));
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

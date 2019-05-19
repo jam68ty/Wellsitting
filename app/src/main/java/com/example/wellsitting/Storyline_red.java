@@ -13,6 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -503,6 +504,10 @@ public class Storyline_red extends Fragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.item_popup, null, false);
         Button btn_xixi = (Button) view.findViewById(R.id.btn_shopee);
         Button btn_hehe = (Button) view.findViewById(R.id.btn_books);
+        EditText web=view.findViewById(R.id.web);
+        String s=String.valueOf(web.getText());
+        web.setText(s);
+
         //1.构造一个PopupWindow，参数依次是加载的View，宽高
         final PopupWindow popWindow = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);

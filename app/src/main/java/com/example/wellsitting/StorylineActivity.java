@@ -22,11 +22,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -47,42 +50,74 @@ public class StorylineActivity extends AppCompatActivity {
     ArrayList<StoryInformation> storyInformations;
     List sortedList;
 
+    // Provide cache mechanism.
+    private Map<String, RequestCreator> backgroundCache = new HashMap<String, RequestCreator>();
+    private Map<String, RequestCreator> headCache = new HashMap<String, RequestCreator>();
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.storyline_fragment);
-        content=findViewById(R.id.story_content);
-        name=findViewById(R.id.story_name);
-        btn_menu= findViewById(R.id.story_menu);
-        btn_next=findViewById(R.id.story_next);
-        background=findViewById(R.id.story_background);
-        head=findViewById(R.id.story_head);
-        storyInformations=new ArrayList<StoryInformation>();
+        content = findViewById(R.id.story_content);
+        name = findViewById(R.id.story_name);
+        btn_menu = findViewById(R.id.story_menu);
+        btn_next = findViewById(R.id.story_next);
+        background = findViewById(R.id.story_background);
+        head = findViewById(R.id.story_head);
+        storyInformations = new ArrayList<StoryInformation>();
+
+
+        // Cache experiment of 小紅帽故事線
+        for (int i = 0; i < 5; ++i) {
+            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch" + String.valueOf(i));
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    StoryInformation si = null;
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        si = dataSnapshot1.getValue(StoryInformation.class);
+                        backgroundCache.put(si.getBackgroud(), Picasso.get().load(si.getBackgroud()));
+                        headCache.put(si.getHead(), Picasso.get().load(si.getHead()));
+
+                    }
+                    for (RequestCreator rc : backgroundCache.values())
+                        rc.fetch();
+                    for (RequestCreator rc : headCache.values())
+                        rc.fetch();
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                }
+            });
+        }
 
         //小紅帽故事線
         SharedPreferences ch1 = getSharedPreferences("RED", MODE_PRIVATE);
         Integer ch1_1 = ch1.getInt("CH", 0);
-        if(ch1_1==1){
-            Log.d("test","redch1");
-            reference= FirebaseDatabase.getInstance().getReference().child("story/red/ch1");
+        if (ch1_1 == 1) {
+            Log.d("test", "redch1");
+            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch1");
 
         }
         SharedPreferences ch2 = getSharedPreferences("RED", MODE_PRIVATE);
         Integer ch2_2 = ch2.getInt("CH", 0);
-        if(ch2_2==2){
-            reference= FirebaseDatabase.getInstance().getReference().child("story/red/ch2");
+        if (ch2_2 == 2) {
+            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch2");
         }
 
         SharedPreferences ch3 = getSharedPreferences("RED", MODE_PRIVATE);
         Integer ch3_3 = ch3.getInt("CH", 0);
-        if(ch3_3==3){
-            reference= FirebaseDatabase.getInstance().getReference().child("story/red/ch3");
+        if (ch3_3 == 3) {
+            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch3");
         }
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()) {
+                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     Log.d("kkk", dataSnapshot1.toString());
 
                     StoryInformation si = dataSnapshot1.getValue(StoryInformation.class);
@@ -93,7 +128,7 @@ public class StorylineActivity extends AppCompatActivity {
                     @Override
                     public int compare(StoryInformation o1, StoryInformation o2) {
                         // TODO Auto-generated method stub
-                        if( o1.getOrder() > o2.getOrder())
+                        if (o1.getOrder() > o2.getOrder())
                             return 1;
                         else
                             return -1;
@@ -107,10 +142,10 @@ public class StorylineActivity extends AppCompatActivity {
                 ArrayList<StoryInformation> sortedStoryInformations = new ArrayList<StoryInformation>(sortedList);
                 content.setText(sortedStoryInformations.get(0).getSence());
                 name.setText(sortedStoryInformations.get(0).character_name);
-                Picasso.get().load(sortedStoryInformations.get(0).getBackgroud()).into(background);
+                backgroundCache.get(sortedStoryInformations.get(0).getBackgroud()).into(background);
 
 
-                 //Log.d("jingjing", "aaa");
+                //Log.d("jingjing", "aaa");
 
  /*                   Log.d("kkk-getBackgroud" , si.getBackgroud());
                     Log.d("kkk-getCharacter_name", si.getCharacter_name());
@@ -136,10 +171,9 @@ public class StorylineActivity extends AppCompatActivity {
                     }*/
 
 
-                    //count++;
+                //count++;
                 //}
             }
-
 
 
             @Override
@@ -151,37 +185,37 @@ public class StorylineActivity extends AppCompatActivity {
 
         });
 
-        i=1;
+        i = 1;
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Log.d("ttt","yes");
-                if(i!=0 && i<sortedList.size()){
+                if (i != 0 && i < sortedList.size()) {
 
                     ArrayList<StoryInformation> sortedStoryInformations = new ArrayList<StoryInformation>(sortedList);
-                    if(sortedStoryInformations.get(i).getBackgroud().equals("same")){//背景
+                    if (sortedStoryInformations.get(i).getBackgroud().equals("same")) {//背景
 
-                    }else{
-                        Picasso.get().load(sortedStoryInformations.get(i).getBackgroud()).into(background);
+                    } else {
+                        backgroundCache.get(sortedStoryInformations.get(i).getBackgroud()).into(background);
                     }
 
-                    Picasso.get().load(sortedStoryInformations.get(i).getHead()).into(head);
+                    headCache.get(sortedStoryInformations.get(i).getHead()).into(head);
 
-                    if(sortedStoryInformations.get(i).getCharacter_name().equals("no")){
+                    if (sortedStoryInformations.get(i).getCharacter_name().equals("no")) {
                         name.setText("  ");
-                    }else if(sortedStoryInformations.get(i).getCharacter_name().equals("???")){
+                    } else if (sortedStoryInformations.get(i).getCharacter_name().equals("???")) {
                         name.setText("???");
-                    }else{
+                    } else {
                         name.setText(sortedStoryInformations.get(i).getCharacter_name());
                     }
                     content.setText(sortedStoryInformations.get(i).getSence());//對話筐內容
 
 
                     i++;
-                }else{
+                } else {
 
                     //Toast.makeText(mcontext,"sorty end",Toast.LENGTH_LONG).show();
-                    i=0;
+                    i = 0;
                     finish();
                     //Log.d("ttt","yes");
                 }
@@ -196,8 +230,6 @@ public class StorylineActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
 
 
     }

@@ -3,6 +3,9 @@ package com.example.wellsitting;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,11 +14,20 @@ import com.squareup.picasso.Picasso;
 public class Characterdetail extends AppCompatActivity {
 
     //public TextView Name;
+    ImageButton btn_back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_characterdetail);
+        btn_back=findViewById(R.id.detail_back);
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         getIncomingIntent();
     }
 

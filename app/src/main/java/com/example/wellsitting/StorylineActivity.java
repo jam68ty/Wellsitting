@@ -183,6 +183,12 @@ public class StorylineActivity extends AppCompatActivity {
             }
         });
 
+        btn_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
 

@@ -256,7 +256,7 @@ public class MainFragment extends Fragment {
 
             @Override
             public void onClick(View v) {
-                Log.d("xxx", "test");
+                //Log.d("xxx", "test");
 
                 if (IsCheckIn == false) {
                     String Temp = String.valueOf(textView.getText());

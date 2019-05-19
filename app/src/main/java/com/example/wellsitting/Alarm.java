@@ -72,8 +72,7 @@ public class Alarm extends AppCompatActivity {
         btn_cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                timehold.cancel();
-                //button變色未實現
+                //timehold.cancel();
                 finish();
             }
         });
@@ -103,6 +102,8 @@ public class Alarm extends AppCompatActivity {
         alert.show();
     }
     //<自定義計時的通知功能--End>
+
+
 
 
 }

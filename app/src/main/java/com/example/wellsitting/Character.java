@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Character extends Fragment {
@@ -33,11 +34,15 @@ public class Character extends Fragment {
     DatabaseReference reference;
     RecyclerView recyclerView;
     Context mycontext;
+    Context correct_context;
     ArrayList<Characterheadshot> list;
     MyAdapter adapter;
     FirebaseAuth mAuth;
-    ArrayList<Integer> check_actor;//確認是否擁有角色
+    ArrayList<Integer> check_actor;//確認是否擁有角色:yes
+    ArrayList<Integer> check_actor_no;//確認是否擁有角色:no
+    boolean check_actor_done = false;
     TextView actor_coin;
+    boolean actor_coin_read = false;
     Button buy_actor;
 
 
@@ -51,8 +56,10 @@ public class Character extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_character, container, false);
 
-        actor_coin=view.findViewById(R.id.actor_coin);
-        buy_actor=view.findViewById(R.id.buy_actor);
+
+        correct_context=getContext();
+        actor_coin = view.findViewById(R.id.actor_coin);
+        buy_actor = view.findViewById(R.id.buy_actor);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -62,20 +69,27 @@ public class Character extends Fragment {
         DatabaseReference myRef_actor = database.getReference("account").child(user.getUid()).child("actor");
 
 
-
-        check_actor=new ArrayList<Integer>();
+        check_actor = new ArrayList<Integer>();
+        check_actor_no = new ArrayList<Integer>();
         //check_actor.add(0);
 
         myRef_actor.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (int i=1;i<=8;i++){
+                check_actor.clear();
+                check_actor_no.clear();
+
+                for (int i = 0; i < 8; i++) {
                     String character = dataSnapshot.child(String.valueOf(i)).getValue(String.class);
-                    if(character!=null && character.equals("true")){
-                        check_actor.add(i-1);
+                    if (character != null && character.equals("true")) {
+                        check_actor.add(i);
+                    } else {
+                        check_actor_no.add(i);
                     }
                 }
+                check_actor_done = true;
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
@@ -96,7 +110,9 @@ public class Character extends Fragment {
                 //如果抓下來的值為空值，表示沒有存在這個欄位，亦即為新帳號
                 String value_Temp = String.valueOf(value);
                 actor_coin.setText(value_Temp);
+                actor_coin_read = true;
             }
+
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
@@ -104,52 +120,40 @@ public class Character extends Fragment {
         });
 
 
-
-
-        /*myRef.addValueEventListener(new ValueEventListener() {
+        buy_actor.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character1 = dataSnapshot.child("1").getValue(String.class);
-                String character2 = dataSnapshot.child("2").getValue(String.class);
-                String character3 = dataSnapshot.child("3").getValue(String.class);
-                String character4 = dataSnapshot.child("4").getValue(String.class);
-                String character5 = dataSnapshot.child("5").getValue(String.class);
-                String character6 = dataSnapshot.child("6").getValue(String.class);
-                String character7 = dataSnapshot.child("7").getValue(String.class);
-                String character8 = dataSnapshot.child("8").getValue(String.class);
+            public void onClick(View v) {
+                if (check_actor_done != true || actor_coin_read != true) {
+                    Toast.makeText(correct_context, "資料庫讀取中...", Toast.LENGTH_LONG);
+                    return;
+                }
+                String i = String.valueOf(actor_coin.getText());
+                int t = Integer.parseInt(i.trim());
+                String value_Temp = String.valueOf(t);
+                if (t < 100) {
+                    Toast.makeText(correct_context, "錢不夠喔窮人", Toast.LENGTH_LONG);
+                } else {
+                    //和錢有關的動作
+                    myRef.child("coin").setValue(t - 100);
+                    String value_Temp1 = String.valueOf(t - 100);
+                    actor_coin.setText(value_Temp1);
 
-                if(character1!=null && character1.equals("true")){
-                    check_actor.add(1);
-                }else if(character2!=null && character2.equals("true")){
-                    check_actor.add(2);
-                }else if(character3!=null && character3.equals("true")){
-                    check_actor.add(3);
-                }else if(character4!=null && character4.equals("true")){
-                    check_actor.add(4);
-                }else if(character5!=null && character5.equals("true")){
-                    check_actor.add(5);
-                }else if(character6!=null && character6.equals("true")){
-                    check_actor.add(6);
-                }else if(character7!=null && character7.equals("true")){
-                    check_actor.add(7);
-                }else if(character8!=null && character8.equals("true")){
-                    check_actor.add(8);
-                }else{
+                    //角色
 
+                    Random ran = new Random();
+                    int r = ran.nextInt(check_actor_no.size());
+                    myRef_actor.child(String.valueOf(check_actor_no.get(r))).setValue("true");
+                    Toast.makeText(mycontext, "已購買", Toast.LENGTH_LONG);
+                    check_actor.add(check_actor_no.get(r));
+                    check_actor_no.remove(check_actor_no.get(r));
+                    RefreshHeadCount();
                 }
 
-                Log.d("get",String.valueOf(check_actor.get(0)));
-                Log.d("get",String.valueOf(check_actor.get(1)));
-                Log.d("get",String.valueOf(check_actor.get(2)));
-                Log.d("get",String.valueOf(check_actor.get(3)));
 
             }
+        });
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });*/
 
 
 
@@ -161,35 +165,41 @@ public class Character extends Fragment {
 
         // Inflate the layout for this fragment
 
-        mycontext=inflater.getContext();
-        recyclerView=(RecyclerView)view.findViewById(R.id.myrecycler);
+        mycontext = inflater.getContext();
+        recyclerView = (RecyclerView) view.findViewById(R.id.myrecycler);
         recyclerView.setLayoutManager(new LinearLayoutManager(mycontext));
-        list=new ArrayList<Characterheadshot>();
+        list = new ArrayList<Characterheadshot>();
 
-
-        reference= FirebaseDatabase.getInstance().getReference().child("character_headshot");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int c=0;
-                for(DataSnapshot dataSnapshot1:dataSnapshot.getChildren()){
-                    Characterheadshot chs=dataSnapshot1.getValue(Characterheadshot.class);
-                    //如果getkey()有包含在check_actor中（即該角色值＝＝true），則讀出
-                    Integer s=Integer.valueOf(chs.getKey());
-                    if(check_actor.contains(s)==true){
-                        list.add(chs);
-                    }
-                    c++;
-                }
-                adapter =new MyAdapter(mycontext,list);
-                recyclerView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(mycontext,"test",Toast.LENGTH_LONG).show();
-            }
-        });
+        RefreshHeadCount();
         return view;
     }
+
+
+    private void RefreshHeadCount() {
+            reference = FirebaseDatabase.getInstance().getReference().child("character_headshot");
+            reference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    list.clear();
+
+                    int c = 0;
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        Characterheadshot chs = dataSnapshot1.getValue(Characterheadshot.class);
+                        //如果getkey()有包含在check_actor中（即該角色值＝＝true），則讀出
+                        Integer s = Integer.valueOf(chs.getKey());
+                        if (check_actor.contains(s) == true) {
+                            list.add(chs);
+                        }
+                        c++;
+                    }
+                    adapter = new MyAdapter(mycontext, list);
+                    recyclerView.setAdapter(adapter);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    Toast.makeText(mycontext, "test", Toast.LENGTH_LONG).show();
+                }
+            });
+    };
 }

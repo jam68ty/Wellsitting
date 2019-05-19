@@ -259,8 +259,7 @@ public class MainFragment extends Fragment {
                 Log.d("xxx", "test");
 
                 if (IsCheckIn == false) {
-                    //在這裡進行資料的再次讀入(讀取TextView裡面的值，因為"coin: "共6個字元，故由index=6始於積分)
-                    String Temp = String.valueOf(textView);
+                    String Temp = String.valueOf(textView.getText());
                     Log.d("ppp","value = "+Temp);
                     //將字串轉為數字
                     i = Integer.valueOf(Temp);

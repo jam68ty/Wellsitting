@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:textColor="#FF00FF"
+    android:editTextColor="#FF00FF"
+    >
 
     <ImageView
         android:layout_width="280dp"
@@ -21,15 +24,19 @@
         />
 
     <EditText
-        android:id="@+id/web"
+        android:id="@+id/shopUrl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
         android:layout_marginLeft="65dp"
-        android:hint="複製商品網址在此"
+        android:hint="全選後複製商品網址在此"
         android:textColorHint="#008080"
-        android:textColor="#008080"
+        android:textColor="#FF00FF"
+        android:editTextColor="#FF00FF"
+        android:longClickable = "true"
+        android:textIsSelectable="true"
         android:fontFamily="@font/texttype1"
+        android:inputType="text"
         android:gravity="center"
 
         />

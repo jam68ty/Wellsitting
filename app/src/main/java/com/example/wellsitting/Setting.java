@@ -35,6 +35,7 @@ public class Setting extends Fragment {
     FirebaseAuth mAuth;
     TextView btn_award;
     TextView btn_clock;
+    TextView btn_about;
     //ImageButton btn_award;
     //ImageButton btn_clock;
     TextView today_sum;
@@ -77,7 +78,7 @@ public class Setting extends Fragment {
             @Override
             public void onClick(View v) {
                 Reward reward=new Reward();
-                Intent intent = new Intent(getActivity(),Reward.class);
+                Intent intent = new Intent(getActivity(),About.class);
                 startActivity(intent);
 
                 // Storyline_forg storyline_forg=new Storyline_forg();
@@ -104,6 +105,15 @@ public class Setting extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(),Alarm.class);
                 startActivity(intent);
+            }
+        });
+
+        //進入POPWINDOW
+        btn_about=view.findViewById(R.id.about);
+        btn_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //點擊無反應
             }
         });
         return view;

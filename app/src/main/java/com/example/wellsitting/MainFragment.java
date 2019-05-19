@@ -260,9 +260,10 @@ public class MainFragment extends Fragment {
 
                 if (IsCheckIn == false) {
                     //在這裡進行資料的再次讀入(讀取TextView裡面的值，因為"coin: "共6個字元，故由index=6始於積分)
-                    String Temp = textView.getText().toString().substring(6);
+                    String Temp = String.valueOf(textView);
+                    Log.d("ppp","value = "+Temp);
                     //將字串轉為數字
-                    i = Integer.parseInt(Temp);
+                    i = Integer.valueOf(Temp);
                     //每次簽到獲得25積分
                     i = i + 25;
                     mSignIn.setImageResource(R.drawable.btn_sign_done);//已签到
@@ -270,7 +271,8 @@ public class MainFragment extends Fragment {
                     // start平移和渐变动画
                     signSuccess.startAnimation(set);
                     signSuccess.setVisibility(View.GONE);
-                    textView.setText("coin:" + i);
+                    Temp=String.valueOf(i);
+                    textView.setText(Temp);
                     //   mSignIn.setClickable(false);
 
                     // Write a message to the database

@@ -78,7 +78,7 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/texttype1"
         android:gravity="center"
-        android:text="coin：0"
+        android:text="0"
         android:textColor="#FFC314"
         android:textSize="26sp"
 

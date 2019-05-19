@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fake_view"
+    tools:context=".About">
+
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:src="@drawable/fake_pop_window"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="自定義特殊獎勵！"
+        android:textSize="40dp"
+        android:fontFamily="@font/texttype1"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="45dp"
+        android:textColor="	#0A6ECD"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="請貼上商品網址"
+        android:textColorHint="#0A6ECD"
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="180dp"
+        android:fontFamily="@font/texttype1"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="推薦購物網站"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="80dp"
+        android:textSize="40dp"
+        android:fontFamily="@font/texttype1"
+        android:textColor="	#0A6ECD"
+
+        />
+
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="500dp"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:text="取消"
+            android:fontFamily="@font/texttype1"
+            android:textColor="	#0A6ECD"
+            />
+
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="70dp"
+            android:background="#00000000"
+            android:text="確定"
+            android:fontFamily="@font/texttype1"
+            android:textColor="	#0A6ECD"
+            />
+
+    </LinearLayout>
+
+
+</RelativeLayout>

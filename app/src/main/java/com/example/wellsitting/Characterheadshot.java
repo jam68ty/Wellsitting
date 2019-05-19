@@ -6,6 +6,7 @@ public class Characterheadshot {
     private String pic_halfbody;
     private String brief_intro;
     private String all_intro;
+    private int key;
     private boolean check_value;
 
     public Characterheadshot(){
@@ -18,6 +19,15 @@ public class Characterheadshot {
         this.check_value=check_value;
         this.all_intro=all_intro;
         this.pic_halfbody=pic_halfbody;
+        this.key=key;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
     }
 
     public String getPic_halfbody() {

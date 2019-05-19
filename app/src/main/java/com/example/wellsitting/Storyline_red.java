@@ -368,7 +368,7 @@ public class Storyline_red extends Fragment {
 
         rbuy2.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String i=t_score.getText().toString().substring(5);
+                String i=String.valueOf(t_score.getText());
                 String s=rPrice_2.getText().toString().substring(0);
                 int t =Integer.parseInt(i.trim());
                 String value_Temp = String.valueOf(t);
@@ -402,7 +402,7 @@ public class Storyline_red extends Fragment {
 
         rbuy3.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String i=t_score.getText().toString().substring(5);
+                String i=String.valueOf(t_score.getText());
                 String s=rPrice_3.getText().toString().substring(0);
                 int t =Integer.parseInt(i.trim());
                 String value_Temp = String.valueOf(t);
@@ -435,7 +435,7 @@ public class Storyline_red extends Fragment {
 
         rbuy4.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String i=t_score.getText().toString().substring(5);
+                String i=String.valueOf(t_score.getText());
                 String s=rPrice_4.getText().toString().substring(0);
                 int t =Integer.parseInt(i.trim());
                 String value_Temp = String.valueOf(t);
@@ -468,7 +468,7 @@ public class Storyline_red extends Fragment {
 
         rbuy5.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v) {
-                String i=t_score.getText().toString().substring(5);
+                String i=String.valueOf(t_score.getText());
                 String s=rPrice_5.getText().toString().substring(0);
                 int t =Integer.parseInt(i.trim());
                 String value_Temp = String.valueOf(t);

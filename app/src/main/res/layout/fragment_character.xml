@@ -31,10 +31,29 @@
         android:fontFamily="@font/texttype1"
         />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/myrecycler"
-        android:layout_marginTop="120dp"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="110dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/buy_actor"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text="Button"
+            android:background="@drawable/logo_icon"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/myrecycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
+    </LinearLayout>
+
 
 </FrameLayout>

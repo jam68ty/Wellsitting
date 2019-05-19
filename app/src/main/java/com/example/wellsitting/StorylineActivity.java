@@ -59,6 +59,7 @@ public class StorylineActivity extends AppCompatActivity {
         head=findViewById(R.id.story_head);
         storyInformations=new ArrayList<StoryInformation>();
 
+        //小紅帽故事線
         SharedPreferences ch1 = getSharedPreferences("RED", MODE_PRIVATE);
         Integer ch1_1 = ch1.getInt("CH", 0);
         if(ch1_1==1){
@@ -70,6 +71,12 @@ public class StorylineActivity extends AppCompatActivity {
         Integer ch2_2 = ch2.getInt("CH", 0);
         if(ch2_2==2){
             reference= FirebaseDatabase.getInstance().getReference().child("story/red/ch2");
+        }
+
+        SharedPreferences ch3 = getSharedPreferences("RED", MODE_PRIVATE);
+        Integer ch3_3 = ch3.getInt("CH", 0);
+        if(ch3_3==3){
+            reference= FirebaseDatabase.getInstance().getReference().child("story/red/ch3");
         }
 
         reference.addValueEventListener(new ValueEventListener() {

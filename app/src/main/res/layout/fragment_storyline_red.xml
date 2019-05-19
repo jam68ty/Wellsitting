@@ -95,9 +95,9 @@
                 android:id="@+id/rbuy_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/lock"
+                android:background="#00000000"
                 android:layout_marginTop="18dp"
-                android:src="@drawable/lock" />
+                 />
 
             <TextView
                 android:id="@+id/rPrice_2"
@@ -136,9 +136,10 @@
                 android:id="@+id/rbuy_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/lock"
+
+                android:background="#00000000"
                 android:layout_marginTop="18dp"
-                android:src="@drawable/lock" />
+                 />
 
             <TextView
                 android:id="@+id/rPrice_3"
@@ -174,9 +175,9 @@
                 android:id="@+id/rbuy_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/lock"
+
                 android:layout_marginTop="18dp"
-                android:src="@drawable/lock" />
+                android:background="#00000000" />
 
             <TextView
                 android:id="@+id/rPrice_4"
@@ -216,9 +217,9 @@
                 android:id="@+id/rbuy_5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/lock"
+
                 android:layout_marginTop="18dp"
-                android:src="@drawable/lock" />
+                android:background="#00000000" />
 
             <TextView
                 android:id="@+id/rPrice_5"

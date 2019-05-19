@@ -38,14 +38,30 @@
         android:layout_marginTop="110dp"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/buy_actor"
-            android:layout_width="50dp"
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:text="Button"
-            android:background="@drawable/logo_icon"
-            />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buy_actor"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:text="Button"
+                android:background="@drawable/logo_icon"
+                />
+            <TextView
+                android:id="@+id/actor_coin"
+                android:text="0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#008080"
+                android:textSize="30dp"/>
+
+        </LinearLayout>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/myrecycler"

@@ -114,9 +114,6 @@ public class Storyline_red extends Fragment {
                 //如果抓下來的值為空值，表示沒有存在這個欄位，亦即為新帳號
                 String value_Temp = String.valueOf(value);
                 t_score.setText(value_Temp);
-
-
-
             }
 
             @Override
@@ -472,7 +469,6 @@ public class Storyline_red extends Fragment {
                 String s=rPrice_5.getText().toString().substring(0);
                 int t =Integer.parseInt(i.trim());
                 String value_Temp = String.valueOf(t);
-
 
                 if(check_rch5==true){
                     Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();

@@ -11,6 +11,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -35,6 +37,8 @@ public class Character extends Fragment {
     MyAdapter adapter;
     FirebaseAuth mAuth;
     ArrayList<Integer> check_actor;//確認是否擁有角色
+    TextView actor_coin;
+    Button buy_actor;
 
 
     //ImageView imageView;
@@ -47,11 +51,14 @@ public class Character extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_character, container, false);
 
+        actor_coin=view.findViewById(R.id.actor_coin);
+        buy_actor=view.findViewById(R.id.buy_actor);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         //DatabaseReference myRef_1 = database.getReference("account").child(user.getUid()).child("1");
         //讀入account底下的actor項目，以確認使用者已擁有哪些角色
+        DatabaseReference myRef = database.getReference("account").child(user.getUid()).child("coin");
         DatabaseReference myRef_0 = database.getReference("account").child(user.getUid()).child("actor");
         DatabaseReference myRef_1 = database.getReference("account").child(user.getUid()).child("actor");
         DatabaseReference myRef_2 = database.getReference("account").child(user.getUid()).child("actor");
@@ -61,6 +68,8 @@ public class Character extends Fragment {
         DatabaseReference myRef_6 = database.getReference("account").child(user.getUid()).child("actor");
         DatabaseReference myRef_7 = database.getReference("account").child(user.getUid()).child("actor");
         //DatabaseReference myRef_8 = database.getReference("account").child(user.getUid()).child("actor");
+
+
 
         check_actor=new ArrayList<Integer>();
         //check_actor.add(0);
@@ -138,7 +147,7 @@ public class Character extends Fragment {
         myRef_5.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("4").getValue(String.class);
+                String character = dataSnapshot.child("5").getValue(String.class);
                 if(character!=null && character.equals("true")){
                     check_actor.add(5);
                 }
@@ -152,7 +161,7 @@ public class Character extends Fragment {
         myRef_6.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("4").getValue(String.class);
+                String character = dataSnapshot.child("6").getValue(String.class);
                 if(character!=null && character.equals("true")){
                     check_actor.add(6);
                 }
@@ -166,7 +175,7 @@ public class Character extends Fragment {
         myRef_7.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String character = dataSnapshot.child("4").getValue(String.class);
+                String character = dataSnapshot.child("7").getValue(String.class);
                 if(character!=null && character.equals("true")){
                     check_actor.add(7);
                 }
@@ -177,6 +186,29 @@ public class Character extends Fragment {
 
             }
         });
+
+
+        //讀取代幣
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                //------------------------------------------------------------------------
+                //以下為coin
+                //抓下來的型態是常整數型態，如此可以避免字串過長
+                Long value = dataSnapshot.child("coin").getValue(Long.class);
+                //如果抓下來的值為空值，表示沒有存在這個欄位，亦即為新帳號
+                String value_Temp = String.valueOf(value);
+                actor_coin.setText(value_Temp);
+            }
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+            }
+        });
+
+
 
 
         /*myRef.addValueEventListener(new ValueEventListener() {

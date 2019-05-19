@@ -66,19 +66,19 @@ public class Setting extends Fragment {
         });*/
         today_sum=view.findViewById(R.id.today_sum);
         nickname=view.findViewById(R.id.setting_nickname);
+        nickname.setCursorVisible(false);
         edit=view.findViewById(R.id.setting_edit);
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         updateUI(user);
 
         //進入獎勵設定
-
         btn_award=view.findViewById(R.id.award);
         btn_award.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Reward reward=new Reward();
-                Intent intent = new Intent(getActivity(),About.class);
+                Intent intent = new Intent(getActivity(),Reward.class);
                 startActivity(intent);
 
                 // Storyline_forg storyline_forg=new Storyline_forg();
@@ -101,8 +101,10 @@ public class Setting extends Fragment {
         //進入鬧鐘設定
         btn_clock=view.findViewById(R.id.clock);
         btn_clock.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                Log.d("ooon","yes");
                 Intent intent = new Intent(getActivity(),Alarm.class);
                 startActivity(intent);
             }
@@ -114,6 +116,8 @@ public class Setting extends Fragment {
             @Override
             public void onClick(View v) {
                 //點擊無反應
+                Intent intent = new Intent(getActivity(),About.class);
+                startActivity(intent);
             }
         });
         return view;

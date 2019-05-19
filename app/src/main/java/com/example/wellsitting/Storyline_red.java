@@ -3,14 +3,19 @@ package com.example.wellsitting;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +34,8 @@ public class Storyline_red extends Fragment {
 
 
     private View view;
+
+    ImageView gift;
 
     private Button redch1;
     private Button redch2;
@@ -65,6 +72,14 @@ public class Storyline_red extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_storyline_red, container, false);
 
+        gift=view.findViewById(R.id.gift_red);
+        gift.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initPopWindow(v);
+            }
+        });
+
 
         redch2=view.findViewById(R.id.redch2);
         mcontext=inflater.getContext();
@@ -98,7 +113,7 @@ public class Storyline_red extends Fragment {
                 Long value = dataSnapshot.child("coin").getValue(Long.class);
                 //如果抓下來的值為空值，表示沒有存在這個欄位，亦即為新帳號
                 String value_Temp = String.valueOf(value);
-                t_score.setText("coin:" + value_Temp);
+                t_score.setText(value_Temp);
 
 
 
@@ -367,13 +382,13 @@ public class Storyline_red extends Fragment {
                 } else{
                     if (t<100){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
-                        t_score.setText("coin:" + value_Temp);
+                        t_score.setText(value_Temp);
 
                     }else{
                         redch2.setEnabled(true);
                         myRef.child("coin").setValue(t-100);
                         String value_Temp1 = String.valueOf(t-100);
-                        t_score.setText("coin:"+value_Temp1);
+                        t_score.setText(value_Temp1);
                         rbuy2.setImageResource(R.drawable.story_rgot);
                         rPrice_2.setText(null);
                         Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();
@@ -400,13 +415,13 @@ public class Storyline_red extends Fragment {
                 } else{
                     if (t<100){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
-                        t_score.setText("coin:" + value_Temp);
+                        t_score.setText(value_Temp);
 
                     }else{
                         redch3.setEnabled(true);
                         myRef.child("coin").setValue(t-100);
                         String value_Temp1 = String.valueOf(t-100);
-                        t_score.setText("coin:"+value_Temp1);
+                        t_score.setText(value_Temp1);
                         rbuy3.setImageResource(R.drawable.story_rgot);
                         rPrice_3.setText(null);
                         Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();
@@ -433,13 +448,13 @@ public class Storyline_red extends Fragment {
                 } else{
                     if (t<100){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
-                        t_score.setText("coin:" + value_Temp);
+                        t_score.setText(value_Temp);
 
                     }else{
                         redch4.setEnabled(true);
                         myRef.child("coin").setValue(t-100);
                         String value_Temp1 = String.valueOf(t-100);
-                        t_score.setText("coin:"+value_Temp1);
+                        t_score.setText(value_Temp1);
                         rbuy4.setImageResource(R.drawable.story_rgot);
                         rPrice_4.setText(null);
                         Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();
@@ -466,13 +481,13 @@ public class Storyline_red extends Fragment {
                 } else{
                     if (t<100){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
-                        t_score.setText("coin:" + value_Temp);
+                        t_score.setText(value_Temp);
 
                     }else{
                         redch5.setEnabled(true);
                         myRef.child("coin").setValue(t-100);
                         String value_Temp1 = String.valueOf(t-100);
-                        t_score.setText("coin:"+value_Temp1);
+                        t_score.setText(value_Temp1);
                         rbuy5.setImageResource(R.drawable.story_rgot);
                         rPrice_5.setText(null);
                         Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();
@@ -486,6 +501,56 @@ public class Storyline_red extends Fragment {
 
 
         return view;
+    }
+
+    private void initPopWindow(View v) {
+        View view = LayoutInflater.from(getActivity()).inflate(R.layout.item_popup, null, false);
+        Button btn_xixi = (Button) view.findViewById(R.id.btn_shopee);
+        Button btn_hehe = (Button) view.findViewById(R.id.btn_books);
+        //1.构造一个PopupWindow，参数依次是加载的View，宽高
+        final PopupWindow popWindow = new PopupWindow(view,
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
+
+        //popWindow.setAnimationStyle(R.anim.anim_pop);  //设置加载动画
+
+        //这些为了点击非PopupWindow区域，PopupWindow会消失的，如果没有下面的
+        //代码的话，你会发现，当你把PopupWindow显示出来了，无论你按多少次后退键
+        //PopupWindow并不会关闭，而且退不出程序，加上下述代码可以解决这个问题
+        popWindow.setTouchable(true);
+        popWindow.setTouchInterceptor(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+                // 这里如果返回true的话，touch事件将被拦截
+                // 拦截后 PopupWindow的onTouchEvent不被调用，这样点击外部区域无法dismiss
+            }
+        });
+        popWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));    //要为popWindow设置一个背景才有效
+
+
+        //设置popupWindow显示的位置，参数依次是参照View，x轴的偏移量，y轴的偏移量
+        popWindow.showAsDropDown(v, 10, -1200);
+
+        //设置popupWindow里的按钮的事件
+        btn_xixi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri=Uri.parse("https://shopee.tw/");
+                Intent i=new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(i);
+                Toast.makeText(getContext(), "即將前往蝦皮頁面", Toast.LENGTH_SHORT).show();
+            }
+        });
+        btn_hehe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri=Uri.parse("https://www.books.com.tw/?loc=tw_logo_001");
+                Intent i=new Intent(Intent.ACTION_VIEW,uri);
+                startActivity(i);
+                Toast.makeText(getContext(), "即將前往博客來頁面", Toast.LENGTH_SHORT).show();
+                popWindow.dismiss();
+            }
+        });
     }
 /*    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

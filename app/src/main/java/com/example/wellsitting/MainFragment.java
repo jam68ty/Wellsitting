@@ -99,7 +99,6 @@ public class MainFragment extends Fragment {
         if(yesterday.equals(today)){
             Log.d("today","yes");
 
-
         }else {
             Log.d("today","no");
             SharedPreferences.Editor date = getActivity().getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
@@ -358,6 +357,24 @@ public class MainFragment extends Fragment {
         return view;
     }
 
+    //加錢--連續坐滿三十分鐘
+    public void addcoin(){
+        FirebaseUser user = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("account").child(user.getUid()).child("coin");
+        //DatabaseReference myRef_status = database.getReference("account").child(user.getUid()).child("status");
+        int i;
+        String Temp = String.valueOf(textView.getText());
+        Log.d("ppp","value = "+Temp);
+        i = Integer.valueOf(Temp);
+        i = i + 10;
+        Temp=String.valueOf(i);
+        textView.setText(Temp);
+        // Write a message to the database
+        myRef.child("coin").setValue(i);
+
+    }
+
     //<計時器--Start>
     CountDownTimer timeremain = new CountDownTimer(30000, 1000){//30分鐘：1800000
         @Override
@@ -366,7 +383,14 @@ public class MainFragment extends Fragment {
             Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
 
             if (pre_sum != null) {
-                timeremains.setText(String.valueOf(10-pre_sum));//待解決：無法跳至零
+                timeremains.setText(String.valueOf(31-pre_sum));//待解決：無法跳至零
+            }
+
+            //完整30分鐘則計入資料庫並領取金幣獎勵
+            if(pre_sum==20){
+                addcoin();
+                Toast.makeText(mcontext,"恭喜完成獎勵\n獎勵25金幣!",Toast.LENGTH_LONG).show();
+
             }
         }
         @Override

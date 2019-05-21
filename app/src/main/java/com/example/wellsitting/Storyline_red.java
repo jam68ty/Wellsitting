@@ -496,7 +496,6 @@ public class Storyline_red extends Fragment {
             }
         });
 
-
         return view;
     }
 
@@ -504,7 +503,7 @@ public class Storyline_red extends Fragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.item_popup, null, false);
         Button btn_xixi = (Button) view.findViewById(R.id.btn_shopee);
         Button btn_hehe = (Button) view.findViewById(R.id.btn_books);
-        EditText web=view.findViewById(R.id.web);
+        EditText web=view.findViewById(R.id.shopUrl);
         String s=String.valueOf(web.getText());
         web.setText(s);
 

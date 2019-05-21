@@ -8,14 +8,20 @@ import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.IBinder;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.WindowManager;
 import android.widget.Chronometer;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -41,6 +47,9 @@ public class Service extends android.app.Service {
     String yesterday;
     //<取得日期--End>
 
+    FirebaseAuth mAuth;
+
+    int count;
     //CHECK DATE
 
 
@@ -56,6 +65,10 @@ public class Service extends android.app.Service {
 // TODO Auto-generated method stub
         super.onCreate();
         mediaPlayer = MediaPlayer.create(this, R.raw.twice);
+        /*mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("test").child("signal");*/
 
 
     }
@@ -69,6 +82,42 @@ public class Service extends android.app.Service {
         SharedPreferences.Editor c = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
         c.putInt("COUNTDOWN",0);
         c.apply();
+
+
+
+        //讀取資料庫資料<--Start>
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("test");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+
+                String value=snapshot.getValue().toString();
+                Log.d("value = ",value);
+                Map<String, Object> objectMap = (HashMap<String,Object>) snapshot.getValue();
+                Log.d("size",String.valueOf(objectMap.size()));
+                for (Object obj : objectMap.values()) {
+                    count++;
+                    Log.d("count = ",String.valueOf(count));
+                }
+                //錯誤提醒
+                //Log.d("count_service = ",String.valueOf(count));
+                if(objectMap.size()>5){
+                    //dialog_error();
+                    //onDestroy();
+                    //timer_homepage.cancel();
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+
+        });
+        //讀取資料庫資料<--End>
 
         //<自定義時間的計時功能--Start>
         //接受Alarm傳來的值
@@ -104,7 +153,7 @@ public class Service extends android.app.Service {
 
 
         //<系統時間的計時功能--Start>
-        timer_homepage = new CountDownTimer(10000, 1000){//30分鐘：1800000
+        timer_homepage = new CountDownTimer(30000, 1000){//30分鐘：1800000
             @Override
             public void onTick(long millisUntilFinished) {
                 //<首頁倒計時計算--Start>
@@ -221,6 +270,30 @@ public class Service extends android.app.Service {
         alert.show();
     }
     //<自定義計時的通知功能--End>
+
+    //<錯誤提醒--Start>
+    public void dialog_error(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("坐姿錯誤！")
+                .setTitle("提醒");
+        // Add the buttons
+        builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User clicked OK button
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                // User cancelled the dialog
+                dialog.dismiss();
+            }
+        });
+        AlertDialog alert = builder.create();
+        alert.getWindow().setType(WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY);
+        alert.show();
+    }
+    //<錯誤提醒--End>
 
 
     //<Database基本功能設定--Start>

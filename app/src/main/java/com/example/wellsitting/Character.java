@@ -139,7 +139,6 @@ public class Character extends Fragment {
                     actor_coin.setText(value_Temp1);
 
                     //角色
-
                     Random ran = new Random();
                     int r = ran.nextInt(check_actor_no.size());
                     myRef_actor.child(String.valueOf(check_actor_no.get(r))).setValue("true");

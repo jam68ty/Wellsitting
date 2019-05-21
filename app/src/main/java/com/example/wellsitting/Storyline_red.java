@@ -102,10 +102,10 @@ public class Storyline_red extends Fragment {
         FirebaseUser user = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("account").child(user.getUid()).child("coin");
-        DatabaseReference myRef_rch2 = database.getReference("account").child(user.getUid()).child("rch2_buyornot");
-        DatabaseReference myRef_rch3 = database.getReference("account").child(user.getUid()).child("rch3_buyornot");
-        DatabaseReference myRef_rch4 = database.getReference("account").child(user.getUid()).child("rch4_buyornot");
-        DatabaseReference myRef_rch5 = database.getReference("account").child(user.getUid()).child("rch5_buyornot");
+        DatabaseReference myRef_rch2 = database.getReference("account").child(user.getUid()).child("story_red");
+        DatabaseReference myRef_rch3 = database.getReference("account").child(user.getUid()).child("story_red");
+        DatabaseReference myRef_rch4 = database.getReference("account").child(user.getUid()).child("story_red");
+        DatabaseReference myRef_rch5 = database.getReference("account").child(user.getUid()).child("story_red");
 
 //-----------------------------------------------------------------------------------------------
         // Read from the database
@@ -138,7 +138,8 @@ public class Storyline_red extends Fragment {
                 //------------------------------------------------------------------------
                 //以下為coin
                 //抓下來的型態是常整數型態，如此可以避免字串過長
-                String buyornot = dataSnapshot.child("rch2_buyornot").getValue(String.class);
+                String buyornot = dataSnapshot.child("2").getValue(String.class);
+
 
 
                 //如果抓下來的值為空值，表示沒有存在這個欄位，亦即為新帳號
@@ -172,7 +173,7 @@ public class Storyline_red extends Fragment {
                 //------------------------------------------------------------------------
                 //以下為coin
                 //抓下來的型態是常整數型態，如此可以避免字串過長
-                String buyornot = dataSnapshot.child("rch3_buyornot").getValue(String.class);
+                String buyornot = dataSnapshot.child("3").getValue(String.class);
 
 
                 //如果抓下來的值為空值，表示沒有存在這個欄位，亦即為新帳號
@@ -206,7 +207,7 @@ public class Storyline_red extends Fragment {
                 //------------------------------------------------------------------------
                 //以下為coin
                 //抓下來的型態是常整數型態，如此可以避免字串過長
-                String buyornot = dataSnapshot.child("rch4_buyornot").getValue(String.class);
+                String buyornot = dataSnapshot.child("4").getValue(String.class);
 
 
                 //如果抓下來的值為空值，表示沒有存在這個欄位，亦即為新帳號
@@ -239,7 +240,7 @@ public class Storyline_red extends Fragment {
                 //------------------------------------------------------------------------
                 //以下為coin
                 //抓下來的型態是常整數型態，如此可以避免字串過長
-                String buyornot = dataSnapshot.child("rch5_buyornot").getValue(String.class);
+                String buyornot = dataSnapshot.child("5").getValue(String.class);
 
 
                 //如果抓下來的值為空值，表示沒有存在這個欄位，亦即為新帳號
@@ -397,7 +398,7 @@ public class Storyline_red extends Fragment {
                         rPrice_2.setText(null);
                         Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();
 
-                        myRef_rch2.child("rch2_buyornot").setValue("true");
+                        myRef_rch2.child("2").setValue("true");
                         check_rch2=true;
                     }
                 }
@@ -430,7 +431,7 @@ public class Storyline_red extends Fragment {
                         rPrice_3.setText(null);
                         Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();
 
-                        myRef_rch3.child("rch3_buyornot").setValue("true");
+                        myRef_rch3.child("3").setValue("true");
                         check_rch3=true;
                     }
                 }
@@ -463,7 +464,7 @@ public class Storyline_red extends Fragment {
                         rPrice_4.setText(null);
                         Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();
 
-                        myRef_rch4.child("rch4_buyornot").setValue("true");
+                        myRef_rch4.child("4").setValue("true");
                         check_rch4=true;
                     }
                 }
@@ -495,7 +496,7 @@ public class Storyline_red extends Fragment {
                         rPrice_5.setText(null);
                         Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();
 
-                        myRef_rch5.child("rch5_buyornot").setValue("true");
+                        myRef_rch5.child("5").setValue("true");
                         check_rch5=true;
                     }
                 }

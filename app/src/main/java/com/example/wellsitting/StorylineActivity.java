@@ -114,6 +114,47 @@ public class StorylineActivity extends AppCompatActivity {
             reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch3");
         }
 
+        SharedPreferences ch4 = getSharedPreferences("RED", MODE_PRIVATE);
+        Integer ch4_4 = ch3.getInt("CH", 0);
+        if (ch4_4 == 4) {
+            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch3");
+        }
+
+        SharedPreferences ch5 = getSharedPreferences("RED", MODE_PRIVATE);
+        Integer ch5_5 = ch3.getInt("CH", 0);
+        if (ch5_5 == 4) {
+            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch4");
+        }
+
+        /*//青蛙王子主線
+        SharedPreferences fch1 = getSharedPreferences("FROG", MODE_PRIVATE);
+        Integer fch1_1 = fch1.getInt("CH", 0);
+        if (fch1_1 == 1) {
+            Log.d("test", "redch1");
+            reference = FirebaseDatabase.getInstance().getReference().child("story/frog/ch1");
+
+        }
+        SharedPreferences fch2 = getSharedPreferences("FROG", MODE_PRIVATE);
+        Integer fch2_2 = fch2.getInt("CH", 0);
+        if (fch2_2 == 2) {
+            reference = FirebaseDatabase.getInstance().getReference().child("story/frog/ch2");
+        }
+
+        SharedPreferences fch3 = getSharedPreferences("FROG", MODE_PRIVATE);
+        Integer fch3_3 = fch3.getInt("CH", 0);
+        if (fch3_3 == 3) {
+            reference = FirebaseDatabase.getInstance().getReference().child("story/frog/ch3");
+        }
+
+        SharedPreferences fch4 = getSharedPreferences("FROG", MODE_PRIVATE);
+        Integer fch4_4 = ch3.getInt("CH", 0);
+        if (ch4_4 == 4) {
+            reference = FirebaseDatabase.getInstance().getReference().child("story/frog/ch4");
+        }
+*/
+
+
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

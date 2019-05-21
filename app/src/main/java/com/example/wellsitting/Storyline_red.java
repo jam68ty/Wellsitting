@@ -1,5 +1,6 @@
 package com.example.wellsitting;
 
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,7 +29,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import static android.content.Context.CLIPBOARD_SERVICE;
 import static android.content.Context.MODE_PRIVATE;
+import static android.support.v4.content.ContextCompat.getSystemService;
 
 
 public class Storyline_red extends Fragment {
@@ -67,6 +70,8 @@ public class Storyline_red extends Fragment {
     boolean check_rch4;
     boolean check_rch5;
 
+    ClipboardManager myClipboard;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -81,6 +86,7 @@ public class Storyline_red extends Fragment {
             }
         });
 
+        myClipboard = (ClipboardManager) this.getActivity().getSystemService(CLIPBOARD_SERVICE);
 
         redch2=view.findViewById(R.id.redch2);
         mcontext=inflater.getContext();
@@ -508,6 +514,7 @@ public class Storyline_red extends Fragment {
         web.setText(s);
 
         //1.构造一个PopupWindow，参数依次是加载的View，宽高
+
         final PopupWindow popWindow = new PopupWindow(view,
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, true);
 
@@ -516,6 +523,7 @@ public class Storyline_red extends Fragment {
         //这些为了点击非PopupWindow区域，PopupWindow会消失的，如果没有下面的
         //代码的话，你会发现，当你把PopupWindow显示出来了，无论你按多少次后退键
         //PopupWindow并不会关闭，而且退不出程序，加上下述代码可以解决这个问题
+
         popWindow.setTouchable(true);
         popWindow.setTouchInterceptor(new View.OnTouchListener() {
             @Override
@@ -527,9 +535,6 @@ public class Storyline_red extends Fragment {
         });
         popWindow.setBackgroundDrawable(new ColorDrawable(0x00000000));    //要为popWindow设置一个背景才有效
 
-
-        //设置popupWindow显示的位置，参数依次是参照View，x轴的偏移量，y轴的偏移量
-        popWindow.showAsDropDown(v, 10, -1200);
 
         //设置popupWindow里的按钮的事件
         btn_xixi.setOnClickListener(new View.OnClickListener() {
@@ -551,6 +556,31 @@ public class Storyline_red extends Fragment {
                 popWindow.dismiss();
             }
         });
+
+
+        web.setLongClickable(true);
+        web.setTextIsSelectable(true);
+        web.setFocusableInTouchMode(true);
+        web.setFocusable(true);
+        web.setClickable(true);
+
+        web.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Log.d("Jing", "LongClick");
+                if (myClipboard.hasPrimaryClip()) {
+                    Log.d("Jing", "Clipboard has something ?" + myClipboard.getPrimaryClip().getItemCount() );
+                    web.setText(myClipboard.getPrimaryClip().getItemAt(0).getText());
+                }
+                Log.d("Jing", "Print");
+                return false;
+            }
+        });
+
+        //设置popupWindow显示的位置，参数依次是参照View，x轴的偏移量，y轴的偏移量
+        popWindow.setFocusable(true);
+        popWindow.showAsDropDown(v, 10, -1200);
+        popWindow.update();
     }
 /*    // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

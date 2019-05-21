@@ -86,7 +86,7 @@ public class Service extends android.app.Service {
 
 
         //<系統時間的計時功能--Start>
-        timer_homepage = new CountDownTimer(30000, 1000){//30分鐘：1800000
+        timer_homepage = new CountDownTimer(60000, 1000){//30分鐘：1800000
             @Override
             public void onTick(long millisUntilFinished) {
                 //<首頁倒計時計算--Start>
@@ -165,7 +165,6 @@ public class Service extends android.app.Service {
         //讀取資料庫資料<--Start>
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference baseRef = database.getReference("test");
-        //DatabaseReference myRef = baseRef.child("js");
         DatabaseReference myRef = baseRef;
 
         if(myRef!=null){
@@ -176,7 +175,7 @@ public class Service extends android.app.Service {
                         return ;
 
                     String value=snapshot.getValue().toString();
-                    Log.d("value = ",value);
+                    //Log.d("value = ",value);
                     Map<String, Object> objectMap = (HashMap<String,Object>) snapshot.getValue();
                     Log.d("size",String.valueOf(objectMap.size()));
                     for (Object obj : objectMap.values()) {

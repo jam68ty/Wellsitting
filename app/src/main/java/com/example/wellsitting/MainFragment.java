@@ -329,11 +329,14 @@ public class MainFragment extends Fragment {
         Start.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View arg0) {
+                delete();
                 timeremain.start();
                 Intent intent = new Intent(mcontext,Service.class);
                 mcontext.startService(intent);
             }
         });
+
+
 
 //待刪
 //        Stop.setOnClickListener(new Button.OnClickListener(){
@@ -351,6 +354,7 @@ public class MainFragment extends Fragment {
                 Intent intent = new Intent(mcontext,Service.class);
                 mcontext.stopService(intent);
                 timeremain.cancel();
+                timeremains.setText("60");
 
             }
         });
@@ -376,18 +380,18 @@ public class MainFragment extends Fragment {
     }
 
     //<計時器--Start>
-    CountDownTimer timeremain = new CountDownTimer(30000, 1000){//30分鐘：1800000
+    CountDownTimer timeremain = new CountDownTimer(60000, 1000){//30分鐘：1800000
         @Override
         public void onTick(long millisUntilFinished) {
             SharedPreferences prefs = mcontext.getSharedPreferences("TIMER", MODE_PRIVATE);
             Integer pre_sum = prefs.getInt("COUNTDOWN", 0);
 
             if (pre_sum != null) {
-                timeremains.setText(String.valueOf(31-pre_sum));//待解決：無法跳至零
+                timeremains.setText(String.valueOf(61-pre_sum));//待解決：無法跳至零
             }
 
             //完整30分鐘則計入資料庫並領取金幣獎勵
-            if(pre_sum==20){
+            if(pre_sum==58){
                 addcoin();
                 Toast.makeText(mcontext,"恭喜完成獎勵\n獎勵25金幣!",Toast.LENGTH_LONG).show();
 
@@ -407,6 +411,16 @@ public class MainFragment extends Fragment {
         super.onDestroyView();
         timeremain.cancel();
     }
+
+    public void delete(){//刪除
+        Log.d("Jing", "xxxxxx");
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference();
+        myRef.child("test").removeValue();
+
+
+    }
+
 }
 
 //  https://blog.csdn.net/fengyeNom1/article/details/79614844 簽到獲取積分

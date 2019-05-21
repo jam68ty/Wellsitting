@@ -15,22 +15,33 @@
         android:layout_height="100dp"
         android:src="@drawable/pagestory_mermaid" />
 
+
+
     <TextView
-        android:id="@+id/t_score"
+        android:id="@+id/mermaid_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="270dp"
-        android:layout_marginTop="680dp"
-        android:gravity="center"
-        android:text="coin：150"
-        android:textColor="	#3c3c3c"
         android:fontFamily="@font/texttype1"
-        android:textSize="26sp" />
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="310dp"
+        android:text="0"
+        android:textColor="#FFC314"
+        android:textSize="26sp"
+
+        />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="245dp"
+        android:src="@drawable/coin" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:gravity="center_horizontal"
         android:text="小 美  人  魚"
         android:textColor="#0A6E0A"

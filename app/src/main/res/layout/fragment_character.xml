@@ -50,18 +50,39 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:text="Button"
-                android:background="@drawable/logo_icon"
+                android:layout_marginLeft="25dp"
+
+                android:background="@drawable/unknown"
+                />
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+                android:textSize="20dp"
+                android:text="點擊抽取新角色！"
+                android:fontFamily="@font/texttype1"
+                android:textColor="#3296D7"
                 />
             <TextView
                 android:id="@+id/actor_coin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/texttype1"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
                 android:text="0"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textColor="#008080"
-                android:textSize="30dp"/>
+                android:textColor="#FFC314"
+                android:textSize="26sp"
+
+                />
+
+
+
 
         </LinearLayout>
+
+
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/myrecycler"
@@ -70,6 +91,12 @@
 
 
     </LinearLayout>
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginLeft="245dp"
+        android:src="@drawable/coin" />
 
 
 </FrameLayout>

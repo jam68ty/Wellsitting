@@ -30,7 +30,7 @@
         android:fontFamily="@font/texttype1"
         android:gravity="center"
         android:padding="0dp"
-        android:text="Hi，親愛的使用者\n再_______分鐘\n就可以領取代幣獎勵囉~"
+        android:text="Hi，親愛的使用者\n再       分鐘\n就可以領取代幣獎勵囉~"
         android:textColor="#3C5A91"
         android:textSize="25dp" />
 
@@ -97,10 +97,12 @@
         android:id="@+id/timeremains"
         android:layout_width="37dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="190dp"
-        android:layout_marginTop="422dp"
+        android:layout_marginLeft="180dp"
+        android:layout_marginTop="430dp"
         android:textColor="#4169E1"
         android:textSize="20dp"
+        android:text="60"
+        android:fontFamily="@font/texttype1"
         />
 
     <Button
@@ -111,7 +113,7 @@
         android:layout_marginTop="330dp"
         android:background="@drawable/btn_green_l"
         android:fontFamily="@font/texttype1"
-        android:text="start"
+        android:text="開始"
         android:textSize="20dp" />
 
     <!--<Button-->
@@ -129,7 +131,7 @@
         android:layout_marginTop="330dp"
         android:background="@drawable/btn_green_d"
         android:fontFamily="@font/texttype1"
-        android:text="reset"
+        android:text="重設"
         android:textSize="20dp" />
 
 

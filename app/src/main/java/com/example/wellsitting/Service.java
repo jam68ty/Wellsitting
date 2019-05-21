@@ -49,6 +49,7 @@ public class Service extends android.app.Service {
 
     FirebaseAuth mAuth;
 
+    Service toMyself = this;
     int count;
     //CHECK DATE
 
@@ -82,74 +83,6 @@ public class Service extends android.app.Service {
         SharedPreferences.Editor c = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
         c.putInt("COUNTDOWN",0);
         c.apply();
-
-
-
-        //讀取資料庫資料<--Start>
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("test");
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-
-                String value=snapshot.getValue().toString();
-                Log.d("value = ",value);
-                Map<String, Object> objectMap = (HashMap<String,Object>) snapshot.getValue();
-                Log.d("size",String.valueOf(objectMap.size()));
-                for (Object obj : objectMap.values()) {
-                    count++;
-                    Log.d("count = ",String.valueOf(count));
-                }
-                //錯誤提醒
-                //Log.d("count_service = ",String.valueOf(count));
-                if(objectMap.size()>5){
-                    //dialog_error();
-                    //onDestroy();
-                    //timer_homepage.cancel();
-
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-
-
-        });
-        //讀取資料庫資料<--End>
-
-        //<自定義時間的計時功能--Start>
-        //接受Alarm傳來的值
-        SharedPreferences settime = getSharedPreferences("SETTIME", MODE_PRIVATE);
-        Integer set = settime.getInt("TIME", 0);
-        total=set.longValue();
-        //倒數計時設定
-        timer = new CountDownTimer(total, 1000){//30分鐘：1800000
-            @Override
-            public void onTick(long millisUntilFinished) {
-                SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
-                editor.putLong("REMAINS",millisUntilFinished);
-                editor.apply();
-                /*SharedPreferences.Editor time_sum = getSharedPreferences("TIMERSUM", MODE_PRIVATE).edit();
-                time_sum.putInt("SUM",sum);
-                time_sum.apply();*/
-            }
-            @Override
-            public void onFinish() {
-                mediaPlayer.start();
-                dialog_all();
-                //update();
-                //renew();
-            }
-        };
-        //<自定義時間的計時功能--End>
-
-        //計入今天時間
-        SharedPreferences.Editor editor = getSharedPreferences("DATE", MODE_PRIVATE).edit();
-        editor.putString("TODAY",today);
-        editor.apply();
-
 
 
         //<系統時間的計時功能--Start>
@@ -199,19 +132,77 @@ public class Service extends android.app.Service {
         timer_homepage.start();
         //<系統時間的計時功能--End>
 
-//待刪
-/*
-        // TODO Auto-generated method stub
-        // SystemClock.elapsedRealtime()方法會回傳從開機到現在的時間
-        // 把這個時間做為一個Base,從這個Base開始計時
-        timer.setBase(SystemClock.elapsedRealtime() + escapeTime);
-        timer.start();
+        //<自定義時間的計時功能--Start>
+        //接受Alarm傳來的值
+        SharedPreferences settime = getSharedPreferences("SETTIME", MODE_PRIVATE);
+        Integer set = settime.getInt("TIME", 0);
+        total=set.longValue();
+        //倒數計時設定
+        timer = new CountDownTimer(total, 1000){//30分鐘：1800000
+            @Override
+            public void onTick(long millisUntilFinished) {
+                SharedPreferences.Editor editor = getSharedPreferences("TIMER", MODE_PRIVATE).edit();
+                editor.putLong("REMAINS",millisUntilFinished);
+                editor.apply();
+            }
+            @Override
+            public void onFinish() {
+                mediaPlayer.start();
+                dialog_all();
+                //update();
+                //renew();
+            }
+        };
+        //<自定義時間的計時功能--End>
 
-        count.setBase(SystemClock.elapsedRealtime() + 1800000);
-        count.setCountDown(true);
-        count.start();
- */
 
+        //計入今天時間
+        SharedPreferences.Editor editor = getSharedPreferences("DATE", MODE_PRIVATE).edit();
+        editor.putString("TODAY",today);
+        editor.apply();
+
+
+        //讀取資料庫資料<--Start>
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference baseRef = database.getReference("test");
+        //DatabaseReference myRef = baseRef.child("js");
+        DatabaseReference myRef = baseRef;
+
+        if(myRef!=null){
+            myRef.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot snapshot) {
+                    if (snapshot.getChildrenCount() < 1)
+                        return ;
+
+                    String value=snapshot.getValue().toString();
+                    Log.d("value = ",value);
+                    Map<String, Object> objectMap = (HashMap<String,Object>) snapshot.getValue();
+                    Log.d("size",String.valueOf(objectMap.size()));
+                    for (Object obj : objectMap.values()) {
+                        count++;
+                        Log.d("count = ",String.valueOf(count));
+                    }
+                    //錯誤提醒
+                    //Log.d("count_service = ",String.valueOf(count));
+                    if(objectMap.size()>5){
+                        dialog_error();
+                        delete();
+                        toMyself.stopSelf();
+                        //onDestroy();
+                        //timer_homepage.cancel();
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        }
+
+        //讀取資料庫資料<--End>
     }
     public void onDestroy(){
         super.onDestroy();
@@ -298,9 +289,13 @@ public class Service extends android.app.Service {
 
     //<Database基本功能設定--Start>
     public void delete(){//刪除
+        Log.d("Jing", "xxxxxx");
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("alert");
-        myRef.child(today).removeValue();
+        DatabaseReference myRef = database.getReference();
+        myRef.child("test").removeValue();
+        //myRef.child("js").removeValue();
+        //myRef.child("js/KeepAlive").setValue("HelloWorld");
+
     }
     public void update(){//新增
         final FirebaseDatabase database = FirebaseDatabase.getInstance();//取得資料庫連結

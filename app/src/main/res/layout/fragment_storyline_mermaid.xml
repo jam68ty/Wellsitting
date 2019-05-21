@@ -101,7 +101,7 @@
             android:id="@+id/mbuy_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/lock"
+            android:background="#00000000"
             android:layout_marginTop="18dp"
             android:src="@drawable/lock" />
 
@@ -140,7 +140,7 @@
             android:id="@+id/mbuy_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/lock"
+            android:background="#00000000"
             android:layout_marginTop="18dp"
             android:src="@drawable/lock" />
 
@@ -178,7 +178,7 @@
             android:id="@+id/mbuy_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/lock"
+            android:background="#00000000"
             android:layout_marginTop="18dp"
             android:src="@drawable/lock" />
 
@@ -217,7 +217,7 @@
             android:id="@+id/mbuy_5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/lock"
+            android:background="#00000000"
             android:layout_marginTop="18dp"
             android:src="@drawable/lock" />
 
@@ -255,8 +255,8 @@
             android:id="@+id/mbuy_6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/lock"
             android:layout_marginTop="18dp"
+            android:background="#00000000"
             android:src="@drawable/lock" />
 
         <TextView
@@ -293,7 +293,7 @@
             android:id="@+id/mbuy_7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/lock"
+            android:background="#00000000"
             android:layout_marginTop="18dp"
             android:src="@drawable/lock" />
 
@@ -309,15 +309,15 @@
             android:layout_marginLeft="10dp"
             android:text="100" />
 
-        <ImageView
-            android:id="@+id/gift_dg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="10dp"
-            android:src="@drawable/gift_dg" />
-    </LinearLayout>
 
     </LinearLayout>
 
+    </LinearLayout>
+    <ImageView
+        android:id="@+id/gift_dg"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="60dp"
+        android:src="@drawable/gift_dg" />
 </FrameLayout>

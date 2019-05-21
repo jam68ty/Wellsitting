@@ -46,6 +46,8 @@ public class StorylineActivity extends AppCompatActivity {
     private ImageView head;
     Context mcontext;
     int i;
+    int numberOfChapter;
+    String filebasePrefix;
 
     ArrayList<StoryInformation> storyInformations;
     List sortedList;
@@ -68,9 +70,28 @@ public class StorylineActivity extends AppCompatActivity {
         storyInformations = new ArrayList<StoryInformation>();
 
 
+        SharedPreferences lineDatabase = getSharedPreferences("LINE", MODE_PRIVATE);
+        String whichLine = lineDatabase.getString("LINE", "UNKNWON");
+
+
+        if (whichLine.equals("RED")) {
+            numberOfChapter = 5; // 小紅帽故事線 has 5 chapter.
+            filebasePrefix = "story/red/ch";
+        } else if (whichLine.equals("FROG")) {
+            numberOfChapter = 4;
+            filebasePrefix = "story/frog/ch";
+        }else if(whichLine.equals("CINDY")){
+            numberOfChapter = 7;
+            filebasePrefix = "story/cindy/ch";
+        }else if(whichLine.equals("MERMAID")){
+            numberOfChapter = 7;
+            filebasePrefix = "story/mermaid/ch";
+        }
+        // TODO(JingJing)
+
         // Cache experiment of 小紅帽故事線
-        for (int i = 0; i < 5; ++i) {
-            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch" + String.valueOf(i));
+        for (int i = 0; i < numberOfChapter; ++i) {
+            reference = FirebaseDatabase.getInstance().getReference().child(filebasePrefix + String.valueOf(i));
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -95,36 +116,10 @@ public class StorylineActivity extends AppCompatActivity {
         }
 
         //小紅帽故事線
-        SharedPreferences ch1 = getSharedPreferences("RED", MODE_PRIVATE);
-        Integer ch1_1 = ch1.getInt("CH", 0);
-        if (ch1_1 == 1) {
-            Log.d("test", "redch1");
-            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch1");
+        SharedPreferences redDatabase = getSharedPreferences(whichLine, MODE_PRIVATE);
+        Integer chapeter = redDatabase.getInt("CH", 0);
+        reference = FirebaseDatabase.getInstance().getReference().child(filebasePrefix + String.valueOf(chapeter));
 
-        }
-        SharedPreferences ch2 = getSharedPreferences("RED", MODE_PRIVATE);
-        Integer ch2_2 = ch2.getInt("CH", 0);
-        if (ch2_2 == 2) {
-            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch2");
-        }
-
-        SharedPreferences ch3 = getSharedPreferences("RED", MODE_PRIVATE);
-        Integer ch3_3 = ch3.getInt("CH", 0);
-        if (ch3_3 == 3) {
-            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch3");
-        }
-
-        SharedPreferences ch4 = getSharedPreferences("RED", MODE_PRIVATE);
-        Integer ch4_4 = ch3.getInt("CH", 0);
-        if (ch4_4 == 4) {
-            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch3");
-        }
-
-        SharedPreferences ch5 = getSharedPreferences("RED", MODE_PRIVATE);
-        Integer ch5_5 = ch3.getInt("CH", 0);
-        if (ch5_5 == 4) {
-            reference = FirebaseDatabase.getInstance().getReference().child("story/red/ch4");
-        }
 
         /*//青蛙王子主線
         SharedPreferences fch1 = getSharedPreferences("FROG", MODE_PRIVATE);

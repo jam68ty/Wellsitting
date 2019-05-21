@@ -102,7 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/lock"
+                android:background="#00000000"
                 android:src="@drawable/lock" />
 
             <TextView
@@ -142,7 +142,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/lock"
+                android:background="#00000000"
                 android:src="@drawable/lock" />
 
             <TextView
@@ -182,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/lock"
+                android:background="#00000000"
                 android:src="@drawable/lock" />
 
             <TextView
@@ -222,7 +222,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/lock"
+                android:background="#00000000"
                 android:src="@drawable/lock" />
 
             <TextView
@@ -261,7 +261,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/lock"
+                android:background="#00000000"
                 android:src="@drawable/lock" />
 
             <TextView
@@ -300,7 +300,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:background="@drawable/lock"
+                android:background="#00000000"
                 android:src="@drawable/lock" />
 
             <TextView
@@ -315,16 +315,17 @@
                 android:textColor="#1E90FF"
                 android:textSize="20dp" />
 
-            <ImageView
-                android:id="@+id/gift_b"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/gift_b" />
+
         </LinearLayout>
 
     </LinearLayout>
+    <ImageView
+        android:id="@+id/gift_b"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginLeft="60dp"
+        android:src="@drawable/gift_b" />
 
 
 

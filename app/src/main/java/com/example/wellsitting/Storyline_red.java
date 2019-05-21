@@ -284,10 +284,13 @@ public class Storyline_red extends Fragment {
         redch1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 SharedPreferences.Editor ch1 = getActivity().getSharedPreferences("RED", MODE_PRIVATE).edit();
                 ch1.putInt("CH",1);
                 ch1.apply();
+
+                SharedPreferences.Editor line = getActivity().getSharedPreferences("LINE", MODE_PRIVATE).edit();
+                line.putString("LINE", "RED");
+                line.apply();
 
                 Intent intent=new Intent(getActivity(), StorylineActivity.class);
                 startActivity(intent);
@@ -301,6 +304,10 @@ public class Storyline_red extends Fragment {
                     SharedPreferences.Editor ch2 = getActivity().getSharedPreferences("RED", MODE_PRIVATE).edit();
                     ch2.putInt("CH",2);
                     ch2.apply();
+
+                    SharedPreferences.Editor line = getActivity().getSharedPreferences("LINE", MODE_PRIVATE).edit();
+                    line.putString("LINE", "RED");
+                    line.apply();
 
                     Intent intent=new Intent(getActivity(), StorylineActivity.class);
                     startActivity(intent);
@@ -320,6 +327,10 @@ public class Storyline_red extends Fragment {
                     ch3.putInt("CH",3);
                     ch3.apply();
 
+                    SharedPreferences.Editor line = getActivity().getSharedPreferences("LINE", MODE_PRIVATE).edit();
+                    line.putString("LINE", "RED");
+                    line.apply();
+
                     Intent intent=new Intent(getActivity(), StorylineActivity.class);
                     startActivity(intent);
                 }else {
@@ -338,6 +349,10 @@ public class Storyline_red extends Fragment {
                     ch4.putInt("CH",4);
                     ch4.apply();
 
+                    SharedPreferences.Editor line = getActivity().getSharedPreferences("LINE", MODE_PRIVATE).edit();
+                    line.putString("LINE", "RED");
+                    line.apply();
+
                     Intent intent=new Intent(getActivity(), StorylineActivity.class);
                     startActivity(intent);
                 }else {
@@ -355,6 +370,10 @@ public class Storyline_red extends Fragment {
                     SharedPreferences.Editor ch5 = getActivity().getSharedPreferences("RED", MODE_PRIVATE).edit();
                     ch5.putInt("CH",5);
                     ch5.apply();
+
+                    SharedPreferences.Editor line = getActivity().getSharedPreferences("LINE", MODE_PRIVATE).edit();
+                    line.putString("LINE", "RED");
+                    line.apply();
 
                     Intent intent=new Intent(getActivity(), StorylineActivity.class);
                     startActivity(intent);
@@ -377,8 +396,6 @@ public class Storyline_red extends Fragment {
                 String s=rPrice_2.getText().toString().substring(0);
                 int t =Integer.parseInt(i.trim());
                 String value_Temp = String.valueOf(t);
-
-
 
                 if(check_rch2==true){
                     Toast.makeText(mcontext, "已購買", Toast.LENGTH_LONG).show();

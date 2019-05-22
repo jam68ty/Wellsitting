@@ -4,79 +4,93 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fake_view"
+    android:background="@drawable/backgroud_all"
     tools:context=".About">
 
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:src="@drawable/fake_pop_window"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="自定義特殊獎勵！"
-        android:textSize="40dp"
-        android:fontFamily="@font/texttype1"
-        android:layout_marginTop="120dp"
-        android:layout_marginLeft="45dp"
-        android:textColor="	#0A6ECD"
-        />
-
-    <EditText
-        android:id="@+id/web"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="請貼上商品網址"
-        android:textColorHint="#0A6ECD"
-        android:layout_marginLeft="135dp"
-        android:layout_marginTop="180dp"
-        android:longClickable = "true"
-        android:textIsSelectable="true"
-        android:fontFamily="@font/texttype1"
-
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="網站"
-        android:layout_marginTop="250dp"
-        android:layout_marginLeft="80dp"
-        android:textSize="40dp"
-        android:fontFamily="@font/texttype1"
-        android:textColor="	#0A6ECD"
-
-        />
-
     <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="80dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="500dp"
-        android:orientation="horizontal">
-        <Button
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:background="#00000000"
-            android:text="取消"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/texttype1"
-            android:textColor="	#0A6ECD"
+            android:layout_marginTop="50dp"
+            android:text="Good + 顧家 - 本系統有六大特色"
+            android:textColor="#4169E1"
+            android:textSize="25dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             />
 
-        <Button
-            android:layout_width="175dp"
-            android:layout_height="70dp"
-            android:background="#00000000"
-            android:text="確定"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/texttype1"
-            android:textColor="	#0A6ECD"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:text="簡易上手：簡易操作介面，讓您愛不釋手。"
+            android:textColor="#4169E1"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/texttype1"
+            android:layout_gravity="center"
+            android:textColor="#4169E1"
+            android:layout_marginTop="20dp"
+            android:text="老少咸宜：大小全齡皆宜，讓您家家皆喜。"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/texttype1"
+            android:layout_gravity="center"
+            android:textColor="#4169E1"
+            android:layout_marginTop="20dp"
+            android:text="雙軌運作：雙系統齊維運，讓您設備無懼。"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/texttype1"
+            android:layout_gravity="center"
+            android:textColor="#4169E1"
+            android:layout_marginTop="20dp"
+            android:text="體健顧家：顧家(Good + )，讓您健體顧家。"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/texttype1"
+            android:layout_gravity="center"
+            android:textColor="#4169E1"
+            android:layout_marginTop="20dp"
+            android:text="有趣好玩：系統故事探索，讓您有趣好玩。"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/texttype1"
+            android:layout_gravity="center"
+            android:textColor="#4169E1"
+            android:layout_marginTop="20dp"
+            android:text="Good+顧家：Good+(顧家)，讓你好運升級。"
             />
 
     </LinearLayout>
+
+
+
+
+
+
 
 
 </RelativeLayout>

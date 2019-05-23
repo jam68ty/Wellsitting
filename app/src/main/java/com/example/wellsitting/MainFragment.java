@@ -221,24 +221,29 @@ public class MainFragment extends Fragment {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
                 String value = String.valueOf(dataSnapshot.getValue());
-                Log.d(TAG, "Value is: " + value);
-                if (value.equals("n")||value.equals("N")){
+                Log.d("alertTest", "Value is: " + user.getUid() +value);
+
+
+                if (value.equals("n")||value.equals("N")||value.equals("[n]")||value.equals("[N]")){
+                    Log.d("ifAlertTest", "Value is: " + user.getUid() +value);
                     AlertDialog.Builder builder1 = new  AlertDialog.Builder(getContext());
                     builder1.setTitle("姿勢錯誤");
-                    builder1.setMessage("請調整您的坐姿，計時將重新開始");
+                    builder1.setMessage("請調整您的坐姿，將時間重設");
                     mediaPlayer.setLooping(true);
                     mediaPlayer.start();
                     builder1.setNegativeButton("OK", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
-                            mediaPlayer.stop();
+                            mediaPlayer.pause();
                             myRef_status.setValue("y");
                         }
                     });
                     AlertDialog alertDialog = builder1.create();
-                    alertDialog.show();
+                    alertDialog.show();mediaPlayer.reset();
+
                 }
+
             }
 
             @Override

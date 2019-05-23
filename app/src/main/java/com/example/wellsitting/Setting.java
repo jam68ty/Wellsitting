@@ -71,7 +71,7 @@ public class Setting extends Fragment {
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         updateUI(user);
-
+/*
         //進入獎勵設定
         btn_award=view.findViewById(R.id.award);
         btn_award.setOnClickListener(new View.OnClickListener() {
@@ -97,7 +97,7 @@ public class Setting extends Fragment {
                 renew();
             }
         });
-
+*/
         //進入鬧鐘設定
         btn_clock=view.findViewById(R.id.clock);
         btn_clock.setOnClickListener(new View.OnClickListener() {

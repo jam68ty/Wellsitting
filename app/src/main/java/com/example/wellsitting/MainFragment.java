@@ -214,6 +214,7 @@ public class MainFragment extends Fragment {
             }
         });
 
+        //坐姿錯誤時跳通知
         myRef_status.addValueEventListener(new ValueEventListener() {
             @RequiresApi(api = Build.VERSION_CODES.M)
             @Override

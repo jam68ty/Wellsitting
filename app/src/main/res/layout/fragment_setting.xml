@@ -145,6 +145,7 @@
                 />
 
 
+            <!--
             <TextView
                 android:id="@+id/award"
                 android:layout_width="300dp"
@@ -159,6 +160,7 @@
                 android:textSize="24dp"
                 android:background="@drawable/pagesetting_all"
                 />
+                -->
 
             <TextView
                 android:id="@+id/about"

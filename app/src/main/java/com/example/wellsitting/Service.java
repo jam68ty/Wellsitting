@@ -34,6 +34,7 @@ public class Service extends android.app.Service {
 
     Long total;
     MediaPlayer mediaPlayer;
+    MediaPlayer mediaPlayer_error;
     int sum=0;//首頁倒計參數
     int today_sum;//總正計參數
     CountDownTimer timer;
@@ -66,6 +67,7 @@ public class Service extends android.app.Service {
 // TODO Auto-generated method stub
         super.onCreate();
         mediaPlayer = MediaPlayer.create(this, R.raw.twice);
+        mediaPlayer_error=MediaPlayer.create(this,R.raw.beep);
         /*mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -186,6 +188,7 @@ public class Service extends android.app.Service {
                     //Log.d("count_service = ",String.valueOf(count));
                     if(objectMap.size()>5){
                         dialog_error();
+                        mediaPlayer_error.start();
                         delete();
                         toMyself.stopSelf();
                         //onDestroy();
@@ -270,12 +273,16 @@ public class Service extends android.app.Service {
         builder.setPositiveButton("ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User clicked OK button
+                mediaPlayer_error.stop();
+                delete();
                 dialog.dismiss();
             }
         });
         builder.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 // User cancelled the dialog
+                mediaPlayer_error.stop();
+                delete();
                 dialog.dismiss();
             }
         });

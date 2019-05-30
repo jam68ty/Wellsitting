@@ -152,7 +152,7 @@ public class Storyline_red extends Fragment {
                     rbuy2.setEnabled(false);
                 }else{
                     rbuy2.setImageResource(R.drawable.lock);
-                    rPrice_2.setText("100");
+                    rPrice_2.setText("150");
                 }
 
 
@@ -187,7 +187,7 @@ public class Storyline_red extends Fragment {
                     rbuy3.setEnabled(false);
                 }else{
                     rbuy3.setImageResource(R.drawable.lock);
-                    rPrice_3.setText("100");
+                    rPrice_3.setText("150");
 
                 }
 
@@ -219,7 +219,7 @@ public class Storyline_red extends Fragment {
                     rbuy4.setEnabled(false);
                 }else{
                     rbuy4.setImageResource(R.drawable.lock);
-                    rPrice_4.setText("100");
+                    rPrice_4.setText("200");
 
                 }
 
@@ -253,7 +253,7 @@ public class Storyline_red extends Fragment {
                     rbuy5.setEnabled(false);
                 }else{
                     rbuy5.setImageResource(R.drawable.lock);
-                    rPrice_5.setText("100");
+                    rPrice_5.setText("200");
 
                 }
 
@@ -402,14 +402,14 @@ public class Storyline_red extends Fragment {
                     redch2.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<150){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         t_score.setText(value_Temp);
 
                     }else{
                         redch2.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-150);
+                        String value_Temp1 = String.valueOf(t-150);
                         t_score.setText(value_Temp1);
                         rbuy2.setImageResource(R.drawable.story_rgot);
                         rPrice_2.setText(null);
@@ -435,14 +435,14 @@ public class Storyline_red extends Fragment {
                     redch3.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<150){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         t_score.setText(value_Temp);
 
                     }else{
                         redch3.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-150);
+                        String value_Temp1 = String.valueOf(t-150);
                         t_score.setText(value_Temp1);
                         rbuy3.setImageResource(R.drawable.story_rgot);
                         rPrice_3.setText(null);
@@ -468,14 +468,14 @@ public class Storyline_red extends Fragment {
                     redch4.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<200){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         t_score.setText(value_Temp);
 
                     }else{
                         redch4.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-200);
+                        String value_Temp1 = String.valueOf(t-200);
                         t_score.setText(value_Temp1);
                         rbuy4.setImageResource(R.drawable.story_rgot);
                         rPrice_4.setText(null);
@@ -500,14 +500,14 @@ public class Storyline_red extends Fragment {
                     redch5.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<200){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         t_score.setText(value_Temp);
 
                     }else{
                         redch5.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-200);
+                        String value_Temp1 = String.valueOf(t-200);
                         t_score.setText(value_Temp1);
                         rbuy5.setImageResource(R.drawable.story_rgot);
                         rPrice_5.setText(null);

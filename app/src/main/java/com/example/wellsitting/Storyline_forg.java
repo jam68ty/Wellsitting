@@ -162,7 +162,7 @@ public class Storyline_forg extends Fragment {
                     fbuy2.setEnabled(false);
                 }else{
                     fbuy2.setImageResource(R.drawable.lock);
-                    fPrice_2.setText("100");
+                    fPrice_2.setText("150");
                 }
 
 
@@ -197,7 +197,7 @@ public class Storyline_forg extends Fragment {
                     fbuy3.setEnabled(false);
                 }else{
                     fbuy3.setImageResource(R.drawable.lock);
-                    fPrice_3.setText("100");
+                    fPrice_3.setText("150");
 
                 }
 
@@ -229,7 +229,7 @@ public class Storyline_forg extends Fragment {
                     fbuy4.setEnabled(false);
                 }else{
                     fbuy4.setImageResource(R.drawable.lock);
-                    fPrice_4.setText("100");
+                    fPrice_4.setText("200");
 
                 }
 
@@ -263,7 +263,7 @@ public class Storyline_forg extends Fragment {
                     fbuy5.setEnabled(false);
                 }else{
                     fbuy5.setImageResource(R.drawable.lock);
-                    fPrice_5.setText("100");
+                    fPrice_5.setText("200");
 
                 }
 
@@ -298,7 +298,7 @@ public class Storyline_forg extends Fragment {
                     fbuy6.setEnabled(false);
                 }else{
                     fbuy6.setImageResource(R.drawable.lock);
-                    fPrice_6.setText("100");
+                    fPrice_6.setText("250");
 
                 }
 
@@ -333,7 +333,7 @@ public class Storyline_forg extends Fragment {
                     fbuy7.setEnabled(false);
                 }else{
                     fbuy7.setImageResource(R.drawable.lock);
-                    fPrice_7.setText("100");
+                    fPrice_7.setText("250");
 
                 }
 
@@ -537,14 +537,14 @@ public class Storyline_forg extends Fragment {
                     frogch2.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<150){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         frog_score.setText(value_Temp);
 
                     }else{
                         frogch2.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-150);
+                        String value_Temp1 = String.valueOf(t-150);
                         frog_score.setText(value_Temp1);
                         fbuy2.setImageResource(R.drawable.story_fgot);
                         fPrice_2.setText(null);
@@ -570,14 +570,14 @@ public class Storyline_forg extends Fragment {
                     frogch3.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<150){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         frog_score.setText(value_Temp);
 
                     }else{
                         frogch3.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-150);
+                        String value_Temp1 = String.valueOf(t-150);
                         frog_score.setText(value_Temp1);
                         fbuy3.setImageResource(R.drawable.story_fgot);
                         fPrice_3.setText(null);
@@ -603,14 +603,14 @@ public class Storyline_forg extends Fragment {
                     frogch4.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<200){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         frog_score.setText(value_Temp);
 
                     }else{
                         frogch4.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-200);
+                        String value_Temp1 = String.valueOf(t-200);
                         frog_score.setText(value_Temp1);
                         fbuy4.setImageResource(R.drawable.story_fgot);
                         fPrice_4.setText(null);
@@ -635,14 +635,14 @@ public class Storyline_forg extends Fragment {
                     frogch5.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<200){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         frog_score.setText(value_Temp);
 
                     }else{
                         frogch5.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-200);
+                        String value_Temp1 = String.valueOf(t-200);
                         frog_score.setText(value_Temp1);
                         fbuy5.setImageResource(R.drawable.story_fgot);
                         fPrice_5.setText(null);
@@ -667,14 +667,14 @@ public class Storyline_forg extends Fragment {
                     frogch6.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<250){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         frog_score.setText(value_Temp);
 
                     }else{
                         frogch6.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-250);
+                        String value_Temp1 = String.valueOf(t-250);
                         frog_score.setText(value_Temp1);
                         fbuy6.setImageResource(R.drawable.story_fgot);
                         fPrice_6.setText(null);
@@ -699,14 +699,14 @@ public class Storyline_forg extends Fragment {
                     frogch7.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<250){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         frog_score.setText(value_Temp);
 
                     }else{
                         frogch7.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-250);
+                        String value_Temp1 = String.valueOf(t-250);
                         frog_score.setText(value_Temp1);
                         fbuy7.setImageResource(R.drawable.story_fgot);
                         fPrice_7.setText(null);

@@ -163,7 +163,7 @@ public class Storyline_mermaid extends Fragment {
                     mbuy2.setEnabled(false);
                 }else{
                     mbuy2.setImageResource(R.drawable.lock);
-                    mPrice_2.setText("100");
+                    mPrice_2.setText("150");
                 }
 
 
@@ -198,7 +198,7 @@ public class Storyline_mermaid extends Fragment {
                     mbuy3.setEnabled(false);
                 }else{
                     mbuy3.setImageResource(R.drawable.lock);
-                    mPrice_3.setText("100");
+                    mPrice_3.setText("150");
 
                 }
 
@@ -230,7 +230,7 @@ public class Storyline_mermaid extends Fragment {
                     mbuy4.setEnabled(false);
                 }else{
                     mbuy4.setImageResource(R.drawable.lock);
-                    mPrice_4.setText("100");
+                    mPrice_4.setText("200");
 
                 }
 
@@ -264,7 +264,7 @@ public class Storyline_mermaid extends Fragment {
                     mbuy5.setEnabled(false);
                 }else{
                     mbuy5.setImageResource(R.drawable.lock);
-                    mPrice_5.setText("100");
+                    mPrice_5.setText("200");
 
                 }
 
@@ -299,7 +299,7 @@ public class Storyline_mermaid extends Fragment {
                     mbuy6.setEnabled(false);
                 }else{
                     mbuy6.setImageResource(R.drawable.lock);
-                    mPrice_6.setText("100");
+                    mPrice_6.setText("250");
 
                 }
 
@@ -334,7 +334,7 @@ public class Storyline_mermaid extends Fragment {
                     mbuy7.setEnabled(false);
                 }else{
                     mbuy7.setImageResource(R.drawable.lock);
-                    mPrice_7.setText("100");
+                    mPrice_7.setText("250");
 
                 }
 
@@ -536,14 +536,14 @@ public class Storyline_mermaid extends Fragment {
                     mch2.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<150){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         mermaid_score.setText(value_Temp);
 
                     }else{
                         mch2.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-150);
+                        String value_Temp1 = String.valueOf(t-150);
                         mermaid_score.setText(value_Temp1);
                         mbuy2.setImageResource(R.drawable.story_mgot);
                         mPrice_2.setText(null);
@@ -569,14 +569,14 @@ public class Storyline_mermaid extends Fragment {
                     mch3.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<150){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         mermaid_score.setText(value_Temp);
 
                     }else{
                         mch3.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-150);
+                        String value_Temp1 = String.valueOf(t-150);
                         mermaid_score.setText(value_Temp1);
                         mbuy3.setImageResource(R.drawable.story_fgot);
                         mPrice_3.setText(null);
@@ -602,14 +602,14 @@ public class Storyline_mermaid extends Fragment {
                     mch4.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<200){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         mermaid_score.setText(value_Temp);
 
                     }else{
                         mch4.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-200);
+                        String value_Temp1 = String.valueOf(t-200);
                         mermaid_score.setText(value_Temp1);
                         mbuy4.setImageResource(R.drawable.story_fgot);
                         mPrice_4.setText(null);
@@ -634,14 +634,14 @@ public class Storyline_mermaid extends Fragment {
                     mch5.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<200){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         mermaid_score.setText(value_Temp);
 
                     }else{
                         mch5.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-200);
+                        String value_Temp1 = String.valueOf(t-200);
                         mermaid_score.setText(value_Temp1);
                         mbuy5.setImageResource(R.drawable.story_fgot);
                         mPrice_5.setText(null);
@@ -666,14 +666,14 @@ public class Storyline_mermaid extends Fragment {
                     mch6.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<250){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         mermaid_score.setText(value_Temp);
 
                     }else{
                         mch6.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-250);
+                        String value_Temp1 = String.valueOf(t-250);
                         mermaid_score.setText(value_Temp1);
                         mbuy6.setImageResource(R.drawable.story_fgot);
                         mPrice_6.setText(null);
@@ -698,14 +698,14 @@ public class Storyline_mermaid extends Fragment {
                     mch7.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<250){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         mermaid_score.setText(value_Temp);
 
                     }else{
                         mch7.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-250);
+                        String value_Temp1 = String.valueOf(t-250);
                         mermaid_score.setText(value_Temp1);
                         mbuy7.setImageResource(R.drawable.story_fgot);
                         mPrice_7.setText(null);

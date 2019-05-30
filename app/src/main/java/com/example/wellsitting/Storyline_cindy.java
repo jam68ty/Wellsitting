@@ -159,7 +159,7 @@ public class Storyline_cindy extends Fragment {
                     cbuy2.setEnabled(false);
                 }else{
                     cbuy2.setImageResource(R.drawable.lock);
-                    cPrice_2.setText("100");
+                    cPrice_2.setText("150");
                 }
 
 
@@ -194,7 +194,7 @@ public class Storyline_cindy extends Fragment {
                     cbuy3.setEnabled(false);
                 }else{
                     cbuy3.setImageResource(R.drawable.lock);
-                    cPrice_3.setText("100");
+                    cPrice_3.setText("150");
 
                 }
 
@@ -226,7 +226,7 @@ public class Storyline_cindy extends Fragment {
                     cbuy4.setEnabled(false);
                 }else{
                     cbuy4.setImageResource(R.drawable.lock);
-                    cPrice_4.setText("100");
+                    cPrice_4.setText("200");
 
                 }
 
@@ -260,7 +260,7 @@ public class Storyline_cindy extends Fragment {
                     cbuy5.setEnabled(false);
                 }else{
                     cbuy5.setImageResource(R.drawable.lock);
-                    cPrice_5.setText("100");
+                    cPrice_5.setText("200");
 
                 }
 
@@ -295,7 +295,7 @@ public class Storyline_cindy extends Fragment {
                     cbuy6.setEnabled(false);
                 }else{
                     cbuy6.setImageResource(R.drawable.lock);
-                    cPrice_6.setText("100");
+                    cPrice_6.setText("250");
 
                 }
 
@@ -330,7 +330,7 @@ public class Storyline_cindy extends Fragment {
                     cbuy7.setEnabled(false);
                 }else{
                     cbuy7.setImageResource(R.drawable.lock);
-                    cPrice_7.setText("100");
+                    cPrice_7.setText("250");
 
                 }
 
@@ -532,14 +532,14 @@ public class Storyline_cindy extends Fragment {
                     cindych2.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<150){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         cindy_score.setText(value_Temp);
 
                     }else{
                         cindych2.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-150);
+                        String value_Temp1 = String.valueOf(t-150);
                         cindy_score.setText(value_Temp1);
                         cbuy2.setImageResource(R.drawable.story_rgot);
                         cPrice_2.setText(null);
@@ -565,14 +565,14 @@ public class Storyline_cindy extends Fragment {
                     cindych3.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<150){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         cindy_score.setText(value_Temp);
 
                     }else{
                         cindych3.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-150);
+                        String value_Temp1 = String.valueOf(t-150);
                         cindy_score.setText(value_Temp1);
                         cbuy3.setImageResource(R.drawable.story_cgot);
                         cPrice_3.setText(null);
@@ -598,14 +598,14 @@ public class Storyline_cindy extends Fragment {
                     cindych4.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<200){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         cindy_score.setText(value_Temp);
 
                     }else{
                         cindych4.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-200);
+                        String value_Temp1 = String.valueOf(t-200);
                         cindy_score.setText(value_Temp1);
                         cbuy4.setImageResource(R.drawable.story_cgot);
                         cPrice_4.setText(null);
@@ -630,14 +630,14 @@ public class Storyline_cindy extends Fragment {
                     cindych5.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<200){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         cindy_score.setText(value_Temp);
 
                     }else{
                         cindych5.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-200);
+                        String value_Temp1 = String.valueOf(t-200);
                         cindy_score.setText(value_Temp1);
                         cbuy5.setImageResource(R.drawable.story_cgot);
                         cPrice_5.setText(null);
@@ -662,14 +662,14 @@ public class Storyline_cindy extends Fragment {
                     cindych6.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<250){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         cindy_score.setText(value_Temp);
 
                     }else{
                         cindych6.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-250);
+                        String value_Temp1 = String.valueOf(t-250);
                         cindy_score.setText(value_Temp1);
                         cbuy6.setImageResource(R.drawable.story_cgot);
                         cPrice_6.setText(null);
@@ -694,14 +694,14 @@ public class Storyline_cindy extends Fragment {
                     cindych7.setEnabled(true);
 
                 } else{
-                    if (t<100){
+                    if (t<250){
                         Toast.makeText(mcontext, "金幣不足", Toast.LENGTH_LONG).show();
                         cindy_score.setText(value_Temp);
 
                     }else{
                         cindych7.setEnabled(true);
-                        myRef.child("coin").setValue(t-100);
-                        String value_Temp1 = String.valueOf(t-100);
+                        myRef.child("coin").setValue(t-250);
+                        String value_Temp1 = String.valueOf(t-250);
                         cindy_score.setText(value_Temp1);
                         cbuy7.setImageResource(R.drawable.story_cgot);
                         cPrice_7.setText(null);
